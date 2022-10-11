@@ -1,3 +1,4 @@
+#include <cstdio>
 /**定义模块**/
 #define MaxSize 50
 
@@ -15,9 +16,9 @@ bool Empty(SqStack S);
 // 向栈 S 中加入元素 e 使其成为新栈顶
 bool Push(SqStack &S, ElemType e);
 // 推出栈顶元素并用 e 返回
-bool Pop(SqStack &S, ElemType e);
+bool Pop(SqStack &S, ElemType &e);
 // 读取栈顶元素并用 e 返回，只读，不会改变栈
-bool GetPop(SqStack S,ElemType e);
+bool GetPop(SqStack S,ElemType &e);
 // 销毁栈并释放内存
 bool DestroyStack(SqStack &S);
 /**定义模块**/
@@ -86,14 +87,14 @@ void testStack() {
         printf("入栈又失败了\n");
     }
     PrintStack(S);
-    int x;
+    ElemType x;
     if (Pop(S, x)) {
         printf("出栈成功，弹出的元素为:%d\n", x);
     } else {
         printf("出栈失败了，再检出一下吧！\n");
     }
     PrintStack(S);
-    int x1;
+    ElemType x1;
     if (GetPop(S, x1)) {
         printf("读取栈顶元素成功了，栈顶元素为：%d\n", x1);
     } else {

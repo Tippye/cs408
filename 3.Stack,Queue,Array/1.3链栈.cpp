@@ -1,48 +1,53 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdio>
+#include <cstdlib>
 
 /**定义模块**/
 #define MaxSize 50
 
 typedef int ElemType;
 
-typedef struct {
+typedef struct LNode {
     ElemType data;
     struct LNode *next;
 } LNode, *LinkStack;
 
 // 初始化一个空栈 S
-bool InitStack(SqStack &S);
+bool InitStack(LinkStack &S);
+
 // 判断栈 S 是否为空
-bool Empty(SqStack S);
+bool Empty(LinkStack S);
+
 // 向栈 S 中加入元素 e 使其成为新栈顶
-bool Push(SqStack &S, ElemType e);
+bool Push(LinkStack &S, ElemType e);
+
 // 推出栈顶元素并用 e 返回
-bool Pop(SqStack &S, ElemType e);
+bool Pop(LinkStack &S, ElemType &e);
+
 // 读取栈顶元素并用 e 返回，只读，不会改变栈
-bool GetPop(SqStack S,ElemType e);
+bool GetPop(LinkStack S, ElemType &e);
+
 // 销毁栈并释放内存
-bool DestroyStack(SqStack &S);
+bool DestroyStack(LinkStack &S);
 /**定义模块**/
 
 /**实现模块**/
-bool InitStack(SqStack &S){
+bool InitStack(LinkStack &S) {
     // 初始化栈顶指针
     S = (LNode *) malloc(sizeof(LNode));
-    if (S==NULL)
+    if (S == NULL)
         return false;
     S->next = NULL;
     return true;
 }
 
-bool Empty(SqStack S){
-    return (S -> next == NULL);
+bool Empty(LinkStack S) {
+    return (S->next == NULL);
 }
 
-bool Push(SqStack &S, ElemType e) {
+bool Push(LinkStack &S, ElemType e) {
     // 入栈不需要检查
     LNode *n = (LNode *) malloc(sizeof(LNode));
-    if (n==NULL)
+    if (n == NULL)
         return false;
     n->data = e;
     n->next = S->next;
@@ -50,8 +55,8 @@ bool Push(SqStack &S, ElemType e) {
     return true;
 }
 
-bool Pop(SqStack &S, ElemType &e) {
-    if (S->next==NULL)
+bool Pop(LinkStack &S, ElemType &e) {
+    if (S->next == NULL)
         return false;
     LNode *n = (LNode *) malloc(sizeof(LNode));
     n = S->next;
@@ -61,8 +66,8 @@ bool Pop(SqStack &S, ElemType &e) {
     return true;
 }
 
-bool GetPop(SqStack S, ElemType &e) {
-    if (S==NULL)
+bool GetPop(LinkStack S, ElemType &e) {
+    if (S == NULL)
         return false;
     e = S->next->data;
     return true;
@@ -76,7 +81,7 @@ void PrintStack(LinkStack LS) {
     printf("从栈顶元素开始，栈如下：\n");
     int i = 0;
     int x;
-    LinkNode *p = LS->next;
+    LNode *p = LS->next;
     while (p != NULL) {//注意判空的条件
         printf("S[%d]=%d\n", i, p->data);
         p = p->next;
@@ -110,7 +115,7 @@ void testLinkStack() {
 
     PrintStack(S);
     int x1;
-    if (GetTop(S, x1)) {
+    if (GetPop(S, x1)) {
         printf("读取栈顶元素成功了，栈顶元素为：%d\n", x1);
     } else {
         printf("读取栈顶元素失败，再检查一下吧！\n");
@@ -129,8 +134,9 @@ void testLinkStack() {
 
     printf("测试完毕了！\n");
 }
+
 /**测试模块**/
 int main() {
-    testStack();
+    testLinkStack();
     return 0;
 }
