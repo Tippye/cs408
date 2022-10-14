@@ -4,9 +4,6 @@
 
 .Archive/
 .markeditor/
-!.metion/
-.metion/*
-!.metion/*_sort.config
 .markdown/
 .sync/
 .idea/
@@ -25,3 +22,4 @@ Thumbs.db*
 .configs/
 */.metion/
 */_image
+.metion/
