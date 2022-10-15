@@ -22,4 +22,7 @@ Thumbs.db*
 .configs/
 */.metion/
 */_image
-.metion/
+
+!.metion/
+.metion/*
+!.metion/*_sort.config
