@@ -5,9 +5,9 @@
 //
 // 队列这里偷懒直接用了C++的队列，逻辑和第三章队列的差不多（为了统一还加上了初始化队列方法）
 //
-// Created by 渠继旺 on 2022/11/25.
+// Created by 渠继旺 on 2022/11/27.
 //
-#include "2.1邻接矩阵.cpp"
+#include "2.2邻接表.cpp"
 #include "queue"
 
 #define MAX_VERTEX_NUM 100
@@ -22,22 +22,22 @@ std::queue<int> Q;
 void InitQueue(std::queue<int> queue1);
 
 // 访问结点
-void visit(MGraph graph, int i);
+void visit(ALGraph graph, int i);
 
 // 寻找第一个相邻结点
-int FirstNeighbor(MGraph graph, int i);
+ArcNode *FirstNeighbor(ALGraph graph, int i);
 
 // 寻找下一个相邻结点
-int NextNeighbor(MGraph graph, int i, int w);
+ArcNode * NextNeighbor(ArcNode *n);
 
 // 广度优先搜索(遍历非连通图)
-void BFSTraverse(MGraph G);
+void BFSTraverse(ALGraph G);
 
 // 广度优先搜索
-void BFS(MGraph g, int v);
+void BFS(ALGraph g, int v);
 
 // 广度优先遍历
-void BFSTraverse(MGraph G) {
+void BFSTraverse(ALGraph G) {
     for (int v = 0; v < G.vexnum; ++v)
         visited[v] = false;
 
@@ -49,7 +49,7 @@ void BFSTraverse(MGraph G) {
     }
 }
 
-void BFS(MGraph G, int v) {
+void BFS(ALGraph G, int v) {
     // 1. 访问结点
     visit(G, v);
     // 2. 把visited数组中对应位置改为true表示已经访问过
@@ -60,39 +60,30 @@ void BFS(MGraph G, int v) {
     while (!Q.empty()) {
         v = Q.front();
         Q.pop();
-        // 5. 先让w为该结点的第一个相邻结点，然后每次循环都变成下一个相邻结点。如果已经是最后一个结点，NextNeighbor会返回-1
-        for (int w = FirstNeighbor(G, v); w >= 0; w = NextNeighbor(G, v, w)) {
-            // 6. visited对应位置为true的表示已经访问过，这里只访问未访问过的
-            //    因为是广度优先，所以再写一遍visit，不能递归调用BFS，那样会变成深度优先
-            if (!visited[w]) {
-                visit(G, w);
-                visited[w] = true;
-                w = Q.front();
-                Q.pop();
+        // 5. 让w成为头结点，类似链表的循环访问w的相邻结点
+        ArcNode *w = FirstNeighbor(G, v);
+        while (w)
+            if (!visited[w->adjvex]) {
+                visit(G, w->adjvex);
+                visited[w->adjvex] = true;
+                Q.push(w->adjvex);
+                w = NextNeighbor(w);
             }
-        }
+
     }
 }
 
 
-int NextNeighbor(MGraph graph, int i, int w) {
-    for (int j = w; j < graph.vexnum; ++j) {
-        if (graph.Edge[i][j] != 0)
-            return j;
-    }
-    return -1;
+ArcNode *NextNeighbor(ArcNode *n) {
+    return n->next;
 }
 
-int FirstNeighbor(MGraph graph, int i) {
-    for (int j = 0; j < graph.vexnum; ++j) {
-        if (graph.Edge[i][j] != 0)
-            return j;
-    }
-    return -1;
+ArcNode *FirstNeighbor(ALGraph graph, int i) {
+    return graph.vertices[i].first;
 }
 
-void visit(MGraph graph, int i) {
-    printf("%d", graph.Vex[i]);
+void visit(ALGraph graph, int i) {
+    printf("%d", graph.vertices[i].data);
 }
 
 void InitQueue(std::queue<int> queue1) {
