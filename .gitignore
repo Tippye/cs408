@@ -26,3 +26,4 @@ Thumbs.db*
 !.metion/
 .metion/*
 !.metion/*_sort.config
+/.obsidian/
