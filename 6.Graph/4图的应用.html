@@ -1,0 +1,954 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --mermaid-theme: default; --mermaid-sequence-numbers: off; --mermaid-flowchart-curve: linear; --mermaid--gantt-left-padding: 75; --sequence-theme: simple; }
+
+
+:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; tab-size: 4; background-position: inherit; background-repeat: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-family: inherit; font-size: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; background-color: inherit; }
+.CodeMirror-linenumber { }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; position: relative !important; background-position: inherit; background-repeat: inherit; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; background-position: 0px 0px; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background-color: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background-color: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; }
+a.md-print-anchor { white-space: pre !important; border: none !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; text-shadow: initial !important; background-position: 0px 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background-color: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; white-space: nowrap; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background-image: inherit; background-size: inherit; background-attachment: inherit; background-origin: inherit; background-clip: inherit; background-color: inherit; background-position: inherit; background-repeat: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; border: none !important; background-position: 0px 0px !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; background-position: 0px 0px; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right-width: 30px; border-right-style: solid; border-right-color: transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right-style: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right-style: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background-color: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+
+/* open-sans-italic - latin-ext_latin */
+
+/* open-sans-700 - latin-ext_latin */
+
+/* open-sans-700italic - latin-ext_latin */
+
+:root {
+    --title-color: #8064a9;
+    --text-color: #444444;
+    --light-text-color: #666666;
+    --lighter-text-color: #888888;
+    --link-color: #2aa899;
+    --code-color: #745fb5;
+    --shadow-color: #eee;
+    --border-quote: rgba(116, 95, 181, 0.2);
+    --border-quote-grey: #c8c8c8;
+    --border: #e7e7e7;
+    --link-bottom: #bbb;
+    --shadow: 3px 3px 10px var(--shadow-color);
+    --inline-code-bg: #f4f2f9;
+    --header-weight: normal;
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: var(var(--light-text-color));
+    --active-file-text-color: var(--title-color);
+    --active-file-bg-color: var(--shadow-color);
+    --item-hover-bg-color: var(--shadow-color);
+    --active-file-border-color: var(var(--title-color));
+    --base-font: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --title-font: "EB Garamond", "Source Sans Pro", serif;
+    --monospace: Courier, Monospace !important;
+}
+
+
+/* 打印 */
+
+@media print {
+    html {
+        font-size: 0.9rem;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+    #write {
+        max-width: 100%;
+    }
+    @page {
+        size: A3;
+        /* PDF output size */
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: initial;
+}
+
+body {
+    color: var(--text-color);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+    letter-spacing: 0;
+    overflow-x: hidden;
+}
+
+
+/* 页边距 和 页面大小 */
+
+#write {
+    font-family: var(--base-font);
+    /* max-width: 914px; */
+    margin: 0 auto;
+    padding: 1rem 4rem;
+    padding-bottom: 100px;
+}
+
+#write p {
+    line-height: 1.6rem;
+    word-spacing: 0.05rem;
+}
+
+body>*:first-child {
+    margin-top: 0 !important;
+}
+
+body>*:last-child {
+    margin-bottom: 0 !important;
+}
+
+
+/* Link 链接 */
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+#write a {
+    border-bottom: 1px solid var(--link-bottom);
+}
+
+.md-content {
+    color: var(--light-text-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: var(--header-weight);
+    line-height: 1.3;
+    cursor: text;
+    color: var(--title-color);
+    font-family: var(--title-font);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+h1:after {
+    content: "";
+    display: block;
+    margin: 0.2rem auto 0;
+    width: 6rem;
+    height: 2px;
+    border-bottom: 2px solid var(--title-color);
+}
+
+h2 {
+    padding-left: 0.4em;
+    border-left: 0.4em solid var(--title-color);
+    border-bottom: 1px solid var(--title-color);
+}
+
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table {
+    margin: 0.8em 0;
+}
+
+
+/* horizontal rule */
+
+hr {
+    margin: 1.5em auto;
+    border-top: 1px solid var(--border);
+}
+
+
+/* 列表 */
+
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+
+li p.first {
+    display: inline-block;
+}
+
+ul,
+ol {
+    padding-left: 2rem;
+}
+
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+
+#write ol li,
+ul li {
+    padding-left: 0.1rem;
+}
+
+
+/* 引用 */
+
+blockquote {
+    border-left: 0.3rem solid var(--border-quote);
+    padding-left: 1em;
+    font-family: var(--base-font);
+}
+
+
+/* 表格 */
+
+table {
+    margin-bottom: 1.25rem;
+}
+
+table th,
+table td {
+    padding: 8px;
+    line-height: 1.25rem;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+}
+
+table th {
+    font-weight: bold;
+}
+
+table thead th {
+    vertical-align: middle;
+}
+
+table tr:nth-child(2n),
+thead {
+    background-color: #fcfcfc;
+}
+
+
+/* 粗体 */
+
+#write strong {
+    padding: 0 2px;
+    font-weight: bold;
+}
+
+
+/* inline code */
+code,
+tt {
+    padding: 2px 4px;
+    border-radius: 0.3rem;
+    font-family: var(--monospace);
+    font-size: 0.9rem;
+    color: var(--code-color);
+    background-color: var(--inline-code-bg);
+    margin: 0 2px;
+}
+
+#write .md-footnote {
+    color: var(--code-color);
+    background-color: var(--inline-code-bg);
+}
+
+
+/* highlight. */
+
+#write mark {
+    background: rgb(255, 255, 196);
+    color: var(--text-color);
+}
+
+#write del {
+    padding: 1px 2px;
+}
+
+.md-task-list-item>input {
+    margin-left: -1.3em;
+}
+
+#write pre.md-meta-block {
+    padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+    bottom: 0.375rem;
+}
+
+
+/* 图片 */
+
+.md-image>.md-meta {
+    border-radius: 3px;
+    font-family: var(--monospace);
+    padding: 2px 0 0 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+
+/* 图片靠左显示 */
+
+
+/* p .md-image:only-child {
+  width: auto;
+  text-align: left;
+  margin-left: 2rem;
+} */
+
+
+/* 写![shadow-...]() 显示图片阴影 */
+
+img[alt|="shadow"] {
+    box-shadow: var(--shadow);
+}
+
+
+/* TOC */
+
+#write a.md-toc-inner {
+    line-height: 1.6;
+    white-space: pre-line;
+    border-bottom: none;
+    color: var(--light-text-color);
+    font-size: 0.9rem;
+}
+
+.md-toc-h1 .md-toc-inner {
+    margin-left: 0;
+    font-weight: normal;
+}
+
+header,
+.context-menu,
+.megamenu-content,
+footer {
+    font-family: var(--base-font);
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+    visibility: visible;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+.html-for-mac .context-menu {
+    --item-hover-bg-color: #e6f0fe;
+}
+
+
+/* Code fences */
+
+
+/* border, bg, font */
+
+.md-fences {
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background: #fdfdfd !important;
+    font-size: 0.9rem;
+}
+
+
+/* 代码框阴影 */
+
+
+/* #write pre.md-fences {
+  display: block;
+  -webkit-overflow-scrolling: touch;
+  box-shadow: var(--shadow);
+} */
+
+.cm-s-inner .cm-variable {
+    color: var(--text-color);
+}
+
+.cm-s-inner {
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+}
+
+.cm-s-inner.CodeMirror,
+.cm-s-inner .CodeMirror-gutters {
+    color: #3a3432 !important;
+    border: none;
+}
+
+.cm-s-inner .CodeMirror-gutters {
+    color: #6d8a88;
+}
+
+.cm-s-inner .CodeMirror-linenumber {
+    padding: 0 0.1rem 0 0.3rem;
+    color: #b8b5b4;
+}
+
+.cm-s-inner .CodeMirror-matchingbracket {
+    text-decoration: underline;
+    color: #a34e8f !important;
+}
+
+#fences-auto-suggest .active {
+    background: #ddd;
+}
+
+.cm-s-inner span.cm-comment {
+    color: #9daab6;
+}
+
+.cm-s-inner span.cm-builtin {
+    color: #0451a5;
+}
+
+
+/* language tip */
+
+#write .code-tooltip {
+    border: 1px solid var(--border);
+}
+
+.auto-suggest-container {
+    border-color: #b4b4b4;
+}
+
+.auto-suggest-container .autoComplt-hint.active {
+    background: #b4b4b4;
+    color: inherit;
+}
+
+
+/* task list */
+
+#write .md-task-list-item>input {
+    -webkit-appearance: initial;
+    display: block;
+    position: absolute;
+    border: 1px solid #b4b4b4;
+    border-radius: 0.2rem;
+    margin-top: 0.3rem;
+    height: 1rem;
+    width: 1rem;
+    transition: background 0.3s;
+}
+
+#write .md-task-list-item>input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+#write .md-task-list-item>input:hover {
+    background: #ddd;
+}
+
+#write .md-task-list-item>input[checked]::before {
+    content: "";
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    height: 60%;
+    width: 2px;
+    transform: rotate(40deg);
+    background: #333;
+}
+
+#write .md-task-list-item>input[checked]::after {
+    content: "";
+    position: absolute;
+    top: 46%;
+    left: 25%;
+    height: 30%;
+    width: 2px;
+    transform: rotate(-40deg);
+    background: #333;
+}
+
+#write .md-task-list-item>p {
+    transition: color 0.3s, opacity 0.3s;
+}
+
+#write .md-task-list-item.task-list-done>p {
+    color: #b4b4b4;
+    text-decoration: line-through;
+}
+
+#write .md-task-list-item.task-list-done>p>.md-emoji {
+    opacity: 0.5;
+}
+
+#write .md-task-list-item.task-list-done>p>.md-link>a {
+    opacity: 0.6;
+}
+
+
+/* sidebar */
+
+#typora-sidebar,
+.typora-node #typora-sidebar {
+    box-shadow: 3px 0px 10px var(--shadow-color);
+}
+
+.sidebar-content-content {
+    font-size: 0.9rem;
+}@import "";
+
+:root {
+  --base-font: Consolas , "Ubuntu Mono", "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --title-font: var(--base-font);
+  --monospace: "Ubuntu Mono", Courier, Monospace !important;
+}
+
+/* Cesno style start */
+
+.cm-s-inner .cm-variable      {color: #f39800;}
+
+.cm-s-inner .cm-variable-3    {color: #9ed44c; font-weight: bold;}
+
+.cm-s-inner .cm-number        {color: #e95295;}
+
+.cm-s-inner .cm-keyword       {color: #bc64a4; font-weight: bold;}
+
+.cm-s-inner .cm-def           {color: #0094c8;}
+
+.cm-s-inner .cm-operator      {color: #a59aca; font-weight: bold;}
+
+/* .cm-s-inner .cm-atom          {color: #c5c56a; font-weight: bold;} */
+
+/* Cesno style end */
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>4图的应用</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='最小生成树minimum-spanning-tree-mst'><span>最小生成树(Minimum-Spanning-Tree, MST)</span></h1><ul><li><span>最小生成树一定是</span><strong><span>带权连通无向图</span></strong></li><li><span>最小生成树可能有多个，但边的权值只和总是唯一最小的</span></li><li><span>最小生成树的边数 = 顶点数 - 1</span></li><li><span>如果一个连通图本身就是一棵树，则其最小生成树就是它本身</span></li><li><span>只有连通图才有生成树，非连通图只有生成森林</span></li></ul><h2 id='prim-算法普里姆用结点找mst'><span>Prim 算法(普里姆，用结点找MST)</span></h2><p><span>从某一个顶点开始构建生成树，每次将代价最小的新顶点纳入生成树，直到所有顶点都纳入为止（贪心）</span></p><p><span>建议看下面视频理解</span></p><p><img src="../images/q4zcL7.png" referrerpolicy="no-referrer" alt="q4zcL7"></p><p><img src="../images/6hltfP.png" referrerpolicy="no-referrer" alt="6hltfP"></p><ul><li><span>时间复杂度只与结点个数有关： O(|V|</span><sup><span>2</span></sup><span>)</span></li><li><span>适用于边稠密图</span></li></ul><h2 id='kruskal-算法克鲁斯卡尔用边找mst'><span>Kruskal 算法(克鲁斯卡尔，用边找MST)</span></h2><p><span>每次选择一条权值最小的边，是这条边两头连通（原本就已经连通的不选），直到所有结点都连通</span></p><p><span>建议看下面视频理解</span></p><p><img src="../images/qNyfFW.png" referrerpolicy="no-referrer" alt="qNyfFW"></p><p><img src="../images/MJkfG3.png" referrerpolicy="no-referrer" alt="MJkfG3"></p><ul><li><span>时间复杂度只与边的个数有关： O(</span><span>|</span><span>E</span><span>|</span><span> log</span><sub><span>2</span></sub><span>|</span><span>E</span><span>|</span><span>)</span></li><li><span>适用于边稀疏图</span></li></ul><p><a href='https://www.bilibili.com/video/BV1Eb41177d1/?share_source=copy_web&amp;vd_source=d7eeeba989aec17bda8f3bfcbc45dfee&amp;t=126'><img src="https://i1.hdslb.com/bfs/archive/6c26bfa942170348f8c9a3815f7f4787ab6dc6f3.jpg" referrerpolicy="no-referrer" alt="最小生成树(Kruskal(克鲁斯卡尔)和Prim(普里姆))算法动画演示"></a></p><h1 id='最短路径'><span>最短路径</span></h1><h2 id='bfs'><span>BFS</span></h2><p><span>适用于无权图</span></p><p><img src="../images/Y4nqzA.png" referrerpolicy="no-referrer" alt="Y4nqzA"></p><p><span>代码参考</span><a href='./4.2BFS(最短路径).cpp'><span>4.2BFS(最短路径).cpp</span></a></p><p><span>思路是在原BFS算法的基础上增加两个数组</span><code>d[]</code><span>和</span><code>path[]</code><span>分别记录最短路径长度和前驱结点</span></p><p><img src="../images/C1wUb5.png" referrerpolicy="no-referrer" alt="C1wUb5"></p><h2 id='dijkstra-算法'><span>Dijkstra 算法</span></h2><p><img src="../images/WVdnY4.png" referrerpolicy="no-referrer" alt="WVdnY4"></p><p><span>循环遍历所有结点，找到还没确定最短路径且</span><code>dist</code><span>最小的顶点</span><code><span>V</span><sub><span>i</span></sub></code><span>,令</span><code>final[i]=true</code><span>。检查所有邻接自</span><code>
+<span>V</span><sub><span>i</span></sub></code><span>的顶点，若其</span><code>final</code><span>值为</span><code>false</code><span>，则更新</span><code>dist</code><span>和</span><code>path</code><span>信息</span>
+<span>重复第二步操作直至所有节点的</span><code>final</code><span>值都为</span><code>true</code></p><p><img src="../images/RPReplay_Final1670327397.GIF" referrerpolicy="no-referrer" alt="Dijkstra"></p><ul><li><span>时间复杂度：O(</span><span>|</span><span>V</span><span>|</span><sup><span>2</span></sup><span>)</span></li><li><span>Dijkstra不适用于有</span><strong><span>负权值</span></strong><span>的带权图</span></li></ul><h2 id='floyd-算法'><span>Floyd 算法</span></h2><p><span>求出每一对顶点之间的最短路径</span></p><p><span>使用动态规划，将问题的求解分为多个阶段</span></p><p><span>对于 n 个顶点的图 G，求任意一对顶点 Vi -&gt; Vj 之间的最短路径可分为如下几个阶段：</span></p><ol start='' ><li><p><span>不允许在其他顶点中转，最短路径是</span><code>?</code></p><ul><li><img src="../images/86GsF0.png" referrerpolicy="no-referrer" alt="86GsF0"></li><li><span>A矩阵可以直接用图的邻接矩阵</span></li></ul></li><li><p><span>若允许在</span><code><span>V</span><sub><span>0</span></sub></code><span>中转，最短路径是</span><code>?</code></p><ul><li><img src="../images/WIL79q.png" referrerpolicy="no-referrer" alt="WIL79q"></li><li><span>因为可以在V</span><sub><span>0</span></sub><span>中转，V</span><sub><span>0</span></sub><span>到V</span><sub><span>1</span></sub><span>的距离可以更新</span></li></ul></li><li><p><span>若允许在</span><code><span>V</span><sub><span>0</span></sub><span>、V</span><sub><span>1</span></sub></code><span>中转，最短路径是</span><code>?</code></p><ul><li><img src="../images/VTJUmU.png" referrerpolicy="no-referrer" alt="VTJUmU"></li><li><span>这里可以忽视上边说的V</span><sub><span>0</span></sub><span>中转，直接用上一步得出的A矩阵就相当于是使用V</span><sub><span>0</span></sub><span>中转了，所以直接考虑V</span><sub>
+<span>1</span></sub><span>中转</span></li><li><span>循环后找到V</span><sub><span>0</span></sub><span>到V</span><sub><span>2</span></sub><span>会更短，所以更新</span></li></ul></li><li><p><span>若允许在</span><code><span>V</span><sub><span>0</span></sub><span>、V</span><sub><span>1</span></sub><span>、V</span><sub><span>2</span></sub></code><span>中转，最短路径是</span><code>?</code></p><ul><li><img src="../images/sdorct.png" referrerpolicy="no-referrer" alt="sdorct"></li><li><span>重复前边的步骤一直到最后一个结点即可</span></li></ul></li><li><p><span>···</span></p></li><li><p><span>若允许在</span><code><span>V</span><sub><span>0</span></sub><span>、V</span><sub><span>1</span></sub><span>、V</span><sub><span>2</span></sub><span>、...、V</span><sub><span>n-1</span></sub></code><span>中转，最短路径是</span><code>?</code></p></li></ol><ul><li><span>时间复杂度: O(</span><span>|</span><span>V</span><span>|</span><sup><span>3</span></sup><span>)</span></li><li><span>空间复杂度: O(</span><span>|</span><span>V</span><span>|</span><sup><span>2</span></sup><span>)</span></li><li><span>可以用于有</span><strong><span>负权值</span></strong><span>的带权图，但是不允许</span><strong><span>包含带负权的边组成的回路</span></strong><span>（有负权回路的图可能没有最短路径）</span></li></ul><h2 id='对比'><span>对比</span></h2><figure><table><thead><tr><th style='text-align:center;' >&nbsp;</th><th style='text-align:center;' ><span>BFS算法</span></th><th style='text-align:center;' ><span>Dijkstra算法</span></th><th style='text-align:center;' ><span>Floyd算法</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>无权图</span></td><td style='text-align:center;' ><span>✔️</span></td><td style='text-align:center;' ><span>✔️</span></td><td style='text-align:center;' ><span>✔️</span></td></tr><tr><td style='text-align:center;' ><span>带权图</span></td><td style='text-align:center;' ><span>❌</span></td><td style='text-align:center;' ><span>✔️</span></td><td style='text-align:center;' ><span>✔️</span></td></tr><tr><td style='text-align:center;' ><span>带负权值的图</span></td><td style='text-align:center;' ><span>❌</span></td><td style='text-align:center;' ><span>❌</span></td><td style='text-align:center;' ><span>✔️</span></td></tr><tr><td style='text-align:center;' ><span>带负权回路的图</span></td><td style='text-align:center;' ><span>❌</span></td><td style='text-align:center;' ><span>❌</span></td><td style='text-align:center;' ><span>❌️</span></td></tr><tr><td style='text-align:center;' ><span>时间复杂度</span></td><td style='text-align:center;' ><span>O(</span>&#124;<span>V</span>&#124;<sup><span>2</span></sup><span>)</span><font color="grey" size="1"><span>邻接矩阵</span></font><span>或O(</span>&#124;<span>V</span>&#124;<span>+</span>&#124;<span>E</span>&#124;<span>)</span><font color="grey" size="1"><span>邻接表</span></font></td><td style='text-align:center;' ><span>O(</span>&#124;<span>V</span>&#124;<sup><span>2</span></sup><span>)</span></td><td style='text-align:center;' ><span>O(</span>&#124;<span>V</span>&#124;<sup><span>3</span></sup><span>)</span></td></tr><tr><td style='text-align:center;' ><span>通常用于</span></td><td style='text-align:center;' ><span>求无权图的单源最短路径</span></td><td style='text-align:center;' ><span>求带权图的单源最短路径</span></td><td style='text-align:center;' ><span>求带权图中各顶点间的最短路径</span></td></tr></tbody></table></figure><h1 id='有向无环图dag'><span>有向无环图(DAG)</span></h1><p><span>不存在环的有向图被称为有向无环图</span></p><p><span>有向无环图是描述含有公共子式的表达式的有效工具</span></p><p><span>例：</span></p><p><code>((a+b)*(b*(c+d))+(c+d)*e)*((c+d)*e)</code></p><ul><li><span>二叉树：</span></li></ul><div class="md-diagram-panel md-fences-adv-panel"><svg id="mermaidChart19" width="100%" xmlns="http://www.w3.org/2000/svg"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          height="544" style="max-width: 829px;" viewBox="-8 -8 829 544"><style>#mermaidChart19{font-family:sans-serif;font-size:16px;fill:#333;}  #mermaidChart19 .error-icon{fill:#552222;}  #mermaidChart19 .error-text{fill:#552222;stroke:#552222;}  #mermaidChart19 .edge-thickness-normal{stroke-width:2px;}  #mermaidChart19 .edge-thickness-thick{stroke-width:3.5px;}  #mermaidChart19 .edge-pattern-solid{stroke-dasharray:0;}  #mermaidChart19 .edge-pattern-dashed{stroke-dasharray:3;}  #mermaidChart19 .edge-pattern-dotted{stroke-dasharray:2;}  #mermaidChart19 .marker{fill:#333333;}  #mermaidChart19 .marker.cross{stroke:#333333;}  #mermaidChart19 svg{font-family:sans-serif;font-size:16px;}  #mermaidChart19 .label{font-family:sans-serif;color:#333;}  #mermaidChart19 .label text{fill:#333;}  #mermaidChart19 .node rect,#mermaidChart19 .node circle,#mermaidChart19 .node ellipse,#mermaidChart19 .node polygon,#mermaidChart19 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}  #mermaidChart19 .node .label{text-align:center;}  #mermaidChart19 .node.clickable{cursor:pointer;}  #mermaidChart19 .arrowheadPath{fill:#333333;}  #mermaidChart19 .edgePath .path{stroke:#333333;stroke-width:1.5px;}  #mermaidChart19 .flowchart-link{stroke:#333333;fill:none;}  #mermaidChart19 .edgeLabel{background-color:#e8e8e8;text-align:center;}  #mermaidChart19 .edgeLabel rect{opacity:0.5;background-color:#e8e8e8;fill:#e8e8e8;}  #mermaidChart19 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}  #mermaidChart19 .cluster text{fill:#333;}  #mermaidChart19 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:sans-serif;font-size:12px;background:hsl(80,100%,96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}  #mermaidChart19:root{--mermaid-font-family:sans-serif;}  #mermaidChart19:root{--mermaid-alt-font-family:sans-serif;}  #mermaidChart19 flowchart{fill:apa;}</style><g><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath LS-M1 LE-P1" id="L-M1-P1" style="opacity: 1;"><path class="path" d="M436.65462579386343,37.615124735378856L315.5,78L315.5,103" marker-end="url(#arrowhead953)" style="fill:none"></path><defs><marker id="arrowhead953" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-M1 LE-M2" id="L-M1-M2" style="opacity: 1;"><path class="path" d="M480.19386328622323,34.19897721437054L743,78L743,103" marker-end="url(#arrowhead954)" style="fill:none"></path><defs><marker id="arrowhead954" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-P1 LE-M3" id="L-P1-M3" style="opacity: 1;"><path class="path" d="M294.15462579386343,132.61512473537886L173,173L173,198" marker-end="url(#arrowhead955)" style="fill:none"></path><defs><marker id="arrowhead955" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-P1 LE-M4" id="L-P1-M4" style="opacity: 1;"><path class="path" d="M337.32820625326997,130.9570515633175L505.5,173L505.5,198" marker-end="url(#arrowhead956)" style="fill:none"></path><defs><marker id="arrowhead956" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-M2 LE-P2" id="L-M2-P2" style="opacity: 1;"><path class="path" d="M727.0900974233027,141.4099025766973L695.5,173L695.5,198" marker-end="url(#arrowhead957)" style="fill:none"></path><defs><marker id="arrowhead957" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-M2 LE-E1" id="L-M2-E1" style="opacity: 1;"><path class="path" d="M758.9099025766973,141.4099025766973L790.5,173L790.5,198" marker-end="url(#arrowhead958)" style="fill:none"></path><defs><marker id="arrowhead958" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-P2 LE-C1" id="L-P2-C1" style="opacity: 1;"><path class="path" d="M679.5900974233027,236.4099025766973L648,268L648,293" marker-end="url(#arrowhead959)" style="fill:none"></path><defs><marker id="arrowhead959" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-P2 LE-D1" id="L-P2-D1" style="opacity: 1;"><path class="path" d="M711.4099025766973,236.4099025766973L743,268L743,293" marker-end="url(#arrowhead960)" style="fill:none"></path><defs><marker id="arrowhead960" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-M3 LE-P3" id="L-M3-P3" style="opacity: 1;"><path class="path" d="M152.87538820250188,230.56230589874906L78,268L78,293" marker-end="url(#arrowhead961)" style="fill:none"></path><defs><marker id="arrowhead961" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-M3 LE-M5" id="L-M3-M5" style="opacity: 1;"><path class="path" d="M193.12461179749812,230.56230589874906L268,268L268,293" marker-end="url(#arrowhead962)" style="fill:none"></path><defs><marker id="arrowhead962" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-P3 LE-A1" id="L-P3-A1" style="opacity: 1;"><path class="path" d="M62.09009742330268,331.40990257669733L30.5,363L30.5,388" marker-end="url(#arrowhead963)" style="fill:none"></path><defs><marker id="arrowhead963" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-P3 LE-B1" id="L-P3-B1" style="opacity: 1;"><path class="path" d="M93.90990257669732,331.40990257669733L125.5,363L125.5,388" marker-end="url(#arrowhead964)" style="fill:none"></path><defs><marker id="arrowhead964" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-M5 LE-B2" id="L-M5-B2" style="opacity: 1;"><path class="path" d="M252.0900974233027,331.40990257669733L220.5,363L220.5,388" marker-end="url(#arrowhead965)" style="fill:none"></path><defs><marker id="arrowhead965" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-M5 LE-P4" id="L-M5-P4" style="opacity: 1;"><path class="path" d="M283.90990257669733,331.40990257669733L315.5,363L315.5,388" marker-end="url(#arrowhead966)" style="fill:none"></path><defs><marker id="arrowhead966" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-P4 LE-C2" id="L-P4-C2" style="opacity: 1;"><path class="path" d="M299.59009742330267,426.40990257669733L268,458L268,483" marker-end="url(#arrowhead967)" style="fill:none"></path><defs><marker id="arrowhead967" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-P4 LE-D2" id="L-P4-D2" style="opacity: 1;"><path class="path" d="M331.40990257669733,426.40990257669733L363,458L363,483" marker-end="url(#arrowhead968)" style="fill:none"></path><defs><marker id="arrowhead968" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-M4 LE-P5" id="L-M4-P5" style="opacity: 1;"><path class="path" d="M489.59009742330267,236.4099025766973L458,268L458,293" marker-end="url(#arrowhead969)" style="fill:none"></path><defs><marker id="arrowhead969" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-M4 LE-E2" id="L-M4-E2" style="opacity: 1;"><path class="path" d="M521.4099025766973,236.4099025766973L553,268L553,293" marker-end="url(#arrowhead970)" style="fill:none"></path><defs><marker id="arrowhead970" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-P5 LE-C3" id="L-P5-C3" style="opacity: 1;"><path class="path" d="M442.09009742330267,331.40990257669733L410.5,363L410.5,388" marker-end="url(#arrowhead971)" style="fill:none"></path><defs><marker id="arrowhead971" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-P5 LE-D3" id="L-P5-D3" style="opacity: 1;"><path class="path" d="M473.90990257669733,331.40990257669733L505.5,363L505.5,388" marker-end="url(#arrowhead972)" style="fill:none"></path><defs><marker id="arrowhead972" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default" id="flowchart-M1-848" transform="translate(458,30.5)" style="opacity: 1;"><circle x="-13.1171875" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-3.1171875,-12.5)"><foreignObject width="6.234375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">*</div></foreignObject></g></g></g><g class="node default" id="flowchart-P1-849" transform="translate(315.5,125.5)" style="opacity: 1;"><circle x="-14.671875" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-4.671875,-12.5)"><foreignObject width="9.34375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">+</div></foreignObject></g></g></g><g class="node default" id="flowchart-M2-850" transform="translate(743,125.5)" style="opacity: 1;"><circle x="-13.1171875" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-3.1171875,-12.5)"><foreignObject width="6.234375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">*</div></foreignObject></g></g></g><g class="node default" id="flowchart-M3-852" transform="translate(173,220.5)" style="opacity: 1;"><circle x="-13.1171875" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-3.1171875,-12.5)"><foreignObject width="6.234375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">*</div></foreignObject></g></g></g><g class="node default" id="flowchart-M4-853" transform="translate(505.5,220.5)" style="opacity: 1;"><circle x="-13.1171875" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-3.1171875,-12.5)"><foreignObject width="6.234375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">*</div></foreignObject></g></g></g><g class="node default" id="flowchart-P2-855" transform="translate(695.5,220.5)" style="opacity: 1;"><circle x="-14.671875" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-4.671875,-12.5)"><foreignObject width="9.34375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">+</div></foreignObject></g></g></g><g class="node default" id="flowchart-E1-856" transform="translate(790.5,220.5)" style="opacity: 1;"><circle x="-14.453125" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-4.453125,-12.5)"><foreignObject width="8.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">e</div></foreignObject></g></g></g><g class="node default" id="flowchart-C1-858" transform="translate(648,315.5)" style="opacity: 1;"><circle x="-14" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-4,-12.5)"><foreignObject width="8" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">c</div></foreignObject></g></g></g><g class="node default" id="flowchart-D1-859" transform="translate(743,315.5)" style="opacity: 1;"><circle x="-14.453125" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-4.453125,-12.5)"><foreignObject width="8.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">d</div></foreignObject></g></g></g><g class="node default" id="flowchart-P3-861" transform="translate(78,315.5)" style="opacity: 1;"><circle x="-14.671875" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-4.671875,-12.5)"><foreignObject width="9.34375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">+</div></foreignObject></g></g></g><g class="node default" id="flowchart-M5-862" transform="translate(268,315.5)" style="opacity: 1;"><circle x="-13.1171875" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-3.1171875,-12.5)"><foreignObject width="6.234375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">*</div></foreignObject></g></g></g><g class="node default" id="flowchart-A1-864" transform="translate(30.5,410.5)" style="opacity: 1;"><circle x="-14.453125" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-4.453125,-12.5)"><foreignObject width="8.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">a</div></foreignObject></g></g></g><g class="node default" id="flowchart-B1-865" transform="translate(125.5,410.5)" style="opacity: 1;"><circle x="-14.453125" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-4.453125,-12.5)"><foreignObject width="8.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">b</div></foreignObject></g></g></g><g class="node default" id="flowchart-B2-867" transform="translate(220.5,410.5)" style="opacity: 1;"><circle x="-14.453125" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-4.453125,-12.5)"><foreignObject width="8.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">b</div></foreignObject></g></g></g><g class="node default" id="flowchart-P4-868" transform="translate(315.5,410.5)" style="opacity: 1;"><circle x="-14.671875" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-4.671875,-12.5)"><foreignObject width="9.34375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">+</div></foreignObject></g></g></g><g class="node default" id="flowchart-C2-870" transform="translate(268,505.5)" style="opacity: 1;"><circle x="-14" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-4,-12.5)"><foreignObject width="8" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">c</div></foreignObject></g></g></g><g class="node default" id="flowchart-D2-871" transform="translate(363,505.5)" style="opacity: 1;"><circle x="-14.453125" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-4.453125,-12.5)"><foreignObject width="8.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">d</div></foreignObject></g></g></g><g class="node default" id="flowchart-P5-873" transform="translate(458,315.5)" style="opacity: 1;"><circle x="-14.671875" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-4.671875,-12.5)"><foreignObject width="9.34375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">+</div></foreignObject></g></g></g><g class="node default" id="flowchart-E2-874" transform="translate(553,315.5)" style="opacity: 1;"><circle x="-14.453125" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-4.453125,-12.5)"><foreignObject width="8.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">e</div></foreignObject></g></g></g><g class="node default" id="flowchart-C3-876" transform="translate(410.5,410.5)" style="opacity: 1;"><circle x="-14" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-4,-12.5)"><foreignObject width="8" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">c</div></foreignObject></g></g></g><g class="node default" id="flowchart-D3-877" transform="translate(505.5,410.5)" style="opacity: 1;"><circle x="-14.453125" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-4.453125,-12.5)"><foreignObject width="8.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">d</div></foreignObject></g></g></g></g></g></g></svg></div><ul><li><span>有向无环图：</span></li></ul><div class="md-diagram-panel md-fences-adv-panel"><svg id="mermaidChart20" width="100%" xmlns="http://www.w3.org/2000/svg"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         height="544" style="max-width: 326.5px;" viewBox="-8 -8 326.5 544"><style>#mermaidChart20{font-family:sans-serif;font-size:16px;fill:#333;}  #mermaidChart20 .error-icon{fill:#552222;}  #mermaidChart20 .error-text{fill:#552222;stroke:#552222;}  #mermaidChart20 .edge-thickness-normal{stroke-width:2px;}  #mermaidChart20 .edge-thickness-thick{stroke-width:3.5px;}  #mermaidChart20 .edge-pattern-solid{stroke-dasharray:0;}  #mermaidChart20 .edge-pattern-dashed{stroke-dasharray:3;}  #mermaidChart20 .edge-pattern-dotted{stroke-dasharray:2;}  #mermaidChart20 .marker{fill:#333333;}  #mermaidChart20 .marker.cross{stroke:#333333;}  #mermaidChart20 svg{font-family:sans-serif;font-size:16px;}  #mermaidChart20 .label{font-family:sans-serif;color:#333;}  #mermaidChart20 .label text{fill:#333;}  #mermaidChart20 .node rect,#mermaidChart20 .node circle,#mermaidChart20 .node ellipse,#mermaidChart20 .node polygon,#mermaidChart20 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}  #mermaidChart20 .node .label{text-align:center;}  #mermaidChart20 .node.clickable{cursor:pointer;}  #mermaidChart20 .arrowheadPath{fill:#333333;}  #mermaidChart20 .edgePath .path{stroke:#333333;stroke-width:1.5px;}  #mermaidChart20 .flowchart-link{stroke:#333333;fill:none;}  #mermaidChart20 .edgeLabel{background-color:#e8e8e8;text-align:center;}  #mermaidChart20 .edgeLabel rect{opacity:0.5;background-color:#e8e8e8;fill:#e8e8e8;}  #mermaidChart20 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}  #mermaidChart20 .cluster text{fill:#333;}  #mermaidChart20 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:sans-serif;font-size:12px;background:hsl(80,100%,96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}  #mermaidChart20:root{--mermaid-font-family:sans-serif;}  #mermaidChart20:root{--mermaid-alt-font-family:sans-serif;}  #mermaidChart20 flowchart{fill:apa;}</style><g><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath LS-M1 LE-P1" id="L-M1-P1" style="opacity: 1;"><path class="path" d="M137.05932689344473,45.01656840109112L98,78L98,103" marker-end="url(#arrowhead1012)" style="fill:none"></path><defs><marker id="arrowhead1012" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-M1 LE-M2" id="L-M1-M2" style="opacity: 1;"><path class="path" d="M175.04588209602557,39.08960347444534L269.25,78L269.25,125.5L269.25,173L263.88523582362143,198.48262983779816" marker-end="url(#arrowhead1013)" style="fill:none"></path><defs><marker id="arrowhead1013" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-P1 LE-M3" id="L-P1-M3" style="opacity: 1;"><path class="path" d="M93.36476417637856,147.51737016220184L88,173L88,198" marker-end="url(#arrowhead1014)" style="fill:none"></path><defs><marker id="arrowhead1014" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-P1 LE-M2" id="L-P1-M2" style="opacity: 1;"><path class="path" d="M118.49992826386301,134.77377707174756L203,173L242.05932689344473,205.98343159890888" marker-end="url(#arrowhead1015)" style="fill:none"></path><defs><marker id="arrowhead1015" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-M3 LE-P2" id="L-M3-P2" style="opacity: 1;"><path class="path" d="M72.09009742330268,236.4099025766973L40.5,268L40.5,293" marker-end="url(#arrowhead1016)" style="fill:none"></path><defs><marker id="arrowhead1016" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-M3 LE-M4" id="L-M3-M4" style="opacity: 1;"><path class="path" d="M107.09752952807007,232.39682167322397L164.25,268L164.25,293" marker-end="url(#arrowhead1017)" style="fill:none"></path><defs><marker id="arrowhead1017" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-P2 LE-A" id="L-P2-A" style="opacity: 1;"><path class="path" d="M35.86476417637856,337.51737016220187L30.5,363L30.5,388" marker-end="url(#arrowhead1018)" style="fill:none"></path><defs><marker id="arrowhead1018" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-P2 LE-B" id="L-P2-B" style="opacity: 1;"><path class="path" d="M56.40990257669732,331.40990257669733L88,363L111.55800350697203,392.8401377754979" marker-end="url(#arrowhead1019)" style="fill:none"></path><defs><marker id="arrowhead1019" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-M4 LE-B" id="L-M4-B" style="opacity: 1;"><path class="path" d="M159.61476417637857,337.51737016220187L154.25,363L137.15056028662988,391.25124822208977" marker-end="url(#arrowhead1020)" style="fill:none"></path><defs><marker id="arrowhead1020" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-M4 LE-P3" id="L-M4-P3" style="opacity: 1;"><path class="path" d="M172.51124703156108,336.42849247995474L183,363L206.55800350697203,392.8401377754979" marker-end="url(#arrowhead1021)" style="fill:none"></path><defs><marker id="arrowhead1021" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-M2 LE-P3" id="L-M2-P3" style="opacity: 1;"><path class="path" d="M247.59943971337012,239.74875177791023L230.5,268L230.5,315.5L230.5,363L225.13523582362143,388.48262983779813" marker-end="url(#arrowhead1022)" style="fill:none"></path><defs><marker id="arrowhead1022" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-M2 LE-E" id="L-M2-E" style="opacity: 1;"><path class="path" d="M270.90056028662985,239.74875177791023L288,268L288,293" marker-end="url(#arrowhead1023)" style="fill:none"></path><defs><marker id="arrowhead1023" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-P3 LE-C" id="L-P3-C" style="opacity: 1;"><path class="path" d="M204.5900974233027,426.40990257669733L173,458L173,483" marker-end="url(#arrowhead1024)" style="fill:none"></path><defs><marker id="arrowhead1024" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-P3 LE-D" id="L-P3-D" style="opacity: 1;"><path class="path" d="M236.4099025766973,426.40990257669733L268,458L268,483" marker-end="url(#arrowhead1025)" style="fill:none"></path><defs><marker id="arrowhead1025" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><rect rx="0" ry="0" width="0" height="0"></rect><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default" id="flowchart-M1-899" transform="translate(154.25,30.5)" style="opacity: 1;"><circle x="-13.1171875" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-3.1171875,-12.5)"><foreignObject width="6.234375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">*</div></foreignObject></g></g></g><g class="node default" id="flowchart-P1-900" transform="translate(98,125.5)" style="opacity: 1;"><circle x="-14.671875" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-4.671875,-12.5)"><foreignObject width="9.34375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">+</div></foreignObject></g></g></g><g class="node default" id="flowchart-M2-901" transform="translate(259.25,220.5)" style="opacity: 1;"><circle x="-13.1171875" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-3.1171875,-12.5)"><foreignObject width="6.234375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">*</div></foreignObject></g></g></g><g class="node default" id="flowchart-M3-903" transform="translate(88,220.5)" style="opacity: 1;"><circle x="-13.1171875" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-3.1171875,-12.5)"><foreignObject width="6.234375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">*</div></foreignObject></g></g></g><g class="node default" id="flowchart-P2-906" transform="translate(40.5,315.5)" style="opacity: 1;"><circle x="-14.671875" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-4.671875,-12.5)"><foreignObject width="9.34375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">+</div></foreignObject></g></g></g><g class="node default" id="flowchart-M4-907" transform="translate(164.25,315.5)" style="opacity: 1;"><circle x="-13.1171875" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-3.1171875,-12.5)"><foreignObject width="6.234375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">*</div></foreignObject></g></g></g><g class="node default" id="flowchart-A-909" transform="translate(30.5,410.5)" style="opacity: 1;"><circle x="-14.453125" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-4.453125,-12.5)"><foreignObject width="8.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">a</div></foreignObject></g></g></g><g class="node default" id="flowchart-B-910" transform="translate(125.5,410.5)" style="opacity: 1;"><circle x="-14.453125" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-4.453125,-12.5)"><foreignObject width="8.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">b</div></foreignObject></g></g></g><g class="node default" id="flowchart-P3-913" transform="translate(220.5,410.5)" style="opacity: 1;"><circle x="-14.671875" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-4.671875,-12.5)"><foreignObject width="9.34375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">+</div></foreignObject></g></g></g><g class="node default" id="flowchart-E-916" transform="translate(288,315.5)" style="opacity: 1;"><circle x="-14.453125" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-4.453125,-12.5)"><foreignObject width="8.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">e</div></foreignObject></g></g></g><g class="node default" id="flowchart-C-918" transform="translate(173,505.5)" style="opacity: 1;"><circle x="-14" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-4,-12.5)"><foreignObject width="8" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">c</div></foreignObject></g></g></g><g class="node default" id="flowchart-D-919" transform="translate(268,505.5)" style="opacity: 1;"><circle x="-14.453125" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-4.453125,-12.5)"><foreignObject width="8.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">d</div></foreignObject></g></g></g></g></g></g></svg></div><p><span>解题方法：</span></p><ol start='' ><li><span>把各个操作数不重复的排成一排</span></li><li><span>标出各个运算符的生效顺序（先后顺序有些出入也无所谓）</span></li><li><span>按顺序加入运算符，注意”</span><font color='red'><span>分层</span></font><span>“</span></li><li><span>从底向上逐层检查同层的运算符是否可以合体</span></li></ol><blockquote><p><span>把一样的合并到一起</span></p></blockquote><h1 id='拓扑排序'><span>拓扑排序</span></h1><p><span>找到做事的先后顺序</span></p><p><span>实现：</span></p><ol start='' ><li><span>从AOV网中选择一个没有前驱(入度为0)的顶点并输出</span></li><li><span>从网中删除该顶点和所有以它为起点的有向边</span></li><li><span>重复 1. 和 2. 知道当前AOV网为空或当前网中不存在无前驱的顶点为止</span></li></ol><ul><li><span>每个AOV网可能有多个拓扑排序</span></li><li><span>存在回路的图不能进行拓扑排序</span></li><li><span>DFS不仅可以实现逆拓扑排序，还可以实现拓扑排序</span></li></ul><p><span>逆拓扑排序实现：</span></p><ol start='' ><li><span>从AOV网中选择一个没有后继(出度为0)的顶点并输出</span></li><li><span>从网中删除该顶点和所有以它为终点的有向边</span></li><li><span>重复 1. 和 2. 知道当前AOV网为空或当前网中不存在无后继的顶点为止</span></li></ol><h1 id='关键路径-1'><span>关键路径</span></h1><h2 id='aoe网'><span>AOE网</span></h2><p><span>AOE(Activity On Edge)不是AOV(Activity On Vertex)</span></p><p><span>AOV是用顶点表示</span><strong><span>活动</span></strong><span>，是有向无环的</span><font color='red'><span>无权图</span></font></p><p><span>AOE是用顶点表示</span><strong><span>事件</span></strong><span>，有向边表示活动，是有向无环的</span><font color='red'><span>带权图</span></font><span>，边权值是该活动的开销</span></p><p><span>性质：</span></p><ul><li><span>只有在某顶点所代表的事件发生后，从该顶点出发的各有向边所以代表的活动才能开始</span></li><li><span>只有在进入某顶点的有向边所代表的活动都已结束时，该顶点所代表的事件才能发生</span></li><li><span>有些活动是可以并行进行的</span></li></ul><div class="md-diagram-panel md-fences-adv-panel">
+    <svg id="mermaidChart21" width="100%" xmlns="http://www.w3.org/2000/svg"
+         height="121" style="max-width: 633.609375px;" viewBox="0 0 633.609375 121"><style>#mermaidChart21{font-family:sans-serif;font-size:16px;fill:#333;}  #mermaidChart21 .error-icon{fill:#552222;}  #mermaidChart21 .error-text{fill:#552222;stroke:#552222;}  #mermaidChart21 .edge-thickness-normal{stroke-width:2px;}  #mermaidChart21 .edge-thickness-thick{stroke-width:3.5px;}  #mermaidChart21 .edge-pattern-solid{stroke-dasharray:0;}  #mermaidChart21 .edge-pattern-dashed{stroke-dasharray:3;}  #mermaidChart21 .edge-pattern-dotted{stroke-dasharray:2;}  #mermaidChart21 .marker{fill:#333333;}  #mermaidChart21 .marker.cross{stroke:#333333;}  #mermaidChart21 svg{font-family:sans-serif;font-size:16px;}  #mermaidChart21 .label{font-family:sans-serif;color:#333;}  #mermaidChart21 .label text{fill:#333;}  #mermaidChart21 .node rect,#mermaidChart21 .node circle,#mermaidChart21 .node ellipse,#mermaidChart21 .node polygon,#mermaidChart21 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}  #mermaidChart21 .node .label{text-align:center;}  #mermaidChart21 .node.clickable{cursor:pointer;}  #mermaidChart21 .arrowheadPath{fill:#333333;}  #mermaidChart21 .edgePath .path{stroke:#333333;stroke-width:1.5px;}  #mermaidChart21 .flowchart-link{stroke:#333333;fill:none;}  #mermaidChart21 .edgeLabel{background-color:#e8e8e8;text-align:center;}  #mermaidChart21 .edgeLabel rect{opacity:0.5;background-color:#e8e8e8;fill:#e8e8e8;}  #mermaidChart21 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}  #mermaidChart21 .cluster text{fill:#333;}  #mermaidChart21 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:sans-serif;font-size:12px;background:hsl(80,100%,96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}  #mermaidChart21:root{--mermaid-font-family:sans-serif;}  #mermaidChart21:root{--mermaid-alt-font-family:sans-serif;}  #mermaidChart21 flowchart{fill:apa;}</style><g><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath LS-V1 LE-V3" id="L-V1-V3" style="opacity: 1;"><path class="path" d="M51.50375528686346,47.43202231971634L121.6171875,20.5L233.8515625,20.5L346.0859375,20.5L416.19936971313655,47.43202231971634" marker-end="url(#arrowhead1049)" style="fill:none"></path><defs><marker id="arrowhead1049" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-V1 LE-V2" id="L-V1-V2" style="opacity: 1;"><path class="path" d="M51.50375528686346,63.56797768028366L121.6171875,90.5L211.3515625,90.5" marker-end="url(#arrowhead1050)" style="fill:none"></path><defs><marker id="arrowhead1050" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-V2 LE-V3" id="L-V2-V3" style="opacity: 1;"><path class="path" d="M256.3515625,90.5L346.0859375,90.5L416.19936971313655,63.56797768028366" marker-end="url(#arrowhead1051)" style="fill:none"></path><defs><marker id="arrowhead1051" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g><g class="edgePath LS-V3 LE-V4" id="L-V3-V4" style="opacity: 1;"><path class="path" d="M459.703125,55.5L520.15625,55.5L580.609375,55.5" marker-end="url(#arrowhead1052)" style="fill:none"></path><defs><marker id="arrowhead1052" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="translate(233.8515625,20.5)" style="opacity: 1;"><g transform="translate(-43.6171875,-12.5)" class="label"><rect rx="0" ry="0" width="87.234375" height="25"></rect><foreignObject width="87.234375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>a<sub>1</sub>=2/打鸡蛋</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(121.6171875,90.5)" style="opacity: 1;"><g transform="translate(-43.6171875,-12.5)" class="label"><rect rx="0" ry="0" width="87.234375" height="25"></rect><foreignObject width="87.234375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>a<sub>2</sub>=1/洗番茄</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(346.0859375,90.5)" style="opacity: 1;"><g transform="translate(-43.6171875,-12.5)" class="label"><rect rx="0" ry="0" width="87.234375" height="25"></rect><foreignObject width="87.234375" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>a<sub>3</sub>=3/切番茄</span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(520.15625,55.5)" style="opacity: 1;"><g transform="translate(-35.453125,-12.5)" class="label"><rect rx="0" ry="0" width="70.90625" height="25"></rect><foreignObject width="70.90625" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span>a<sub>4</sub>=2/炒菜</span></div></foreignObject></g></g></g><g class="nodes"><g class="node default" id="flowchart-V1-928" transform="translate(30.5,55.5)" style="opacity: 1;"><circle x="-19.7890625" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-9.7890625,-12.5)"><foreignObject width="19.578125" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">V1</div></foreignObject></g></g></g><g class="node default" id="flowchart-V3-929" transform="translate(437.203125,55.5)" style="opacity: 1;"><circle x="-19.7890625" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-9.7890625,-12.5)"><foreignObject width="19.578125" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">V3</div></foreignObject></g></g></g><g class="node default" id="flowchart-V2-931" transform="translate(233.8515625,90.5)" style="opacity: 1;"><circle x="-19.7890625" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-9.7890625,-12.5)"><foreignObject width="19.578125" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">V2</div></foreignObject></g></g></g><g class="node default" id="flowchart-V4-935" transform="translate(603.109375,55.5)" style="opacity: 1;"><circle x="-19.7890625" y="-22.5" r="22.5" class="label-container"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-9.7890625,-12.5)"><foreignObject width="19.578125" height="25"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">V4</div></foreignObject></g></g></g></g></g></g></svg></div><p><span>如上图</span><code>V1</code><span>是源点，</span><code>V4</code><span>是汇点</span></p><blockquote><p><span>源点：入度为0的点，表示整个工程的开始</span></p><p><span>汇点：出度为0的点，表示整个工程的结束</span></p></blockquote><h2 id='关键路径-2'><span>关键路径</span></h2><p><span>从源点到汇点所有路径中，具有最大路径长度的路径称为</span><strong><span>关键路径</span></strong><span>，关键路径上的活动称为</span><strong><span>关键活动</span></strong></p><p><span>完成整个工程的最短时间就是关键路径的长度，若关键活动不能按时完成，则整个工程的完成时间就会延长</span></p><h2 id='关键活动求法'><span>关键活动求法</span></h2><ul><li><span>事件v</span><sub><span>k</span></sub><span>的最早发生时间ve(k)：</span><font color='gray'><span>决定了所有从vk开始的活动能够开工的最早时间</span></font></li><li><span>事件v</span><sub><span>k</span></sub><span>的最晚发生时间vl(k)：</span><font color='gray'><span>指在不推迟整个工程完成的前提下，改时间最迟必须发生的时间</span></font></li><li><span>活动a</span><sub><span>i</span></sub><span>的最早开始时间e(i)：</span><font color='gray'><span>指该活动弧的起点所表示的事件的最早发生时间</span></font></li><li><span>活动a</span><sub><span>i</span></sub><span>的最晚开始时间l(i)：</span><font color='gray'>
+<span>指该活动弧的终点所表示事件的最迟发生时间与该活动所需时间之差</span></font></li></ul><p><span>活动a</span><sub><span>i</span></sub><span>的</span><strong><span>时间余量d(i)=l(i)-e(i)</span></strong><span>,表示在不增加完成真个工程所需总时间的情况下，活动a</span><sub><span>i</span></sub><span>可以拖延的时间。</span>
+<span>若一个活动的时间余量为0，这说明该活动必须如期完成，</span><strong><span>d(i)=0即l(i)=e(i)的活动a</span><sub><span>i</span></sub><span>是关键活动</span></strong><span>。</span>
+<span>由关键活动组成的路径就是</span><strong><span>关键路径</span></strong></p><h2 id='关键路径求法'><span>关键路径求法</span></h2><ol start='' ><li><p><span>求所有事件的最早发生时间(ve)</span></p><ul><li><p><span>按</span><strong><span>拓扑排序</span></strong><span>序列，依次求各各顶点的</span><strong><span>ve(k)</span></strong><span>:</span></p><ul><li><span>vl(源点)=0</span></li><li><span>ve(k)=Max{ve(j)+Weight(v</span><sub><span>j</span></sub><span>,v</span><sub><span>k</span></sub><span>)},v</span><sub><span>j</span></sub><span>为v</span><sub><span>k</span></sub><span>的任意前驱</span></li></ul></li></ul></li><li><p><span>求所有事件的最迟发生时间(vl)</span></p><ul><li><p><span>按</span><strong><span>逆拓扑排序</span></strong><span>序列，依次求各个顶点的</span><strong><span>vl(k)</span></strong><span>:</span></p><ul><li><span>vl(汇点)=ve(汇点)</span></li><li><span>vl(k)=Min{vl(j)-Weight(v</span><sub><span>k</span></sub><span>,v</span><sub><span>j</span></sub><span>)},v</span><sub><span>j</span></sub><span>为v</span><sub><span>k</span></sub><span>的任意后继</span></li></ul></li></ul></li><li><p><span>求所有活动的最早发生时间(e)</span></p><ul><li><span>若边&lt;v</span><sub><span>k</span></sub><span>,v</span><sub><span>j</span></sub><span>&gt;表示活动a</span><sub><span>i</span></sub><span>,则有e(i)=ve(k)</span></li></ul></li><li><p><span>求所有活动的最迟发生时间(l)</span></p><ul><li><span>若边&lt;v</span><sub><span>k</span></sub><span>,v</span><sub><span>j</span></sub><span>&gt;表示活动a</span><sub><span>i</span></sub><span>,则有l(i)=vl(j)-Weight(v</span><sub><span>k</span></sub><span>,v</span><sub><span>j</span></sub><span>)</span></li></ul></li><li><p><span>求所有活动的事件余量(d)</span></p><ul><li><span>d(i)=l(i)-e(i)</span></li></ul></li></ol><ul><li><span>若关键活动耗时增加，则整个工程的工期将增长</span></li><li><span>缩短关键活动的时间，可以缩短整个工程的工期</span></li><li><span>当缩短到一定程度时，关键活动可能会变成非关键活动</span></li><li><span>如果一个工程有多个关键路径，需要所有关键路径都缩短才能缩短工期</span></li></ul><h1 id='错题集'><span>错题集</span></h1><ol start='' ><li><p><img src="../images/A1cPVL.png" referrerpolicy="no-referrer" alt="p233 q5"></p><details>
+  <summary>答案与解析：</summary>
+  <br>
+  答案： B
+  <br>
+  解析：<br>
+  <img src="../images/image-20230209205159466.png">
+</details></li><li><p><img src="../images/hhM1aH.png" referrerpolicy="no-referrer" alt="p233 q8"></p><details>
+  <summary>答案与解析：</summary>
+  <br>
+  答案： D
+  <br>
+  解析：<br>
+    不存在拓扑序列 --&gt; 图中存在回路 --&gt; 回路构成一个强连通分量<br>
+    顶点数目大于1的强连通分量中必然存在回路
+</details></li><li><p><img src="../images/mNDFGq.png" referrerpolicy="no-referrer" alt="p233 q9"></p><details>
+  <summary>答案与解析：</summary>
+  <br>
+  答案： D
+  <br>
+  解析：<br>
+    Ⅱ.若两个结点不存在子孙关系，则它们在拓扑序列中的关系是任意的，所以使用栈或者队列都可以<br>
+    Ⅲ. 如下图<br>
+  <img src="../images/image-20230209205843192.png">
+</details></li><li><p><img src="../images/4Nvt2w.png" referrerpolicy="no-referrer" alt="p233 q11"></p><details>
+  <summary>答案与解析：</summary>
+  <br>
+  答案： C
+  <br>
+  解析：<br>
+    1. A B C F D E G<br>
+    2. A B C D F E G<br>
+    3. A B C D E F G<br>
+    4. A B D C F E G<br>
+    5. A B D C E F G
+</details></li><li><p><img src="../images/SE0JrL.png" referrerpolicy="no-referrer" alt="p233 q12"></p><details>
+  <summary>答案与解析：</summary>
+  <br>
+  答案： C
+  <br>
+  解析：<br>
+    如果一个有向图的邻接矩阵是三角矩阵（对角线上的元素为0），这图中必不存在环，因此其拓扑序列必然存在<br>
+    有序的拓扑排序序列的邻接矩阵必定为三角矩阵, 吐过只是具有拓扑排序序列着它的邻接矩阵必定为一般矩阵
+</details></li><li><p><img src="../images/ZU2qxX.png" referrerpolicy="no-referrer" alt="p233 q13"></p><details>
+  <summary>答案与解析：</summary>
+  <br>
+  答案： C
+  <br>
+  解析：<br>
+    Ⅳ. 有向无环图的拓扑序列唯一并不能确定该图,如下面两个图<br>
+    <img src="../images/image-20230209205843192.png">
+	  <img src="../images/image-20230209211004619.png">
+</details></li><li><p><img src="../images/MFSLS6.png" referrerpolicy="no-referrer" alt="p234 q18"></p><details>
+  <summary>答案与解析：</summary>
+  <br>
+  答案： B
+  <br>
+  解析：<br>
+    1. A B C E D
+    2. A B E C D
+    3. A E B C D
+</details></li><li><p><img src="../images/f2ZYME.png" referrerpolicy="no-referrer" alt="p235 q24"></p><details>
+   <summary>答案与解析：</summary>
+   <br>
+   答案： C
+   <br>
+   解析：<br>
+     Kruskal: <br>
+         1. V4 --&gt; V1<br>
+         2. <font color="#d3d3d3">V4 --&gt; V3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#d3d3d3">V1 --&gt; V3</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;V2 --&gt; V3<br>
+     Prim: <br>
+         1. V1 <font size="1" color="gray">(V4,V1)</font><br>
+         2. V3 <font size="1" color="#d3d3d3">(V1,V3)</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="1" color="#d3d3d3">(V4,V3)</font><br>
+ </details></li><li><p><img src="../images/EUfOUA.png" referrerpolicy="no-referrer" alt="p235 q26"></p><details>
+   <summary>答案与解析：</summary>
+   <br>
+   答案： B
+   <br>
+   解析：<br>
+     使用邻接表存储时，需要对n个顶点做进栈、出栈、输出各一次，在处理e条边时，需要检测这n个顶点的边链表的e个边结点，共需要的时间代价为 O(n+e)<br><br>
+     如果使用邻接矩阵存储，在处理e条边时需对每个顶点检测相应矩阵中的某一行，寻找与它相关联的边，一边对这些边的入度 -1<br>
+     需要的时间代价为 O(n<sup>2</sup>)
+ </details></li></ol></div></div>
+</body>
+</html>
