@@ -1,0 +1,2899 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <meta content='width=device-width initial-scale=1' name='viewport'>
+
+    <style type='text/css'>html {
+        overflow-x: initial !important;
+    }
+
+    :root {
+        --bg-color: #ffffff;
+        --text-color: #333333;
+        --select-text-bg-color: #B5D6FC;
+        --select-text-font-color: auto;
+        --monospace: "Lucida Console", Consolas, "Courier", monospace;
+        --title-bar-height: 20px;
+    }
+
+    .mac-os-11 {
+        --title-bar-height: 28px;
+    }
+
+    html {
+        font-size: 14px;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+        margin: 0px;
+        padding: 0px;
+        height: auto;
+        inset: 0px;
+        font-size: 1rem;
+        line-height: 1.428571;
+        overflow-x: hidden;
+        background-image: inherit;
+        background-size: inherit;
+        background-attachment: inherit;
+        background-origin: inherit;
+        background-clip: inherit;
+        background-color: inherit;
+        tab-size: 4;
+        background-position: inherit;
+        background-repeat: inherit;
+    }
+
+    iframe {
+        margin: auto;
+    }
+
+    a.url {
+        word-break: break-all;
+    }
+
+    a:active, a:hover {
+        outline: 0px;
+    }
+
+    .in-text-selection, ::selection {
+        text-shadow: none;
+        background: var(--select-text-bg-color);
+        color: var(--select-text-font-color);
+    }
+
+    #write {
+        margin: 0px auto;
+        height: auto;
+        width: inherit;
+        word-break: normal;
+        overflow-wrap: break-word;
+        position: relative;
+        white-space: normal;
+        overflow-x: visible;
+        padding-top: 36px;
+    }
+
+    #write.first-line-indent p {
+        text-indent: 2em;
+    }
+
+    #write.first-line-indent li p, #write.first-line-indent p * {
+        text-indent: 0px;
+    }
+
+    #write.first-line-indent li {
+        margin-left: 2em;
+    }
+
+    .for-image #write {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    body.typora-export {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .typora-export .footnote-line, .typora-export li, .typora-export p {
+        white-space: pre-wrap;
+    }
+
+    .typora-export .task-list-item input {
+        pointer-events: none;
+    }
+
+    @media screen and (max-width: 500px) {
+        body.typora-export {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        #write {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .CodeMirror-sizer {
+            margin-left: 0px !important;
+        }
+
+        .CodeMirror-gutters {
+            display: none !important;
+        }
+    }
+
+    #write li > figure:last-child {
+        margin-bottom: 0.5rem;
+    }
+
+    #write ol, #write ul {
+        position: relative;
+    }
+
+    img {
+        max-width: 100%;
+        vertical-align: middle;
+        image-orientation: from-image;
+    }
+
+    button, input, select, textarea {
+        color: inherit;
+        font-family: inherit;
+        font-size: inherit;
+        font-style: inherit;
+        font-variant-caps: inherit;
+        font-weight: inherit;
+        font-stretch: inherit;
+        line-height: inherit;
+    }
+
+    input[type="checkbox"], input[type="radio"] {
+        line-height: normal;
+        padding: 0px;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre {
+        width: inherit;
+    }
+
+    #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p {
+        position: relative;
+    }
+
+    p {
+        line-height: inherit;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        break-after: avoid-page;
+        break-inside: avoid;
+        orphans: 4;
+    }
+
+    p {
+        orphans: 4;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.6rem;
+    }
+
+    h4 {
+        font-size: 1.4rem;
+    }
+
+    h5 {
+        font-size: 1.2rem;
+    }
+
+    h6 {
+        font-size: 1rem;
+    }
+
+    .md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .md-blockmeta {
+        color: rgb(204, 204, 204);
+        font-weight: 700;
+        font-style: italic;
+    }
+
+    a {
+        cursor: pointer;
+    }
+
+    sup.md-footnote {
+        padding: 2px 4px;
+        background-color: rgba(238, 238, 238, 0.7);
+        color: rgb(85, 85, 85);
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    sup.md-footnote a, sup.md-footnote a:hover {
+        color: inherit;
+        text-transform: inherit;
+        text-decoration: inherit;
+    }
+
+    #write input[type="checkbox"] {
+        cursor: pointer;
+        width: inherit;
+        height: inherit;
+    }
+
+    figure {
+        overflow-x: auto;
+        margin: 1.2em 0px;
+        max-width: calc(100% + 16px);
+        padding: 0px;
+    }
+
+    figure > table {
+        margin: 0px;
+    }
+
+    tr {
+        break-inside: avoid;
+        break-after: auto;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0px;
+        width: 100%;
+        overflow: auto;
+        break-inside: auto;
+        text-align: left;
+    }
+
+    table.md-table td {
+        min-width: 32px;
+    }
+
+    .CodeMirror-gutters {
+        border-right-width: 0px;
+        background-color: inherit;
+    }
+
+    .CodeMirror-linenumber {
+    }
+
+    .CodeMirror {
+        text-align: left;
+    }
+
+    .CodeMirror-placeholder {
+        opacity: 0.3;
+    }
+
+    .CodeMirror pre {
+        padding: 0px 4px;
+    }
+
+    .CodeMirror-lines {
+        padding: 0px;
+    }
+
+    div.hr:focus {
+        cursor: none;
+    }
+
+    #write pre {
+        white-space: pre-wrap;
+    }
+
+    #write.fences-no-line-wrapping pre {
+        white-space: pre;
+    }
+
+    #write pre.ty-contain-cm {
+        white-space: normal;
+    }
+
+    .CodeMirror-gutters {
+        margin-right: 4px;
+    }
+
+    .md-fences {
+        font-size: 0.9rem;
+        display: block;
+        break-inside: avoid;
+        text-align: left;
+        overflow: visible;
+        white-space: pre;
+        background-image: inherit;
+        background-size: inherit;
+        background-attachment: inherit;
+        background-origin: inherit;
+        background-clip: inherit;
+        background-color: inherit;
+        position: relative !important;
+        background-position: inherit;
+        background-repeat: inherit;
+    }
+
+    .md-fences-adv-panel {
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+        padding-top: 0px;
+        padding-bottom: 8px;
+        overflow-x: auto;
+    }
+
+    #write .md-fences.mock-cm {
+        white-space: pre-wrap;
+    }
+
+    .md-fences.md-fences-with-lineno {
+        padding-left: 0px;
+    }
+
+    #write.fences-no-line-wrapping .md-fences.mock-cm {
+        white-space: pre;
+        overflow-x: auto;
+    }
+
+    .md-fences.mock-cm.md-fences-with-lineno {
+        padding-left: 8px;
+    }
+
+    .CodeMirror-line, twitterwidget {
+        break-inside: avoid;
+    }
+
+    .footnotes {
+        opacity: 0.8;
+        font-size: 0.9rem;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    .footnotes + .footnotes {
+        margin-top: 0px;
+    }
+
+    .md-reset {
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+        outline: 0px;
+        vertical-align: top;
+        text-decoration: none;
+        text-shadow: none;
+        float: none;
+        position: static;
+        width: auto;
+        height: auto;
+        white-space: nowrap;
+        cursor: inherit;
+        line-height: normal;
+        font-weight: 400;
+        text-align: left;
+        box-sizing: content-box;
+        direction: ltr;
+        background-position: 0px 0px;
+    }
+
+    li div {
+        padding-top: 0px;
+    }
+
+    blockquote {
+        margin: 1rem 0px;
+    }
+
+    li .mathjax-block, li p {
+        margin: 0.5rem 0px;
+    }
+
+    li blockquote {
+        margin: 1rem 0px;
+    }
+
+    li {
+        margin: 0px;
+        position: relative;
+    }
+
+    blockquote > :last-child {
+        margin-bottom: 0px;
+    }
+
+    blockquote > :first-child, li > :first-child {
+        margin-top: 0px;
+    }
+
+    .footnotes-area {
+        color: rgb(136, 136, 136);
+        margin-top: 0.714rem;
+        padding-bottom: 0.143rem;
+        white-space: normal;
+    }
+
+    #write .footnote-line {
+        white-space: pre-wrap;
+    }
+
+    @media print {
+        body, html {
+            border: 1px solid transparent;
+            height: 99%;
+            break-after: avoid;
+            break-before: avoid;
+            font-variant-ligatures: no-common-ligatures;
+        }
+
+        #write {
+            margin-top: 0px;
+            padding-top: 0px;
+            border-color: transparent !important;
+        }
+
+        .typora-export * {
+            print-color-adjust: exact;
+        }
+
+        .typora-export #write {
+            break-after: avoid;
+        }
+
+        .typora-export #write::after {
+            height: 0px;
+        }
+
+        .is-mac table {
+            break-inside: avoid;
+        }
+
+        .typora-export-show-outline .typora-export-sidebar {
+            display: none;
+        }
+    }
+
+    .footnote-line {
+        margin-top: 0.714em;
+        font-size: 0.7em;
+    }
+
+    a img, img a {
+        cursor: pointer;
+    }
+
+    pre.md-meta-block {
+        font-size: 0.8rem;
+        min-height: 0.8rem;
+        white-space: pre-wrap;
+        background-color: rgb(204, 204, 204);
+        display: block;
+        overflow-x: hidden;
+    }
+
+    p > .md-image:only-child:not(.md-img-error) img, p > img:only-child {
+        display: block;
+        margin: auto;
+    }
+
+    #write.first-line-indent p > .md-image:only-child:not(.md-img-error) img {
+        left: -2em;
+        position: relative;
+    }
+
+    p > .md-image:only-child {
+        display: inline-block;
+        width: 100%;
+    }
+
+    #write .MathJax_Display {
+        margin: 0.8em 0px 0px;
+    }
+
+    .md-math-block {
+        width: 100%;
+    }
+
+    .md-math-block:not(:empty)::after {
+        display: none;
+    }
+
+    .MathJax_ref {
+        fill: currentcolor;
+    }
+
+    [contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus {
+        outline: 0px;
+        box-shadow: none;
+    }
+
+    .md-task-list-item {
+        position: relative;
+        list-style-type: none;
+    }
+
+    .task-list-item.md-task-list-item {
+        padding-left: 0px;
+    }
+
+    .md-task-list-item > input {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        margin-left: -1.2em;
+        margin-top: calc(1em - 10px);
+        border: none;
+    }
+
+    .math {
+        font-size: 1rem;
+    }
+
+    .md-toc {
+        min-height: 3.58rem;
+        position: relative;
+        font-size: 0.9rem;
+        border-radius: 10px;
+    }
+
+    .md-toc-content {
+        position: relative;
+        margin-left: 0px;
+    }
+
+    .md-toc-content::after, .md-toc::after {
+        display: none;
+    }
+
+    .md-toc-item {
+        display: block;
+        color: rgb(65, 131, 196);
+    }
+
+    .md-toc-item a {
+        text-decoration: none;
+    }
+
+    .md-toc-inner:hover {
+        text-decoration: underline;
+    }
+
+    .md-toc-inner {
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .md-toc-h1 .md-toc-inner {
+        margin-left: 0px;
+        font-weight: 700;
+    }
+
+    .md-toc-h2 .md-toc-inner {
+        margin-left: 2em;
+    }
+
+    .md-toc-h3 .md-toc-inner {
+        margin-left: 4em;
+    }
+
+    .md-toc-h4 .md-toc-inner {
+        margin-left: 6em;
+    }
+
+    .md-toc-h5 .md-toc-inner {
+        margin-left: 8em;
+    }
+
+    .md-toc-h6 .md-toc-inner {
+        margin-left: 10em;
+    }
+
+    @media screen and (max-width: 48em) {
+        .md-toc-h3 .md-toc-inner {
+            margin-left: 3.5em;
+        }
+
+        .md-toc-h4 .md-toc-inner {
+            margin-left: 5em;
+        }
+
+        .md-toc-h5 .md-toc-inner {
+            margin-left: 6.5em;
+        }
+
+        .md-toc-h6 .md-toc-inner {
+            margin-left: 8em;
+        }
+    }
+
+    a.md-toc-inner {
+        font-size: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+    }
+
+    .footnote-line a:not(.reversefootnote) {
+        color: inherit;
+    }
+
+    .md-attr {
+        display: none;
+    }
+
+    .md-fn-count::after {
+        content: ".";
+    }
+
+    code, pre, samp, tt {
+        font-family: var(--monospace);
+    }
+
+    kbd {
+        margin: 0px 0.1em;
+        padding: 0.1em 0.6em;
+        font-size: 0.8em;
+        color: rgb(36, 39, 41);
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(173, 179, 185);
+        border-radius: 3px;
+        box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset;
+        white-space: nowrap;
+        vertical-align: middle;
+    }
+
+    .md-comment {
+        color: rgb(162, 127, 3);
+        opacity: 0.6;
+        font-family: var(--monospace);
+    }
+
+    code {
+        text-align: left;
+    }
+
+    a.md-print-anchor {
+        white-space: pre !important;
+        border: none !important;
+        display: inline-block !important;
+        position: absolute !important;
+        width: 1px !important;
+        right: 0px !important;
+        outline: 0px !important;
+        text-shadow: initial !important;
+        background-position: 0px 0px !important;
+    }
+
+    .os-windows.monocolor-emoji .md-emoji {
+        font-family: "Segoe UI Symbol", sans-serif;
+    }
+
+    .md-diagram-panel > svg {
+        max-width: 100%;
+    }
+
+    [lang="flow"] svg, [lang="mermaid"] svg {
+        max-width: 100%;
+        height: auto;
+    }
+
+    [lang="mermaid"] .node text {
+        font-size: 1rem;
+    }
+
+    table tr th {
+        border-bottom-width: 0px;
+    }
+
+    video {
+        max-width: 100%;
+        display: block;
+        margin: 0px auto;
+    }
+
+    iframe {
+        max-width: 100%;
+        width: 100%;
+        border: none;
+    }
+
+    .highlight td, .highlight tr {
+        border: 0px;
+    }
+
+    mark {
+        background-color: rgb(255, 255, 0);
+        color: rgb(0, 0, 0);
+    }
+
+    .md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong {
+        color: inherit;
+    }
+
+    .md-expand mark .md-meta {
+        opacity: 0.3 !important;
+    }
+
+    mark .md-meta {
+        color: rgb(0, 0, 0);
+    }
+
+    @media print {
+        .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 {
+            break-inside: avoid;
+        }
+    }
+
+    .md-diagram-panel .messageText {
+        stroke: none !important;
+    }
+
+    .md-diagram-panel .start-state {
+        fill: var(--node-fill);
+    }
+
+    .md-diagram-panel .edgeLabel rect {
+        opacity: 1 !important;
+    }
+
+    .md-fences.md-fences-math {
+        font-size: 1em;
+    }
+
+    .md-fences-advanced:not(.md-focus) {
+        padding: 0px;
+        white-space: nowrap;
+        border: 0px;
+    }
+
+    .md-fences-advanced:not(.md-focus) {
+        background-image: inherit;
+        background-size: inherit;
+        background-attachment: inherit;
+        background-origin: inherit;
+        background-clip: inherit;
+        background-color: inherit;
+        background-position: inherit;
+        background-repeat: inherit;
+    }
+
+    .typora-export-show-outline .typora-export-content {
+        max-width: 1440px;
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .typora-export-sidebar {
+        width: 300px;
+        font-size: 0.8rem;
+        margin-top: 80px;
+        margin-right: 18px;
+    }
+
+    .typora-export-show-outline #write {
+        --webkit-flex: 2;
+        flex: 2 1 0%;
+    }
+
+    .typora-export-sidebar .outline-content {
+        position: fixed;
+        top: 0px;
+        max-height: 100%;
+        overflow: hidden auto;
+        padding-bottom: 30px;
+        padding-top: 60px;
+        width: 300px;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .typora-export-sidebar, .typora-export-sidebar .outline-content {
+            width: 240px;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        .typora-export-sidebar {
+            display: none;
+        }
+    }
+
+    .outline-content li, .outline-content ul {
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        list-style: none;
+    }
+
+    .outline-content ul {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .outline-content strong {
+        font-weight: 400;
+    }
+
+    .outline-expander {
+        width: 1rem;
+        height: 1.428571rem;
+        position: relative;
+        display: table-cell;
+        vertical-align: middle;
+        cursor: pointer;
+        padding-left: 4px;
+    }
+
+    .outline-expander::before {
+        content: "";
+        position: relative;
+        font-family: Ionicons;
+        display: inline-block;
+        font-size: 8px;
+        vertical-align: middle;
+    }
+
+    .outline-item {
+        padding-top: 3px;
+        padding-bottom: 3px;
+        cursor: pointer;
+    }
+
+    .outline-expander:hover::before {
+        content: "";
+    }
+
+    .outline-h1 > .outline-item {
+        padding-left: 0px;
+    }
+
+    .outline-h2 > .outline-item {
+        padding-left: 1em;
+    }
+
+    .outline-h3 > .outline-item {
+        padding-left: 2em;
+    }
+
+    .outline-h4 > .outline-item {
+        padding-left: 3em;
+    }
+
+    .outline-h5 > .outline-item {
+        padding-left: 4em;
+    }
+
+    .outline-h6 > .outline-item {
+        padding-left: 5em;
+    }
+
+    .outline-label {
+        cursor: pointer;
+        display: table-cell;
+        vertical-align: middle;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .outline-label:hover {
+        text-decoration: underline;
+    }
+
+    .outline-item:hover {
+        border-color: rgb(245, 245, 245);
+        background-color: var(--item-hover-bg-color);
+    }
+
+    .outline-item:hover {
+        margin-left: -28px;
+        margin-right: -28px;
+        border-left-width: 28px;
+        border-left-style: solid;
+        border-left-color: transparent;
+        border-right-width: 28px;
+        border-right-style: solid;
+        border-right-color: transparent;
+    }
+
+    .outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before {
+        display: none;
+    }
+
+    .outline-item-open > .outline-item > .outline-expander::before {
+        content: "";
+    }
+
+    .outline-children {
+        display: none;
+    }
+
+    .info-panel-tab-wrapper {
+        display: none;
+    }
+
+    .outline-item-open > .outline-children {
+        display: block;
+    }
+
+    .typora-export .outline-item {
+        padding-top: 1px;
+        padding-bottom: 1px;
+    }
+
+    .typora-export .outline-item:hover {
+        margin-right: -8px;
+        border-right-width: 8px;
+        border-right-style: solid;
+        border-right-color: transparent;
+    }
+
+    .typora-export .outline-expander::before {
+        content: "+";
+        font-family: inherit;
+        top: -1px;
+    }
+
+    .typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before {
+        content: "−";
+    }
+
+    .typora-export-collapse-outline .outline-children {
+        display: none;
+    }
+
+    .typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children {
+        display: block;
+    }
+
+    .typora-export-no-collapse-outline .outline-expander::before {
+        content: "" !important;
+    }
+
+    .typora-export-show-outline .outline-item-active > .outline-item .outline-label {
+        font-weight: 700;
+    }
+
+    .md-inline-math-container mjx-container {
+        zoom: 0.95;
+    }
+
+
+    @include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+    /* open-sans-regular - latin-ext_latin */
+
+    /* open-sans-italic - latin-ext_latin */
+
+    /* open-sans-700 - latin-ext_latin */
+
+    /* open-sans-700italic - latin-ext_latin */
+
+    :root {
+        --title-color: #8064a9;
+        --text-color: #444444;
+        --light-text-color: #666666;
+        --lighter-text-color: #888888;
+        --link-color: #2aa899;
+        --code-color: #745fb5;
+        --shadow-color: #eee;
+        --border-quote: rgba(116, 95, 181, 0.2);
+        --border-quote-grey: #c8c8c8;
+        --border: #e7e7e7;
+        --link-bottom: #bbb;
+        --shadow: 3px 3px 10px var(--shadow-color);
+        --inline-code-bg: #f4f2f9;
+        --header-weight: normal;
+        --side-bar-bg-color: #fafafa;
+        --control-text-color: var(var(--light-text-color));
+        --active-file-text-color: var(--title-color);
+        --active-file-bg-color: var(--shadow-color);
+        --item-hover-bg-color: var(--shadow-color);
+        --active-file-border-color: var(var(--title-color));
+        --base-font: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        --title-font: "EB Garamond", "Source Sans Pro", serif;
+        --monospace: Courier, Monospace !important;
+    }
+
+
+    /* 打印 */
+
+    @media print {
+        html {
+            font-size: 0.9rem;
+        }
+
+        table,
+        pre {
+            page-break-inside: avoid;
+        }
+
+        pre {
+            word-wrap: break-word;
+        }
+
+        #write {
+            max-width: 100%;
+        }
+
+        @page {
+            size: A3;
+            /* PDF output size */
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+
+    html {
+        font-size: 16px;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+        text-rendering: optimizelegibility;
+        -webkit-font-smoothing: initial;
+    }
+
+    body {
+        color: var(--text-color);
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.6;
+        letter-spacing: 0;
+        overflow-x: hidden;
+    }
+
+
+    /* 页边距 和 页面大小 */
+
+    #write {
+        font-family: var(--base-font);
+        /* max-width: 914px; */
+        margin: 0 auto;
+        padding: 1rem 4rem;
+        padding-bottom: 100px;
+    }
+
+    #write p {
+        line-height: 1.6rem;
+        word-spacing: 0.05rem;
+    }
+
+    body > *:first-child {
+        margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+        margin-bottom: 0 !important;
+    }
+
+
+    /* Link 链接 */
+
+    a {
+        color: var(--link-color);
+        text-decoration: none;
+    }
+
+    #write a {
+        border-bottom: 1px solid var(--link-bottom);
+    }
+
+    .md-content {
+        color: var(--light-text-color);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        position: relative;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        font-weight: var(--header-weight);
+        line-height: 1.3;
+        cursor: text;
+        color: var(--title-color);
+        font-family: var(--title-font);
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 2rem;
+        line-height: 1.5;
+    }
+
+    h1:after {
+        content: "";
+        display: block;
+        margin: 0.2rem auto 0;
+        width: 6rem;
+        height: 2px;
+        border-bottom: 2px solid var(--title-color);
+    }
+
+    h2 {
+        padding-left: 0.4em;
+        border-left: 0.4em solid var(--title-color);
+        border-bottom: 1px solid var(--title-color);
+    }
+
+    h1 tt,
+    h1 code {
+        font-size: inherit;
+    }
+
+    h2 tt,
+    h2 code {
+        font-size: inherit;
+    }
+
+    h3 tt,
+    h3 code {
+        font-size: inherit;
+    }
+
+    h4 tt,
+    h4 code {
+        font-size: inherit;
+    }
+
+    h5 tt,
+    h5 code {
+        font-size: inherit;
+    }
+
+    h6 tt,
+    h6 code {
+        font-size: inherit;
+    }
+
+    p,
+    blockquote,
+    ul,
+    ol,
+    dl,
+    table {
+        margin: 0.8em 0;
+    }
+
+
+    /* horizontal rule */
+
+    hr {
+        margin: 1.5em auto;
+        border-top: 1px solid var(--border);
+    }
+
+
+    /* 列表 */
+
+    li > ol,
+    li > ul {
+        margin: 0 0;
+    }
+
+    li p.first {
+        display: inline-block;
+    }
+
+    ul,
+    ol {
+        padding-left: 2rem;
+    }
+
+    ul:first-child,
+    ol:first-child {
+        margin-top: 0;
+    }
+
+    ul:last-child,
+    ol:last-child {
+        margin-bottom: 0;
+    }
+
+    #write ol li,
+    ul li {
+        padding-left: 0.1rem;
+    }
+
+
+    /* 引用 */
+
+    blockquote {
+        border-left: 0.3rem solid var(--border-quote);
+        padding-left: 1em;
+        font-family: var(--base-font);
+    }
+
+
+    /* 表格 */
+
+    table {
+        margin-bottom: 1.25rem;
+    }
+
+    table th,
+    table td {
+        padding: 8px;
+        line-height: 1.25rem;
+        vertical-align: middle;
+        border: 1px solid #ddd;
+    }
+
+    table th {
+        font-weight: bold;
+    }
+
+    table thead th {
+        vertical-align: middle;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fcfcfc;
+    }
+
+
+    /* 粗体 */
+
+    #write strong {
+        padding: 0 2px;
+        font-weight: bold;
+    }
+
+
+    /* inline code */
+    code,
+    tt {
+        padding: 2px 4px;
+        border-radius: 0.3rem;
+        font-family: var(--monospace);
+        font-size: 0.9rem;
+        color: var(--code-color);
+        background-color: var(--inline-code-bg);
+        margin: 0 2px;
+    }
+
+    #write .md-footnote {
+        color: var(--code-color);
+        background-color: var(--inline-code-bg);
+    }
+
+
+    /* highlight. */
+
+    #write mark {
+        background: rgb(255, 255, 196);
+        color: var(--text-color);
+    }
+
+    #write del {
+        padding: 1px 2px;
+    }
+
+    .md-task-list-item > input {
+        margin-left: -1.3em;
+    }
+
+    #write pre.md-meta-block {
+        padding: 1rem;
+        font-size: 85%;
+        line-height: 1.45;
+        background-color: #f7f7f7;
+        border: 0;
+        border-radius: 3px;
+        color: #777777;
+        margin-top: 0 !important;
+    }
+
+    .mathjax-block > .code-tooltip {
+        bottom: 0.375rem;
+    }
+
+
+    /* 图片 */
+
+    .md-image > .md-meta {
+        border-radius: 3px;
+        font-family: var(--monospace);
+        padding: 2px 0 0 4px;
+        font-size: 0.9em;
+        color: inherit;
+    }
+
+
+    /* 图片靠左显示 */
+
+
+    /* p .md-image:only-child {
+      width: auto;
+      text-align: left;
+      margin-left: 2rem;
+    } */
+
+
+    /* 写![shadow-...]() 显示图片阴影 */
+
+    img[alt|="shadow"] {
+        box-shadow: var(--shadow);
+    }
+
+
+    /* TOC */
+
+    #write a.md-toc-inner {
+        line-height: 1.6;
+        white-space: pre-line;
+        border-bottom: none;
+        color: var(--light-text-color);
+        font-size: 0.9rem;
+    }
+
+    .md-toc-h1 .md-toc-inner {
+        margin-left: 0;
+        font-weight: normal;
+    }
+
+    header,
+    .context-menu,
+    .megamenu-content,
+    footer {
+        font-family: var(--base-font);
+    }
+
+    .file-node-content:hover .file-node-icon,
+    .file-node-content:hover .file-node-open-state {
+        visibility: visible;
+    }
+
+    .md-lang {
+        color: #b4654d;
+    }
+
+    .html-for-mac .context-menu {
+        --item-hover-bg-color: #e6f0fe;
+    }
+
+
+    /* Code fences */
+
+
+    /* border, bg, font */
+
+    .md-fences {
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        background: #fdfdfd !important;
+        font-size: 0.9rem;
+    }
+
+
+    /* 代码框阴影 */
+
+
+    /* #write pre.md-fences {
+      display: block;
+      -webkit-overflow-scrolling: touch;
+      box-shadow: var(--shadow);
+    } */
+
+    .cm-s-inner .cm-variable {
+        color: var(--text-color);
+    }
+
+    .cm-s-inner {
+        padding: 0.25rem;
+        border-radius: 0.25rem;
+    }
+
+    .cm-s-inner.CodeMirror,
+    .cm-s-inner .CodeMirror-gutters {
+        color: #3a3432 !important;
+        border: none;
+    }
+
+    .cm-s-inner .CodeMirror-gutters {
+        color: #6d8a88;
+    }
+
+    .cm-s-inner .CodeMirror-linenumber {
+        padding: 0 0.1rem 0 0.3rem;
+        color: #b8b5b4;
+    }
+
+    .cm-s-inner .CodeMirror-matchingbracket {
+        text-decoration: underline;
+        color: #a34e8f !important;
+    }
+
+    #fences-auto-suggest .active {
+        background: #ddd;
+    }
+
+    .cm-s-inner span.cm-comment {
+        color: #9daab6;
+    }
+
+    .cm-s-inner span.cm-builtin {
+        color: #0451a5;
+    }
+
+
+    /* language tip */
+
+    #write .code-tooltip {
+        border: 1px solid var(--border);
+    }
+
+    .auto-suggest-container {
+        border-color: #b4b4b4;
+    }
+
+    .auto-suggest-container .autoComplt-hint.active {
+        background: #b4b4b4;
+        color: inherit;
+    }
+
+
+    /* task list */
+
+    #write .md-task-list-item > input {
+        -webkit-appearance: initial;
+        display: block;
+        position: absolute;
+        border: 1px solid #b4b4b4;
+        border-radius: 0.2rem;
+        margin-top: 0.3rem;
+        height: 1rem;
+        width: 1rem;
+        transition: background 0.3s;
+    }
+
+    #write .md-task-list-item > input:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+    #write .md-task-list-item > input:hover {
+        background: #ddd;
+    }
+
+    #write .md-task-list-item > input[checked]::before {
+        content: "";
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        height: 60%;
+        width: 2px;
+        transform: rotate(40deg);
+        background: #333;
+    }
+
+    #write .md-task-list-item > input[checked]::after {
+        content: "";
+        position: absolute;
+        top: 46%;
+        left: 25%;
+        height: 30%;
+        width: 2px;
+        transform: rotate(-40deg);
+        background: #333;
+    }
+
+    #write .md-task-list-item > p {
+        transition: color 0.3s, opacity 0.3s;
+    }
+
+    #write .md-task-list-item.task-list-done > p {
+        color: #b4b4b4;
+        text-decoration: line-through;
+    }
+
+    #write .md-task-list-item.task-list-done > p > .md-emoji {
+        opacity: 0.5;
+    }
+
+    #write .md-task-list-item.task-list-done > p > .md-link > a {
+        opacity: 0.6;
+    }
+
+
+    /* sidebar */
+
+    #typora-sidebar,
+    .typora-node #typora-sidebar {
+        box-shadow: 3px 0px 10px var(--shadow-color);
+    }
+
+    .sidebar-content-content {
+        font-size: 0.9rem;
+    }
+
+    @import "";
+
+    :root {
+        --base-font: Consolas, "Ubuntu Mono", "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        --title-font: var(--base-font);
+        --monospace: "Ubuntu Mono", Courier, Monospace !important;
+    }
+
+    /* Cesno style start */
+
+    .cm-s-inner .cm-variable {
+        color: #f39800;
+    }
+
+    .cm-s-inner .cm-variable-3 {
+        color: #9ed44c;
+        font-weight: bold;
+    }
+
+    .cm-s-inner .cm-number {
+        color: #e95295;
+    }
+
+    .cm-s-inner .cm-keyword {
+        color: #bc64a4;
+        font-weight: bold;
+    }
+
+    .cm-s-inner .cm-def {
+        color: #0094c8;
+    }
+
+    .cm-s-inner .cm-operator {
+        color: #a59aca;
+        font-weight: bold;
+    }
+
+    /* .cm-s-inner .cm-atom          {color: #c5c56a; font-weight: bold;} */
+
+    /* Cesno style end */
+
+
+    mjx-container[jax="SVG"] {
+        direction: ltr;
+    }
+
+    mjx-container[jax="SVG"] > svg {
+        overflow: visible;
+        min-height: 1px;
+        min-width: 1px;
+    }
+
+    mjx-container[jax="SVG"] > svg a {
+        fill: blue;
+        stroke: blue;
+    }
+
+    mjx-assistive-mml {
+        position: absolute !important;
+        top: 0px;
+        left: 0px;
+        clip: rect(1px, 1px, 1px, 1px);
+        padding: 1px 0px 0px 0px !important;
+        border: 0px !important;
+        display: block !important;
+        width: auto !important;
+        overflow: hidden !important;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    mjx-assistive-mml[display="block"] {
+        width: 100% !important;
+    }
+
+    mjx-container[jax="SVG"][display="true"] {
+        display: block;
+        text-align: center;
+        margin: 1em 0;
+    }
+
+    mjx-container[jax="SVG"][display="true"][width="full"] {
+        display: flex;
+    }
+
+    mjx-container[jax="SVG"][justify="left"] {
+        text-align: left;
+    }
+
+    mjx-container[jax="SVG"][justify="right"] {
+        text-align: right;
+    }
+
+    g[data-mml-node="merror"] > g {
+        fill: red;
+        stroke: red;
+    }
+
+    g[data-mml-node="merror"] > rect[data-background] {
+        fill: yellow;
+        stroke: none;
+    }
+
+    g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+        stroke-width: 70px;
+        fill: none;
+    }
+
+    g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+        stroke-width: 70px;
+        fill: none;
+    }
+
+    g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+        stroke-dasharray: 140;
+    }
+
+    g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+        stroke-linecap: round;
+        stroke-dasharray: 0, 140;
+    }
+
+    g[data-mml-node="mtable"] > g > svg {
+        overflow: visible;
+    }
+
+    [jax="SVG"] mjx-tool {
+        display: inline-block;
+        position: relative;
+        width: 0;
+        height: 0;
+    }
+
+    [jax="SVG"] mjx-tool > mjx-tip {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    mjx-tool > mjx-tip {
+        display: inline-block;
+        padding: .2em;
+        border: 1px solid #888;
+        font-size: 70%;
+        background-color: #F8F8F8;
+        color: black;
+        box-shadow: 2px 2px 5px #AAAAAA;
+    }
+
+    g[data-mml-node="maction"][data-toggle] {
+        cursor: pointer;
+    }
+
+    mjx-status {
+        display: block;
+        position: fixed;
+        left: 1em;
+        bottom: 1em;
+        min-width: 25%;
+        padding: .2em .4em;
+        border: 1px solid #888;
+        font-size: 90%;
+        background-color: #F8F8F8;
+        color: black;
+    }
+
+    foreignObject[data-mjx-xml] {
+        font-family: initial;
+        line-height: normal;
+        overflow: visible;
+    }
+
+    mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+        stroke-width: 3;
+    }
+
+    g[data-mml-node="xypic"] path {
+        stroke-width: inherit;
+    }
+
+    .MathJax g[data-mml-node="xypic"] path {
+        stroke-width: inherit;
+    }
+
+    mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+        stroke-width: 0;
+    }
+
+    @media print {
+        @page {
+            margin: 0 0 0 0;
+        }
+
+        body.typora-export {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        #write {
+            padding: 0;
+        }
+    }
+    </style>
+    <title>4.1B树</title>
+</head>
+<body class='typora-export'>
+<div class='typora-export-content'>
+    <div class='' id='write'><h1 id='b树'><span>B树</span></h1>
+        <h2 id='定义'><span>定义</span></h2>
+        <p><span>B树(多路平衡查找树)就是</span><a href='./3.1二叉排序树.md'><span>二叉排序树</span></a><span>的一般化, 可以理解为M叉排序树</span>
+        </p>
+        <blockquote><p><span>B树非常适合读取和写入相对较大的数据块(如光盘)的存储系统；它通常用于数据库和文件系统</span>
+        </p></blockquote>
+        <ul>
+            <li><p><span>m阶B树满足条件：</span></p>
+                <ul>
+                    <li><span>叶子结点指查找失败的结点(NULL结点)</span></li>
+                    <li><span>每个节点最多只有m个子结点</span></li>
+                    <li><span>非叶子结点(除了根结点)</span><strong><span>至少</span></strong><span>有</span>
+                        <mjx-container class="MathJax" jax="SVG" style="position: relative;">
+                            <svg aria-hidden="true" focusable="false" height="2.262ex" role="img"
+                                 style="vertical-align: -0.566ex;" viewBox="0 -750 2766 1000" width="6.258ex"
+                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <defs>
+                                    <path d="M174 734Q178 746 190 750H298H369Q400 750 411 747T422 730T411 713T372 709Q365 709 345 709T310 710H214V-235Q206 -248 196 -250Q192 -250 189 -249T184 -247T180 -244T178 -241T176 -237T174 -234V734Z"
+                                          id="MJX-28-TEX-N-2308"></path>
+                                    <path d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"
+                                          id="MJX-28-TEX-I-1D45A"></path>
+                                    <path d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"
+                                          id="MJX-28-TEX-N-2F"></path>
+                                    <path d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"
+                                          id="MJX-28-TEX-N-32"></path>
+                                    <path d="M21 717T21 730T32 746T75 750H147H256Q266 742 269 735V-235Q262 -248 251 -250Q247 -250 244 -249T239 -247T235 -244T233 -241T231 -237T229 -234V710H133Q119 710 99 710T71 709Q43 709 32 713Z"
+                                          id="MJX-28-TEX-N-2309"></path>
+                                </defs>
+                                <g fill="currentColor" stroke="currentColor" stroke-width="0" transform="scale(1,-1)">
+                                    <g data-mml-node="math">
+                                        <g data-mml-node="mo">
+                                            <use data-c="2308" xlink:href="#MJX-28-TEX-N-2308"></use>
+                                        </g>
+                                        <g data-mml-node="mi" transform="translate(444,0)">
+                                            <use data-c="1D45A" xlink:href="#MJX-28-TEX-I-1D45A"></use>
+                                        </g>
+                                        <g data-mjx-texclass="ORD" data-mml-node="TeXAtom"
+                                           transform="translate(1322,0)">
+                                            <g data-mml-node="mo">
+                                                <use data-c="2F" xlink:href="#MJX-28-TEX-N-2F"></use>
+                                            </g>
+                                        </g>
+                                        <g data-mml-node="mn" transform="translate(1822,0)">
+                                            <use data-c="32" xlink:href="#MJX-28-TEX-N-32"></use>
+                                        </g>
+                                        <g data-mml-node="mo" transform="translate(2322,0)">
+                                            <use data-c="2309" xlink:href="#MJX-28-TEX-N-2309"></use>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                            <mjx-assistive-mml display="inline" unselectable="on">
+                                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mo fence="false" stretchy="false">⌈</mo>
+                                    <mi>m</mi>
+                                    <mrow data-mjx-texclass="ORD">
+                                        <mo>/</mo>
+                                    </mrow>
+                                    <mn>2</mn>
+                                    <mo fence="false" stretchy="false">⌉</mo>
+                                </math>
+                            </mjx-assistive-mml>
+                        </mjx-container>
+                        <script type="math/tex">\lceil m/2 \rceil</script>
+                        <span>个分叉</span></li>
+                    <li><span>根结点最多有m棵子树，至少2个子树</span></li>
+                    <li><span>具有k个子结点的非叶子结点包含k-1个键</span></li>
+                    <li><span>所有的叶子结点都在同一层上（子树高度相同）</span></li>
+                </ul>
+            </li>
+            <li><p><span>B树性质：</span></p>
+                <ul>
+                    <li><p><span>结点的孩子个数等于该结点中关键字个数+1</span></p>
+                        <ul>
+                            <li><img
+                                    alt="okLNTV"
+                                    referrerpolicy="no-referrer" src="https://cdn.staticaly.com/gh/tippye/PicCloud@master/uPic/2023/01/25/okLNTV.png"></li>
+                        </ul>
+                    </li>
+                    <li><p><span>如果根结点没有关键字就没有子树，此时B树为空</span></p></li>
+                    <li>
+                        <p><span>根结点子树数</span>
+                            <mjx-container class="MathJax" jax="SVG" style="position: relative;">
+                                <svg aria-hidden="true" focusable="false" height="2.262ex" role="img"
+                                     style="vertical-align: -0.566ex;" viewBox="0 -750 3323.4 1000"
+                                     width="7.519ex" xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <defs>
+                                        <path d="M84 250Q84 372 166 450T360 539Q361 539 377 539T419 540T469 540H568Q583 532 583 520Q583 511 570 501L466 500Q355 499 329 494Q280 482 242 458T183 409T147 354T129 306T124 272V270H568Q583 262 583 250T568 230H124V228Q124 207 134 177T167 112T231 48T328 7Q355 1 466 0H570Q583 -10 583 -20Q583 -32 568 -40H471Q464 -40 446 -40T417 -41Q262 -41 172 45Q84 127 84 250Z"
+                                              id="MJX-20-TEX-N-2208"></path>
+                                        <path d="M118 -250V750H255V710H158V-210H255V-250H118Z"
+                                              id="MJX-20-TEX-N-5B"></path>
+                                        <path d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"
+                                              id="MJX-20-TEX-N-32"></path>
+                                        <path d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"
+                                              id="MJX-20-TEX-N-2C"></path>
+                                        <path d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"
+                                              id="MJX-20-TEX-I-1D45A"></path>
+                                        <path d="M22 710V750H159V-250H22V-210H119V710H22Z" id="MJX-20-TEX-N-5D"></path>
+                                    </defs>
+                                    <g fill="currentColor" stroke="currentColor" stroke-width="0"
+                                       transform="scale(1,-1)">
+                                        <g data-mml-node="math">
+                                            <g data-mml-node="mo">
+                                                <use data-c="2208" xlink:href="#MJX-20-TEX-N-2208"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(944.8,0)">
+                                                <use data-c="5B" xlink:href="#MJX-20-TEX-N-5B"></use>
+                                            </g>
+                                            <g data-mml-node="mn" transform="translate(1222.8,0)">
+                                                <use data-c="32" xlink:href="#MJX-20-TEX-N-32"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(1722.8,0)">
+                                                <use data-c="2C" xlink:href="#MJX-20-TEX-N-2C"></use>
+                                            </g>
+                                            <g data-mml-node="mi" transform="translate(2167.4,0)">
+                                                <use data-c="1D45A" xlink:href="#MJX-20-TEX-I-1D45A"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(3045.4,0)">
+                                                <use data-c="5D" xlink:href="#MJX-20-TEX-N-5D"></use>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                                <mjx-assistive-mml display="inline" unselectable="on">
+                                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mo>∈</mo>
+                                        <mo stretchy="false">[</mo>
+                                        <mn>2</mn>
+                                        <mo>,</mo>
+                                        <mi>m</mi>
+                                        <mo stretchy="false">]</mo>
+                                    </math>
+                                </mjx-assistive-mml>
+                            </mjx-container>
+                            <script type="math/tex">\in [2, m]</script>
+                            <span>, 关键字数</span>
+                            <mjx-container class="MathJax" jax="SVG" style="position: relative;">
+                                <svg aria-hidden="true" focusable="false" height="2.262ex" role="img"
+                                     style="vertical-align: -0.566ex;" viewBox="0 -750 5045.9 1000"
+                                     width="11.416ex" xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <defs>
+                                        <path d="M84 250Q84 372 166 450T360 539Q361 539 377 539T419 540T469 540H568Q583 532 583 520Q583 511 570 501L466 500Q355 499 329 494Q280 482 242 458T183 409T147 354T129 306T124 272V270H568Q583 262 583 250T568 230H124V228Q124 207 134 177T167 112T231 48T328 7Q355 1 466 0H570Q583 -10 583 -20Q583 -32 568 -40H471Q464 -40 446 -40T417 -41Q262 -41 172 45Q84 127 84 250Z"
+                                              id="MJX-21-TEX-N-2208"></path>
+                                        <path d="M118 -250V750H255V710H158V-210H255V-250H118Z"
+                                              id="MJX-21-TEX-N-5B"></path>
+                                        <path d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"
+                                              id="MJX-21-TEX-N-31"></path>
+                                        <path d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"
+                                              id="MJX-21-TEX-N-2C"></path>
+                                        <path d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"
+                                              id="MJX-21-TEX-I-1D45A"></path>
+                                        <path d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"
+                                              id="MJX-21-TEX-N-2212"></path>
+                                        <path d="M22 710V750H159V-250H22V-210H119V710H22Z" id="MJX-21-TEX-N-5D"></path>
+                                    </defs>
+                                    <g fill="currentColor" stroke="currentColor" stroke-width="0"
+                                       transform="scale(1,-1)">
+                                        <g data-mml-node="math">
+                                            <g data-mml-node="mo">
+                                                <use data-c="2208" xlink:href="#MJX-21-TEX-N-2208"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(944.8,0)">
+                                                <use data-c="5B" xlink:href="#MJX-21-TEX-N-5B"></use>
+                                            </g>
+                                            <g data-mml-node="mn" transform="translate(1222.8,0)">
+                                                <use data-c="31" xlink:href="#MJX-21-TEX-N-31"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(1722.8,0)">
+                                                <use data-c="2C" xlink:href="#MJX-21-TEX-N-2C"></use>
+                                            </g>
+                                            <g data-mml-node="mi" transform="translate(2167.4,0)">
+                                                <use data-c="1D45A" xlink:href="#MJX-21-TEX-I-1D45A"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(3267.7,0)">
+                                                <use data-c="2212" xlink:href="#MJX-21-TEX-N-2212"></use>
+                                            </g>
+                                            <g data-mml-node="mn" transform="translate(4267.9,0)">
+                                                <use data-c="31" xlink:href="#MJX-21-TEX-N-31"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(4767.9,0)">
+                                                <use data-c="5D" xlink:href="#MJX-21-TEX-N-5D"></use>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                                <mjx-assistive-mml display="inline" unselectable="on">
+                                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mo>∈</mo>
+                                        <mo stretchy="false">[</mo>
+                                        <mn>1</mn>
+                                        <mo>,</mo>
+                                        <mi>m</mi>
+                                        <mo>−</mo>
+                                        <mn>1</mn>
+                                        <mo stretchy="false">]</mo>
+                                    </math>
+                                </mjx-assistive-mml>
+                            </mjx-container>
+                            <script type="math/tex">\in [1, m-1]</script>
+                        </p>
+                    </li>
+                    <li>
+                        <p><span>其他结点子树数</span>
+                            <mjx-container class="MathJax" jax="SVG" style="position: relative;">
+                                <svg aria-hidden="true" focusable="false" height="2.262ex" role="img"
+                                     style="vertical-align: -0.566ex;" viewBox="0 -750 5589.4 1000"
+                                     width="12.646ex" xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <defs>
+                                        <path d="M84 250Q84 372 166 450T360 539Q361 539 377 539T419 540T469 540H568Q583 532 583 520Q583 511 570 501L466 500Q355 499 329 494Q280 482 242 458T183 409T147 354T129 306T124 272V270H568Q583 262 583 250T568 230H124V228Q124 207 134 177T167 112T231 48T328 7Q355 1 466 0H570Q583 -10 583 -20Q583 -32 568 -40H471Q464 -40 446 -40T417 -41Q262 -41 172 45Q84 127 84 250Z"
+                                              id="MJX-22-TEX-N-2208"></path>
+                                        <path d="M118 -250V750H255V710H158V-210H255V-250H118Z"
+                                              id="MJX-22-TEX-N-5B"></path>
+                                        <path d="M174 734Q178 746 190 750H298H369Q400 750 411 747T422 730T411 713T372 709Q365 709 345 709T310 710H214V-235Q206 -248 196 -250Q192 -250 189 -249T184 -247T180 -244T178 -241T176 -237T174 -234V734Z"
+                                              id="MJX-22-TEX-N-2308"></path>
+                                        <path d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"
+                                              id="MJX-22-TEX-I-1D45A"></path>
+                                        <path d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"
+                                              id="MJX-22-TEX-N-2F"></path>
+                                        <path d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"
+                                              id="MJX-22-TEX-N-32"></path>
+                                        <path d="M21 717T21 730T32 746T75 750H147H256Q266 742 269 735V-235Q262 -248 251 -250Q247 -250 244 -249T239 -247T235 -244T233 -241T231 -237T229 -234V710H133Q119 710 99 710T71 709Q43 709 32 713Z"
+                                              id="MJX-22-TEX-N-2309"></path>
+                                        <path d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"
+                                              id="MJX-22-TEX-N-2C"></path>
+                                        <path d="M22 710V750H159V-250H22V-210H119V710H22Z" id="MJX-22-TEX-N-5D"></path>
+                                    </defs>
+                                    <g fill="currentColor" stroke="currentColor" stroke-width="0"
+                                       transform="scale(1,-1)">
+                                        <g data-mml-node="math">
+                                            <g data-mml-node="mo">
+                                                <use data-c="2208" xlink:href="#MJX-22-TEX-N-2208"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(944.8,0)">
+                                                <use data-c="5B" xlink:href="#MJX-22-TEX-N-5B"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(1222.8,0)">
+                                                <use data-c="2308" xlink:href="#MJX-22-TEX-N-2308"></use>
+                                            </g>
+                                            <g data-mml-node="mi" transform="translate(1666.8,0)">
+                                                <use data-c="1D45A" xlink:href="#MJX-22-TEX-I-1D45A"></use>
+                                            </g>
+                                            <g data-mjx-texclass="ORD" data-mml-node="TeXAtom"
+                                               transform="translate(2544.8,0)">
+                                                <g data-mml-node="mo">
+                                                    <use data-c="2F" xlink:href="#MJX-22-TEX-N-2F"></use>
+                                                </g>
+                                            </g>
+                                            <g data-mml-node="mn" transform="translate(3044.8,0)">
+                                                <use data-c="32" xlink:href="#MJX-22-TEX-N-32"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(3544.8,0)">
+                                                <use data-c="2309" xlink:href="#MJX-22-TEX-N-2309"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(3988.8,0)">
+                                                <use data-c="2C" xlink:href="#MJX-22-TEX-N-2C"></use>
+                                            </g>
+                                            <g data-mml-node="mi" transform="translate(4433.4,0)">
+                                                <use data-c="1D45A" xlink:href="#MJX-22-TEX-I-1D45A"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(5311.4,0)">
+                                                <use data-c="5D" xlink:href="#MJX-22-TEX-N-5D"></use>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                                <mjx-assistive-mml display="inline" unselectable="on">
+                                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mo>∈</mo>
+                                        <mo stretchy="false">[</mo>
+                                        <mo fence="false" stretchy="false">⌈</mo>
+                                        <mi>m</mi>
+                                        <mrow data-mjx-texclass="ORD">
+                                            <mo>/</mo>
+                                        </mrow>
+                                        <mn>2</mn>
+                                        <mo fence="false" stretchy="false">⌉</mo>
+                                        <mo>,</mo>
+                                        <mi>m</mi>
+                                        <mo stretchy="false">]</mo>
+                                    </math>
+                                </mjx-assistive-mml>
+                            </mjx-container>
+                            <script type="math/tex">\in [\lceil m/2 \rceil, m]</script>
+                            <span>, 关键字数</span>
+                            <mjx-container class="MathJax" jax="SVG" style="position: relative;">
+                                <svg aria-hidden="true" focusable="false" height="2.262ex" role="img"
+                                     style="vertical-align: -0.566ex;" viewBox="0 -750 9034.3 1000"
+                                     width="20.44ex" xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <defs>
+                                        <path d="M84 250Q84 372 166 450T360 539Q361 539 377 539T419 540T469 540H568Q583 532 583 520Q583 511 570 501L466 500Q355 499 329 494Q280 482 242 458T183 409T147 354T129 306T124 272V270H568Q583 262 583 250T568 230H124V228Q124 207 134 177T167 112T231 48T328 7Q355 1 466 0H570Q583 -10 583 -20Q583 -32 568 -40H471Q464 -40 446 -40T417 -41Q262 -41 172 45Q84 127 84 250Z"
+                                              id="MJX-23-TEX-N-2208"></path>
+                                        <path d="M118 -250V750H255V710H158V-210H255V-250H118Z"
+                                              id="MJX-23-TEX-N-5B"></path>
+                                        <path d="M174 734Q178 746 190 750H298H369Q400 750 411 747T422 730T411 713T372 709Q365 709 345 709T310 710H214V-235Q206 -248 196 -250Q192 -250 189 -249T184 -247T180 -244T178 -241T176 -237T174 -234V734Z"
+                                              id="MJX-23-TEX-N-2308"></path>
+                                        <path d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"
+                                              id="MJX-23-TEX-I-1D45A"></path>
+                                        <path d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"
+                                              id="MJX-23-TEX-N-2F"></path>
+                                        <path d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"
+                                              id="MJX-23-TEX-N-32"></path>
+                                        <path d="M21 717T21 730T32 746T75 750H147H256Q266 742 269 735V-235Q262 -248 251 -250Q247 -250 244 -249T239 -247T235 -244T233 -241T231 -237T229 -234V710H133Q119 710 99 710T71 709Q43 709 32 713Z"
+                                              id="MJX-23-TEX-N-2309"></path>
+                                        <path d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"
+                                              id="MJX-23-TEX-N-2212"></path>
+                                        <path d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"
+                                              id="MJX-23-TEX-N-31"></path>
+                                        <path d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"
+                                              id="MJX-23-TEX-N-2C"></path>
+                                        <path d="M22 710V750H159V-250H22V-210H119V710H22Z" id="MJX-23-TEX-N-5D"></path>
+                                    </defs>
+                                    <g fill="currentColor" stroke="currentColor" stroke-width="0"
+                                       transform="scale(1,-1)">
+                                        <g data-mml-node="math">
+                                            <g data-mml-node="mo">
+                                                <use data-c="2208" xlink:href="#MJX-23-TEX-N-2208"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(944.8,0)">
+                                                <use data-c="5B" xlink:href="#MJX-23-TEX-N-5B"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(1222.8,0)">
+                                                <use data-c="2308" xlink:href="#MJX-23-TEX-N-2308"></use>
+                                            </g>
+                                            <g data-mml-node="mi" transform="translate(1666.8,0)">
+                                                <use data-c="1D45A" xlink:href="#MJX-23-TEX-I-1D45A"></use>
+                                            </g>
+                                            <g data-mjx-texclass="ORD" data-mml-node="TeXAtom"
+                                               transform="translate(2544.8,0)">
+                                                <g data-mml-node="mo">
+                                                    <use data-c="2F" xlink:href="#MJX-23-TEX-N-2F"></use>
+                                                </g>
+                                            </g>
+                                            <g data-mml-node="mn" transform="translate(3044.8,0)">
+                                                <use data-c="32" xlink:href="#MJX-23-TEX-N-32"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(3544.8,0)">
+                                                <use data-c="2309" xlink:href="#MJX-23-TEX-N-2309"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(4211,0)">
+                                                <use data-c="2212" xlink:href="#MJX-23-TEX-N-2212"></use>
+                                            </g>
+                                            <g data-mml-node="mn" transform="translate(5211.2,0)">
+                                                <use data-c="31" xlink:href="#MJX-23-TEX-N-31"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(5711.2,0)">
+                                                <use data-c="2C" xlink:href="#MJX-23-TEX-N-2C"></use>
+                                            </g>
+                                            <g data-mml-node="mi" transform="translate(6155.9,0)">
+                                                <use data-c="1D45A" xlink:href="#MJX-23-TEX-I-1D45A"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(7256.1,0)">
+                                                <use data-c="2212" xlink:href="#MJX-23-TEX-N-2212"></use>
+                                            </g>
+                                            <g data-mml-node="mn" transform="translate(8256.3,0)">
+                                                <use data-c="31" xlink:href="#MJX-23-TEX-N-31"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(8756.3,0)">
+                                                <use data-c="5D" xlink:href="#MJX-23-TEX-N-5D"></use>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                                <mjx-assistive-mml display="inline" unselectable="on">
+                                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mo>∈</mo>
+                                        <mo stretchy="false">[</mo>
+                                        <mo fence="false" stretchy="false">⌈</mo>
+                                        <mi>m</mi>
+                                        <mrow data-mjx-texclass="ORD">
+                                            <mo>/</mo>
+                                        </mrow>
+                                        <mn>2</mn>
+                                        <mo fence="false" stretchy="false">⌉</mo>
+                                        <mo>−</mo>
+                                        <mn>1</mn>
+                                        <mo>,</mo>
+                                        <mi>m</mi>
+                                        <mo>−</mo>
+                                        <mn>1</mn>
+                                        <mo stretchy="false">]</mo>
+                                    </math>
+                                </mjx-assistive-mml>
+                            </mjx-container>
+                            <script type="math/tex">\in [\lceil m/2 \rceil -1, m-1]</script>
+                        </p>
+                    </li>
+                    <li><p>
+                        <span>结点中关键字从左到右递增有序，关键字两侧均有指向子树的指针，左边指针所指子树的所有关键字均小于该关键字，右边指针所指子树的所有关键字均大于该关键字</span>
+                    </p></li>
+                    <li>
+                        <p><span>n个关键字的B树必有n+1个叶子结点，</span>
+                            <mjx-container class="MathJax" jax="SVG" style="position: relative;">
+                                <svg aria-hidden="true" focusable="false" height="2.497ex" role="img"
+                                     style="vertical-align: -0.566ex;" viewBox="0 -853.7 9094 1103.7"
+                                     width="20.575ex" xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <defs>
+                                        <path d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"
+                                              id="MJX-24-TEX-I-1D45B"></path>
+                                        <path d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"
+                                              id="MJX-24-TEX-N-2B"></path>
+                                        <path d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"
+                                              id="MJX-24-TEX-N-31"></path>
+                                        <path d="M83 616Q83 624 89 630T99 636Q107 636 253 568T543 431T687 361Q694 356 694 346T687 331Q685 329 395 192L107 56H101Q83 58 83 76Q83 77 83 79Q82 86 98 95Q117 105 248 167Q326 204 378 228L626 346L360 472Q291 505 200 548Q112 589 98 597T83 616ZM84 -118Q84 -108 99 -98H678Q694 -104 694 -118Q694 -130 679 -138H98Q84 -131 84 -118Z"
+                                              id="MJX-24-TEX-N-2265"></path>
+                                        <path d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"
+                                              id="MJX-24-TEX-N-32"></path>
+                                        <path d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"
+                                              id="MJX-24-TEX-N-28"></path>
+                                        <path d="M174 734Q178 746 190 750H298H369Q400 750 411 747T422 730T411 713T372 709Q365 709 345 709T310 710H214V-235Q206 -248 196 -250Q192 -250 189 -249T184 -247T180 -244T178 -241T176 -237T174 -234V734Z"
+                                              id="MJX-24-TEX-N-2308"></path>
+                                        <path d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"
+                                              id="MJX-24-TEX-I-1D45A"></path>
+                                        <path d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"
+                                              id="MJX-24-TEX-N-2F"></path>
+                                        <path d="M21 717T21 730T32 746T75 750H147H256Q266 742 269 735V-235Q262 -248 251 -250Q247 -250 244 -249T239 -247T235 -244T233 -241T231 -237T229 -234V710H133Q119 710 99 710T71 709Q43 709 32 713Z"
+                                              id="MJX-24-TEX-N-2309"></path>
+                                        <path d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"
+                                              id="MJX-24-TEX-N-29"></path>
+                                        <path d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z"
+                                              id="MJX-24-TEX-I-210E"></path>
+                                        <path d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"
+                                              id="MJX-24-TEX-N-2212"></path>
+                                    </defs>
+                                    <g fill="currentColor" stroke="currentColor" stroke-width="0"
+                                       transform="scale(1,-1)">
+                                        <g data-mml-node="math">
+                                            <g data-mml-node="mi">
+                                                <use data-c="1D45B" xlink:href="#MJX-24-TEX-I-1D45B"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(822.2,0)">
+                                                <use data-c="2B" xlink:href="#MJX-24-TEX-N-2B"></use>
+                                            </g>
+                                            <g data-mml-node="mn" transform="translate(1822.4,0)">
+                                                <use data-c="31" xlink:href="#MJX-24-TEX-N-31"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(2600.2,0)">
+                                                <use data-c="2265" xlink:href="#MJX-24-TEX-N-2265"></use>
+                                            </g>
+                                            <g data-mml-node="mn" transform="translate(3656,0)">
+                                                <use data-c="32" xlink:href="#MJX-24-TEX-N-32"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(4156,0)">
+                                                <use data-c="28" xlink:href="#MJX-24-TEX-N-28"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(4545,0)">
+                                                <use data-c="2308" xlink:href="#MJX-24-TEX-N-2308"></use>
+                                            </g>
+                                            <g data-mml-node="mi" transform="translate(4989,0)">
+                                                <use data-c="1D45A" xlink:href="#MJX-24-TEX-I-1D45A"></use>
+                                            </g>
+                                            <g data-mjx-texclass="ORD" data-mml-node="TeXAtom"
+                                               transform="translate(5867,0)">
+                                                <g data-mml-node="mo">
+                                                    <use data-c="2F" xlink:href="#MJX-24-TEX-N-2F"></use>
+                                                </g>
+                                            </g>
+                                            <g data-mml-node="mn" transform="translate(6367,0)">
+                                                <use data-c="32" xlink:href="#MJX-24-TEX-N-32"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(6867,0)">
+                                                <use data-c="2309" xlink:href="#MJX-24-TEX-N-2309"></use>
+                                            </g>
+                                            <g data-mml-node="msup" transform="translate(7311,0)">
+                                                <g data-mml-node="mo">
+                                                    <use data-c="29" xlink:href="#MJX-24-TEX-N-29"></use>
+                                                </g>
+                                                <g data-mjx-texclass="ORD" data-mml-node="TeXAtom"
+                                                   transform="translate(422,363) scale(0.707)">
+                                                    <g data-mml-node="mi">
+                                                        <use data-c="210E" xlink:href="#MJX-24-TEX-I-210E"></use>
+                                                    </g>
+                                                    <g data-mml-node="mo" transform="translate(576,0)">
+                                                        <use data-c="2212" xlink:href="#MJX-24-TEX-N-2212"></use>
+                                                    </g>
+                                                    <g data-mml-node="mn" transform="translate(1354,0)">
+                                                        <use data-c="31" xlink:href="#MJX-24-TEX-N-31"></use>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                                <mjx-assistive-mml display="inline" unselectable="on">
+                                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>n</mi>
+                                        <mo>+</mo>
+                                        <mn>1</mn>
+                                        <mo>≥</mo>
+                                        <mn>2</mn>
+                                        <mo stretchy="false">(</mo>
+                                        <mo fence="false" stretchy="false">⌈</mo>
+                                        <mi>m</mi>
+                                        <mrow data-mjx-texclass="ORD">
+                                            <mo>/</mo>
+                                        </mrow>
+                                        <mn>2</mn>
+                                        <mo fence="false" stretchy="false">⌉</mo>
+                                        <msup>
+                                            <mo stretchy="false">)</mo>
+                                            <mrow data-mjx-texclass="ORD">
+                                                <mi>h</mi>
+                                                <mo>−</mo>
+                                                <mn>1</mn>
+                                            </mrow>
+                                        </msup>
+                                    </math>
+                                </mjx-assistive-mml>
+                            </mjx-container>
+                            <script type="math/tex">n+1 \ge 2(\lceil m/2 \rceil)^{h-1}</script>
+                            <span>, 即</span>
+                            <mjx-container class="MathJax" jax="SVG" style="position: relative;">
+                                <svg aria-hidden="true" focusable="false" height="2.766ex" role="img"
+                                     style="vertical-align: -0.8ex;" viewBox="0 -868.9 8698.8 1222.4"
+                                     width="19.681ex" xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <defs>
+                                        <path d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z"
+                                              id="MJX-25-TEX-I-210E"></path>
+                                        <path d="M674 636Q682 636 688 630T694 615T687 601Q686 600 417 472L151 346L399 228Q687 92 691 87Q694 81 694 76Q694 58 676 56H670L382 192Q92 329 90 331Q83 336 83 348Q84 359 96 365Q104 369 382 500T665 634Q669 636 674 636ZM84 -118Q84 -108 99 -98H678Q694 -104 694 -118Q694 -130 679 -138H98Q84 -131 84 -118Z"
+                                              id="MJX-25-TEX-N-2264"></path>
+                                        <path d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"
+                                              id="MJX-25-TEX-I-1D459"></path>
+                                        <path d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"
+                                              id="MJX-25-TEX-I-1D45C"></path>
+                                        <path d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"
+                                              id="MJX-25-TEX-I-1D454"></path>
+                                        <path d="M174 734Q178 746 190 750H298H369Q400 750 411 747T422 730T411 713T372 709Q365 709 345 709T310 710H214V-235Q206 -248 196 -250Q192 -250 189 -249T184 -247T180 -244T178 -241T176 -237T174 -234V734Z"
+                                              id="MJX-25-TEX-N-2308"></path>
+                                        <path d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"
+                                              id="MJX-25-TEX-I-1D45A"></path>
+                                        <path d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"
+                                              id="MJX-25-TEX-N-2F"></path>
+                                        <path d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"
+                                              id="MJX-25-TEX-N-32"></path>
+                                        <path d="M21 717T21 730T32 746T75 750H147H256Q266 742 269 735V-235Q262 -248 251 -250Q247 -250 244 -249T239 -247T235 -244T233 -241T231 -237T229 -234V710H133Q119 710 99 710T71 709Q43 709 32 713Z"
+                                              id="MJX-25-TEX-N-2309"></path>
+                                        <path d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"
+                                              id="MJX-25-TEX-I-1D45B"></path>
+                                        <path d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"
+                                              id="MJX-25-TEX-N-2B"></path>
+                                        <path d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"
+                                              id="MJX-25-TEX-N-31"></path>
+                                    </defs>
+                                    <g fill="currentColor" stroke="currentColor" stroke-width="0"
+                                       transform="scale(1,-1)">
+                                        <g data-mml-node="math">
+                                            <g data-mml-node="mi">
+                                                <use data-c="210E" xlink:href="#MJX-25-TEX-I-210E"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(853.8,0)">
+                                                <use data-c="2264" xlink:href="#MJX-25-TEX-N-2264"></use>
+                                            </g>
+                                            <g data-mml-node="mi" transform="translate(1909.6,0)">
+                                                <use data-c="1D459" xlink:href="#MJX-25-TEX-I-1D459"></use>
+                                            </g>
+                                            <g data-mml-node="mi" transform="translate(2207.6,0)">
+                                                <use data-c="1D45C" xlink:href="#MJX-25-TEX-I-1D45C"></use>
+                                            </g>
+                                            <g data-mml-node="msub" transform="translate(2692.6,0)">
+                                                <g data-mml-node="mi">
+                                                    <use data-c="1D454" xlink:href="#MJX-25-TEX-I-1D454"></use>
+                                                </g>
+                                                <g data-mjx-texclass="ORD"
+                                                   data-mml-node="TeXAtom"
+                                                   transform="translate(510,-176.7) scale(0.707)">
+                                                    <g data-mml-node="mo">
+                                                        <use data-c="2308" xlink:href="#MJX-25-TEX-N-2308"></use>
+                                                    </g>
+                                                    <g data-mml-node="mi" transform="translate(444,0)">
+                                                        <use data-c="1D45A" xlink:href="#MJX-25-TEX-I-1D45A"></use>
+                                                    </g>
+                                                    <g data-mjx-texclass="ORD" data-mml-node="TeXAtom"
+                                                       transform="translate(1322,0)">
+                                                        <g data-mml-node="mo">
+                                                            <use data-c="2F" xlink:href="#MJX-25-TEX-N-2F"></use>
+                                                        </g>
+                                                    </g>
+                                                    <g data-mml-node="mn" transform="translate(1822,0)">
+                                                        <use data-c="32" xlink:href="#MJX-25-TEX-N-32"></use>
+                                                    </g>
+                                                    <g data-mml-node="mo" transform="translate(2322,0)">
+                                                        <use data-c="2309" xlink:href="#MJX-25-TEX-N-2309"></use>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                            <g data-mml-node="mfrac" transform="translate(5208.4,0)">
+                                                <g data-mml-node="mrow" transform="translate(220,398) scale(0.707)">
+                                                    <g data-mml-node="mi">
+                                                        <use data-c="1D45B" xlink:href="#MJX-25-TEX-I-1D45B"></use>
+                                                    </g>
+                                                    <g data-mml-node="mo" transform="translate(600,0)">
+                                                        <use data-c="2B" xlink:href="#MJX-25-TEX-N-2B"></use>
+                                                    </g>
+                                                    <g data-mml-node="mn" transform="translate(1378,0)">
+                                                        <use data-c="31" xlink:href="#MJX-25-TEX-N-31"></use>
+                                                    </g>
+                                                </g>
+                                                <g data-mml-node="mn" transform="translate(707.2,-345) scale(0.707)">
+                                                    <use data-c="32" xlink:href="#MJX-25-TEX-N-32"></use>
+                                                </g>
+                                                <rect height="60" width="1527.9" x="120" y="220"></rect>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(7198.6,0)">
+                                                <use data-c="2B" xlink:href="#MJX-25-TEX-N-2B"></use>
+                                            </g>
+                                            <g data-mml-node="mn" transform="translate(8198.8,0)">
+                                                <use data-c="31" xlink:href="#MJX-25-TEX-N-31"></use>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                                <mjx-assistive-mml display="inline" unselectable="on">
+                                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>h</mi>
+                                        <mo>≤</mo>
+                                        <mi>l</mi>
+                                        <mi>o</mi>
+                                        <msub>
+                                            <mi>g</mi>
+                                            <mrow data-mjx-texclass="ORD">
+                                                <mo fence="false" stretchy="false">⌈</mo>
+                                                <mi>m</mi>
+                                                <mrow data-mjx-texclass="ORD">
+                                                    <mo>/</mo>
+                                                </mrow>
+                                                <mn>2</mn>
+                                                <mo fence="false" stretchy="false">⌉</mo>
+                                            </mrow>
+                                        </msub>
+                                        <mfrac>
+                                            <mrow>
+                                                <mi>n</mi>
+                                                <mo>+</mo>
+                                                <mn>1</mn>
+                                            </mrow>
+                                            <mn>2</mn>
+                                        </mfrac>
+                                        <mo>+</mo>
+                                        <mn>1</mn>
+                                    </math>
+                                </mjx-assistive-mml>
+                            </mjx-container>
+                            <script type="math/tex">h \le log_{\lceil m/2
+\rceil}\frac{n+1}2+1
+                            </script>
+                        </p>
+                    </li>
+                </ul>
+            </li>
+            <li><p><span>B树的高度</span></p>
+                <ul>
+                    <li><span>大多数情况不包括叶子结点（失败结点）那一层</span></li>
+                    <li><span>包含n个关键字，阶数为m的B树</span></li>
+                    <li><span>树高</span>
+                        <mjx-container class="MathJax" jax="SVG" style="position: relative;">
+                            <svg aria-hidden="true" focusable="false" height="2.262ex" role="img"
+                                 style="vertical-align: -0.566ex;" viewBox="0 -750 6973.8 1000"
+                                 width="15.778ex" xmlns="http://www.w3.org/2000/svg"
+                                 xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <defs>
+                                    <path d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z"
+                                          id="MJX-26-TEX-I-210E"></path>
+                                    <path d="M83 616Q83 624 89 630T99 636Q107 636 253 568T543 431T687 361Q694 356 694 346T687 331Q685 329 395 192L107 56H101Q83 58 83 76Q83 77 83 79Q82 86 98 95Q117 105 248 167Q326 204 378 228L626 346L360 472Q291 505 200 548Q112 589 98 597T83 616ZM84 -118Q84 -108 99 -98H678Q694 -104 694 -118Q694 -130 679 -138H98Q84 -131 84 -118Z"
+                                          id="MJX-26-TEX-N-2265"></path>
+                                    <path d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"
+                                          id="MJX-26-TEX-I-1D459"></path>
+                                    <path d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"
+                                          id="MJX-26-TEX-I-1D45C"></path>
+                                    <path d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"
+                                          id="MJX-26-TEX-I-1D454"></path>
+                                    <path d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"
+                                          id="MJX-26-TEX-I-1D45A"></path>
+                                    <path d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"
+                                          id="MJX-26-TEX-N-28"></path>
+                                    <path d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"
+                                          id="MJX-26-TEX-I-1D45B"></path>
+                                    <path d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"
+                                          id="MJX-26-TEX-N-2B"></path>
+                                    <path d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"
+                                          id="MJX-26-TEX-N-31"></path>
+                                    <path d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"
+                                          id="MJX-26-TEX-N-29"></path>
+                                </defs>
+                                <g fill="currentColor" stroke="currentColor" stroke-width="0" transform="scale(1,-1)">
+                                    <g data-mml-node="math">
+                                        <g data-mml-node="mi">
+                                            <use data-c="210E" xlink:href="#MJX-26-TEX-I-210E"></use>
+                                        </g>
+                                        <g data-mml-node="mo" transform="translate(853.8,0)">
+                                            <use data-c="2265" xlink:href="#MJX-26-TEX-N-2265"></use>
+                                        </g>
+                                        <g data-mml-node="mi" transform="translate(1909.6,0)">
+                                            <use data-c="1D459" xlink:href="#MJX-26-TEX-I-1D459"></use>
+                                        </g>
+                                        <g data-mml-node="mi" transform="translate(2207.6,0)">
+                                            <use data-c="1D45C" xlink:href="#MJX-26-TEX-I-1D45C"></use>
+                                        </g>
+                                        <g data-mml-node="msub" transform="translate(2692.6,0)">
+                                            <g data-mml-node="mi">
+                                                <use data-c="1D454" xlink:href="#MJX-26-TEX-I-1D454"></use>
+                                            </g>
+                                            <g data-mml-node="mi" transform="translate(510,-150) scale(0.707)">
+                                                <use data-c="1D45A" xlink:href="#MJX-26-TEX-I-1D45A"></use>
+                                            </g>
+                                        </g>
+                                        <g data-mml-node="mo" transform="translate(3873.4,0)">
+                                            <use data-c="28" xlink:href="#MJX-26-TEX-N-28"></use>
+                                        </g>
+                                        <g data-mml-node="mi" transform="translate(4262.4,0)">
+                                            <use data-c="1D45B" xlink:href="#MJX-26-TEX-I-1D45B"></use>
+                                        </g>
+                                        <g data-mml-node="mo" transform="translate(5084.6,0)">
+                                            <use data-c="2B" xlink:href="#MJX-26-TEX-N-2B"></use>
+                                        </g>
+                                        <g data-mml-node="mn" transform="translate(6084.8,0)">
+                                            <use data-c="31" xlink:href="#MJX-26-TEX-N-31"></use>
+                                        </g>
+                                        <g data-mml-node="mo" transform="translate(6584.8,0)">
+                                            <use data-c="29" xlink:href="#MJX-26-TEX-N-29"></use>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                            <mjx-assistive-mml display="inline" unselectable="on">
+                                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mi>h</mi>
+                                    <mo>≥</mo>
+                                    <mi>l</mi>
+                                    <mi>o</mi>
+                                    <msub>
+                                        <mi>g</mi>
+                                        <mi>m</mi>
+                                    </msub>
+                                    <mo stretchy="false">(</mo>
+                                    <mi>n</mi>
+                                    <mo>+</mo>
+                                    <mn>1</mn>
+                                    <mo stretchy="false">)</mo>
+                                </math>
+                            </mjx-assistive-mml>
+                        </mjx-container>
+                        <script type="math/tex">h \ge log_m(n+1)</script>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h2 id='查找'><span>查找</span></h2>
+        <p><span>现在b树上查找结点，然后在结点内查找关键字</span></p>
+        <p><span>与二叉排序树的查找相似（只是多了个结点内的查找，可以顺序查找或者折半查找）</span></p>
+        <h2 id='插入'><span>插入</span></h2>
+        <p>
+            <span>先往一个结点里放，放满了就把这个结点分成3个结点，中间的关键字作为父结点，中间关键字的左右两边分别作为左右子结点</span>
+        </p>
+        <ul>
+            <li>
+                <p><span>在插入key后，若导致愿结点的关键字数超过上限，则从中间位置(</span>
+                    <mjx-container class="MathJax" jax="SVG" style="position: relative;">
+                        <svg aria-hidden="true" focusable="false" height="2.262ex" role="img"
+                             style="vertical-align: -0.566ex;" viewBox="0 -750 2766 1000" width="6.258ex"
+                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <defs>
+                                <path d="M174 734Q178 746 190 750H298H369Q400 750 411 747T422 730T411 713T372 709Q365 709 345 709T310 710H214V-235Q206 -248 196 -250Q192 -250 189 -249T184 -247T180 -244T178 -241T176 -237T174 -234V734Z"
+                                      id="MJX-28-TEX-N-2308"></path>
+                                <path d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"
+                                      id="MJX-28-TEX-I-1D45A"></path>
+                                <path d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"
+                                      id="MJX-28-TEX-N-2F"></path>
+                                <path d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"
+                                      id="MJX-28-TEX-N-32"></path>
+                                <path d="M21 717T21 730T32 746T75 750H147H256Q266 742 269 735V-235Q262 -248 251 -250Q247 -250 244 -249T239 -247T235 -244T233 -241T231 -237T229 -234V710H133Q119 710 99 710T71 709Q43 709 32 713Z"
+                                      id="MJX-28-TEX-N-2309"></path>
+                            </defs>
+                            <g fill="currentColor" stroke="currentColor" stroke-width="0" transform="scale(1,-1)">
+                                <g data-mml-node="math">
+                                    <g data-mml-node="mo">
+                                        <use data-c="2308" xlink:href="#MJX-28-TEX-N-2308"></use>
+                                    </g>
+                                    <g data-mml-node="mi" transform="translate(444,0)">
+                                        <use data-c="1D45A" xlink:href="#MJX-28-TEX-I-1D45A"></use>
+                                    </g>
+                                    <g data-mjx-texclass="ORD" data-mml-node="TeXAtom" transform="translate(1322,0)">
+                                        <g data-mml-node="mo">
+                                            <use data-c="2F" xlink:href="#MJX-28-TEX-N-2F"></use>
+                                        </g>
+                                    </g>
+                                    <g data-mml-node="mn" transform="translate(1822,0)">
+                                        <use data-c="32" xlink:href="#MJX-28-TEX-N-32"></use>
+                                    </g>
+                                    <g data-mml-node="mo" transform="translate(2322,0)">
+                                        <use data-c="2309" xlink:href="#MJX-28-TEX-N-2309"></use>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                        <mjx-assistive-mml display="inline" unselectable="on">
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mo fence="false" stretchy="false">⌈</mo>
+                                <mi>m</mi>
+                                <mrow data-mjx-texclass="ORD">
+                                    <mo>/</mo>
+                                </mrow>
+                                <mn>2</mn>
+                                <mo fence="false" stretchy="false">⌉</mo>
+                            </math>
+                        </mjx-assistive-mml>
+                    </mjx-container>
+                    <script type="math/tex">\lceil m/2 \rceil</script>
+                    <span>)</span>
+                    <span>将其中的关键字分为两部分，左部分包含关键字放在原结点中，右部分包含的关键字放到新结点中，中间位置(</span>
+                    <mjx-container class="MathJax" jax="SVG" style="position: relative;">
+                        <svg aria-hidden="true" focusable="false" height="2.262ex" role="img"
+                             style="vertical-align: -0.566ex;" viewBox="0 -750 2766 1000" width="6.258ex"
+                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <defs>
+                                <path d="M174 734Q178 746 190 750H298H369Q400 750 411 747T422 730T411 713T372 709Q365 709 345 709T310 710H214V-235Q206 -248 196 -250Q192 -250 189 -249T184 -247T180 -244T178 -241T176 -237T174 -234V734Z"
+                                      id="MJX-28-TEX-N-2308"></path>
+                                <path d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"
+                                      id="MJX-28-TEX-I-1D45A"></path>
+                                <path d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"
+                                      id="MJX-28-TEX-N-2F"></path>
+                                <path d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"
+                                      id="MJX-28-TEX-N-32"></path>
+                                <path d="M21 717T21 730T32 746T75 750H147H256Q266 742 269 735V-235Q262 -248 251 -250Q247 -250 244 -249T239 -247T235 -244T233 -241T231 -237T229 -234V710H133Q119 710 99 710T71 709Q43 709 32 713Z"
+                                      id="MJX-28-TEX-N-2309"></path>
+                            </defs>
+                            <g fill="currentColor" stroke="currentColor" stroke-width="0" transform="scale(1,-1)">
+                                <g data-mml-node="math">
+                                    <g data-mml-node="mo">
+                                        <use data-c="2308" xlink:href="#MJX-28-TEX-N-2308"></use>
+                                    </g>
+                                    <g data-mml-node="mi" transform="translate(444,0)">
+                                        <use data-c="1D45A" xlink:href="#MJX-28-TEX-I-1D45A"></use>
+                                    </g>
+                                    <g data-mjx-texclass="ORD" data-mml-node="TeXAtom" transform="translate(1322,0)">
+                                        <g data-mml-node="mo">
+                                            <use data-c="2F" xlink:href="#MJX-28-TEX-N-2F"></use>
+                                        </g>
+                                    </g>
+                                    <g data-mml-node="mn" transform="translate(1822,0)">
+                                        <use data-c="32" xlink:href="#MJX-28-TEX-N-32"></use>
+                                    </g>
+                                    <g data-mml-node="mo" transform="translate(2322,0)">
+                                        <use data-c="2309" xlink:href="#MJX-28-TEX-N-2309"></use>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                        <mjx-assistive-mml display="inline" unselectable="on">
+                            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mo fence="false" stretchy="false">⌈</mo>
+                                <mi>m</mi>
+                                <mrow data-mjx-texclass="ORD">
+                                    <mo>/</mo>
+                                </mrow>
+                                <mn>2</mn>
+                                <mo fence="false" stretchy="false">⌉</mo>
+                            </math>
+                        </mjx-assistive-mml>
+                    </mjx-container>
+                    <script type="math/tex">\lceil m/2 \rceil</script>
+                    <span>)</span>
+                    <span>的结点插入原结点的父结点。如果导致父结点的关键字数也超过上限，则继续进行这种分裂操作，直到传到根结点</span>
+                </p>
+                <ul>
+                    <li><img alt="r1wAj2"
+                             referrerpolicy="no-referrer" src="https://cdn.staticaly.com/gh/tippye/PicCloud@master/uPic/2023/02/05/r1wAj2.png"></li>
+                </ul>
+            </li>
+            <li><p><strong><span>新元素一定是插入到最底层“终端结点”</span></strong><span>，用“查找”来确定插入位置</span>
+            </p>
+                <ul>
+                    <li><img alt="mWsXkF"
+                             referrerpolicy="no-referrer" src="https://cdn.staticaly.com/gh/tippye/PicCloud@master/uPic/2023/02/05/mWsXkF.png"></li>
+                </ul>
+            </li>
+            <li><p><span>B树的失败结点只能出现在最下边一层</span></p>
+                <ul>
+                    <li><img alt="zbrOMv"
+                             referrerpolicy="no-referrer" src="https://cdn.staticaly.com/gh/tippye/PicCloud@master/uPic/2023/02/05/zbrOMv.png"></li>
+                </ul>
+            </li>
+            <li><p><span>子结点插满</span></p>
+                <ul>
+                    <li><img alt="gfk4e3"
+                             referrerpolicy="no-referrer" src="https://cdn.staticaly.com/gh/tippye/PicCloud@master/uPic/2023/02/05/gfk4e3.png"></li>
+                </ul>
+            </li>
+            <li><p><span>子结点插满，父结点也插满</span></p>
+                <ul>
+                    <li><img alt="B0w6ts"
+                             referrerpolicy="no-referrer" src="https://cdn.staticaly.com/gh/tippye/PicCloud@master/uPic/2023/02/05/B0w6ts.png"></li>
+                </ul>
+            </li>
+            <li><p><span>插入操作的核心要求</span></p>
+                <ul>
+                    <li><span>对m阶B树，除根结点外，结点关键字个数</span>
+                        <mjx-container class="MathJax" jax="SVG" style="position: relative;">
+                            <svg aria-hidden="true" focusable="false" height="2.262ex" role="img"
+                                 style="vertical-align: -0.566ex;" viewBox="0 -750 10356 1000"
+                                 width="23.43ex" xmlns="http://www.w3.org/2000/svg"
+                                 xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <defs>
+                                    <path d="M174 734Q178 746 190 750H298H369Q400 750 411 747T422 730T411 713T372 709Q365 709 345 709T310 710H214V-235Q206 -248 196 -250Q192 -250 189 -249T184 -247T180 -244T178 -241T176 -237T174 -234V734Z"
+                                          id="MJX-29-TEX-N-2308"></path>
+                                    <path d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"
+                                          id="MJX-29-TEX-I-1D45A"></path>
+                                    <path d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"
+                                          id="MJX-29-TEX-N-2F"></path>
+                                    <path d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"
+                                          id="MJX-29-TEX-N-32"></path>
+                                    <path d="M21 717T21 730T32 746T75 750H147H256Q266 742 269 735V-235Q262 -248 251 -250Q247 -250 244 -249T239 -247T235 -244T233 -241T231 -237T229 -234V710H133Q119 710 99 710T71 709Q43 709 32 713Z"
+                                          id="MJX-29-TEX-N-2309"></path>
+                                    <path d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"
+                                          id="MJX-29-TEX-N-2212"></path>
+                                    <path d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"
+                                          id="MJX-29-TEX-N-31"></path>
+                                    <path d="M674 636Q682 636 688 630T694 615T687 601Q686 600 417 472L151 346L399 228Q687 92 691 87Q694 81 694 76Q694 58 676 56H670L382 192Q92 329 90 331Q83 336 83 348Q84 359 96 365Q104 369 382 500T665 634Q669 636 674 636ZM84 -118Q84 -108 99 -98H678Q694 -104 694 -118Q694 -130 679 -138H98Q84 -131 84 -118Z"
+                                          id="MJX-29-TEX-N-2264"></path>
+                                    <path d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"
+                                          id="MJX-29-TEX-I-1D45B"></path>
+                                </defs>
+                                <g fill="currentColor" stroke="currentColor" stroke-width="0" transform="scale(1,-1)">
+                                    <g data-mml-node="math">
+                                        <g data-mml-node="mo">
+                                            <use data-c="2308" xlink:href="#MJX-29-TEX-N-2308"></use>
+                                        </g>
+                                        <g data-mml-node="mi" transform="translate(444,0)">
+                                            <use data-c="1D45A" xlink:href="#MJX-29-TEX-I-1D45A"></use>
+                                        </g>
+                                        <g data-mjx-texclass="ORD" data-mml-node="TeXAtom"
+                                           transform="translate(1322,0)">
+                                            <g data-mml-node="mo">
+                                                <use data-c="2F" xlink:href="#MJX-29-TEX-N-2F"></use>
+                                            </g>
+                                        </g>
+                                        <g data-mml-node="mn" transform="translate(1822,0)">
+                                            <use data-c="32" xlink:href="#MJX-29-TEX-N-32"></use>
+                                        </g>
+                                        <g data-mml-node="mo" transform="translate(2322,0)">
+                                            <use data-c="2309" xlink:href="#MJX-29-TEX-N-2309"></use>
+                                        </g>
+                                        <g data-mml-node="mo" transform="translate(2988.2,0)">
+                                            <use data-c="2212" xlink:href="#MJX-29-TEX-N-2212"></use>
+                                        </g>
+                                        <g data-mml-node="mn" transform="translate(3988.4,0)">
+                                            <use data-c="31" xlink:href="#MJX-29-TEX-N-31"></use>
+                                        </g>
+                                        <g data-mml-node="mo" transform="translate(4766.2,0)">
+                                            <use data-c="2264" xlink:href="#MJX-29-TEX-N-2264"></use>
+                                        </g>
+                                        <g data-mml-node="mi" transform="translate(5822,0)">
+                                            <use data-c="1D45B" xlink:href="#MJX-29-TEX-I-1D45B"></use>
+                                        </g>
+                                        <g data-mml-node="mo" transform="translate(6699.8,0)">
+                                            <use data-c="2264" xlink:href="#MJX-29-TEX-N-2264"></use>
+                                        </g>
+                                        <g data-mml-node="mi" transform="translate(7755.6,0)">
+                                            <use data-c="1D45A" xlink:href="#MJX-29-TEX-I-1D45A"></use>
+                                        </g>
+                                        <g data-mml-node="mo" transform="translate(8855.8,0)">
+                                            <use data-c="2212" xlink:href="#MJX-29-TEX-N-2212"></use>
+                                        </g>
+                                        <g data-mml-node="mn" transform="translate(9856,0)">
+                                            <use data-c="31" xlink:href="#MJX-29-TEX-N-31"></use>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                            <mjx-assistive-mml display="inline" unselectable="on">
+                                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mo fence="false" stretchy="false">⌈</mo>
+                                    <mi>m</mi>
+                                    <mrow data-mjx-texclass="ORD">
+                                        <mo>/</mo>
+                                    </mrow>
+                                    <mn>2</mn>
+                                    <mo fence="false" stretchy="false">⌉</mo>
+                                    <mo>−</mo>
+                                    <mn>1</mn>
+                                    <mo>≤</mo>
+                                    <mi>n</mi>
+                                    <mo>≤</mo>
+                                    <mi>m</mi>
+                                    <mo>−</mo>
+                                    <mn>1</mn>
+                                </math>
+                            </mjx-assistive-mml>
+                        </mjx-container>
+                        <script type="math/tex">\lceil m/2 \rceil - 1 \leq n \leq m - 1</script>
+                    </li>
+                    <li><span>子树0 &lt; 关键字1 &lt; 子树1 &lt; 关键字2 &lt; 子树2 &lt; ····</span></li>
+                </ul>
+            </li>
+        </ul>
+        <h2 id='删除'><span>删除</span></h2>
+        <ul>
+            <li><p><span>被删除关键字在终端结点</span></p>
+                <ul>
+                    <li><p><span>直接删除</span></p></li>
+                    <li>
+                        <p><span>需要注意结点关键字是否低于下限</span>
+                            <mjx-container class="MathJax" jax="SVG" style="position: relative;">
+                                <svg aria-hidden="true" focusable="false" height="2.262ex" role="img"
+                                     style="vertical-align: -0.566ex;" viewBox="0 -750 4488.4 1000"
+                                     width="10.155ex" xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <defs>
+                                        <path d="M174 734Q178 746 190 750H298H369Q400 750 411 747T422 730T411 713T372 709Q365 709 345 709T310 710H214V-235Q206 -248 196 -250Q192 -250 189 -249T184 -247T180 -244T178 -241T176 -237T174 -234V734Z"
+                                              id="MJX-30-TEX-N-2308"></path>
+                                        <path d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"
+                                              id="MJX-30-TEX-I-1D45A"></path>
+                                        <path d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"
+                                              id="MJX-30-TEX-N-2F"></path>
+                                        <path d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"
+                                              id="MJX-30-TEX-N-32"></path>
+                                        <path d="M21 717T21 730T32 746T75 750H147H256Q266 742 269 735V-235Q262 -248 251 -250Q247 -250 244 -249T239 -247T235 -244T233 -241T231 -237T229 -234V710H133Q119 710 99 710T71 709Q43 709 32 713Z"
+                                              id="MJX-30-TEX-N-2309"></path>
+                                        <path d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"
+                                              id="MJX-30-TEX-N-2212"></path>
+                                        <path d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"
+                                              id="MJX-30-TEX-N-31"></path>
+                                    </defs>
+                                    <g fill="currentColor" stroke="currentColor" stroke-width="0"
+                                       transform="scale(1,-1)">
+                                        <g data-mml-node="math">
+                                            <g data-mml-node="mo">
+                                                <use data-c="2308" xlink:href="#MJX-30-TEX-N-2308"></use>
+                                            </g>
+                                            <g data-mml-node="mi" transform="translate(444,0)">
+                                                <use data-c="1D45A" xlink:href="#MJX-30-TEX-I-1D45A"></use>
+                                            </g>
+                                            <g data-mjx-texclass="ORD" data-mml-node="TeXAtom"
+                                               transform="translate(1322,0)">
+                                                <g data-mml-node="mo">
+                                                    <use data-c="2F" xlink:href="#MJX-30-TEX-N-2F"></use>
+                                                </g>
+                                            </g>
+                                            <g data-mml-node="mn" transform="translate(1822,0)">
+                                                <use data-c="32" xlink:href="#MJX-30-TEX-N-32"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(2322,0)">
+                                                <use data-c="2309" xlink:href="#MJX-30-TEX-N-2309"></use>
+                                            </g>
+                                            <g data-mml-node="mo" transform="translate(2988.2,0)">
+                                                <use data-c="2212" xlink:href="#MJX-30-TEX-N-2212"></use>
+                                            </g>
+                                            <g data-mml-node="mn" transform="translate(3988.4,0)">
+                                                <use data-c="31" xlink:href="#MJX-30-TEX-N-31"></use>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                                <mjx-assistive-mml display="inline" unselectable="on">
+                                    <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mo fence="false" stretchy="false">⌈</mo>
+                                        <mi>m</mi>
+                                        <mrow data-mjx-texclass="ORD">
+                                            <mo>/</mo>
+                                        </mrow>
+                                        <mn>2</mn>
+                                        <mo fence="false" stretchy="false">⌉</mo>
+                                        <mo>−</mo>
+                                        <mn>1</mn>
+                                    </math>
+                                </mjx-assistive-mml>
+                            </mjx-container>
+                            <script type="math/tex">\lceil m/2 \rceil - 1</script>
+                        </p>
+                    </li>
+                    <li><p><span>删除后低于下限</span></p>
+                        <ul>
+                            <li><p><span>右兄弟够借就用当前结点的后继、后继的后继依次顶替空缺</span></p></li>
+                            <li><p><span>左兄弟够借就用当前结点的前驱、前驱的前驱依次顶替空缺</span></p></li>
+                            <li><p>
+                                <span>都不够借酒与父结点内的关键字、左(右)兄弟进行合并，合并后导致父结点关键字数量-1，可能需要继续合并</span>
+                            </p>
+                                <ul>
+                                    <li><img
+                                            alt="tWGjcu"
+                                            referrerpolicy="no-referrer" src="https://cdn.staticaly.com/gh/tippye/PicCloud@master/uPic/2023/02/05/tWGjcu.png"></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><p><span>被删除关键字在非终端结点</span></p>
+                <ul>
+                    <li><p><span>用直接前驱或直接后继来代替被删除的关键字</span></p>
+                        <ul>
+                            <li><p><span>直接前驱：当前关键字左侧指针所指子树中“最右下”的元素</span></p>
+                                <ul>
+                                    <li><img
+                                            alt="3wdvt3"
+                                            referrerpolicy="no-referrer" src="https://cdn.staticaly.com/gh/tippye/PicCloud@master/uPic/2023/02/05/3wdvt3.png"></li>
+                                </ul>
+                            </li>
+                            <li><p><span>直接后继：当前关键字右侧指针所指子树中“最左下”的元素</span></p>
+                                <ul>
+                                    <li><img
+                                            alt="6Cj7k3"
+                                            referrerpolicy="no-referrer" src="https://cdn.staticaly.com/gh/tippye/PicCloud@master/uPic/2023/02/05/6Cj7k3.png"></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><p><span>使用直接前驱或直接后继结点代替后就转化为了对终端结点的删除操作</span></p></li>
+                </ul>
+            </li>
+        </ul>
+        <h1 id='错题集'><span>错题集</span></h1>
+        <ol start=''>
+            <li><p><img alt="FoENXL"
+                        referrerpolicy="no-referrer" src="https://cdn.staticaly.com/gh/tippye/PicCloud@master/uPic/2023/02/09/FoENXL.png"></p>
+                <details>
+                    <summary>答案与解析：</summary>
+                    <br>
+                    答案： B D
+                    <br>
+                    解析：<br>
+                    3阶B树的分支结点最少有1个关键字，最多有2个关键字
+                    结点数量最少时，分支结点都只有1个关键字，也就是两个子结点，类似一棵满二叉树
+                    所以高度为5的B树至少有2^5-1=31个结点
+                    结点数量最多时，分支结点都有2个关键字，也就是3个子结点，类似满三叉树
+                    所以高度为5的B树最多有(3^5-1)/2=121个结点，这一行的公示是等比求和公式
+                </details>
+            </li>
+            <li><p><img alt="Erl9fC"
+                        referrerpolicy="no-referrer" src="https://cdn.staticaly.com/gh/tippye/PicCloud@master/uPic/2023/02/09/Erl9fC.png"></p>
+                <details>
+                    <summary>答案与解析：</summary>
+                    <br>
+                    答案： B
+                    <br>
+                    解析：<br>
+                    结点满了先进行分裂再插入新结点
+                    <img src="https://cdn.staticaly.com/gh/tippye/PicCloud@master/uPic/2023/02/09/9uMyiS.png">
+                </details>
+            </li>
+        </ol>
+    </div>
+</div>
+</body>
+</html>

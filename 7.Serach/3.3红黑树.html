@@ -1,0 +1,3189 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <meta content='width=device-width initial-scale=1' name='viewport'>
+
+    <style type='text/css'>html {
+        overflow-x: initial !important;
+    }
+
+    :root {
+        --mermaid-theme: default;
+        --mermaid-sequence-numbers: off;
+        --mermaid-flowchart-curve: linear;
+        --mermaid--gantt-left-padding: 75;
+        --sequence-theme: simple;
+    }
+
+
+    :root {
+        --bg-color: #ffffff;
+        --text-color: #333333;
+        --select-text-bg-color: #B5D6FC;
+        --select-text-font-color: auto;
+        --monospace: "Lucida Console", Consolas, "Courier", monospace;
+        --title-bar-height: 20px;
+    }
+
+    .mac-os-11 {
+        --title-bar-height: 28px;
+    }
+
+    html {
+        font-size: 14px;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+        margin: 0px;
+        padding: 0px;
+        height: auto;
+        inset: 0px;
+        font-size: 1rem;
+        line-height: 1.428571;
+        overflow-x: hidden;
+        background-image: inherit;
+        background-size: inherit;
+        background-attachment: inherit;
+        background-origin: inherit;
+        background-clip: inherit;
+        background-color: inherit;
+        tab-size: 4;
+        background-position: inherit;
+        background-repeat: inherit;
+    }
+
+    iframe {
+        margin: auto;
+    }
+
+    a.url {
+        word-break: break-all;
+    }
+
+    a:active, a:hover {
+        outline: 0px;
+    }
+
+    .in-text-selection, ::selection {
+        text-shadow: none;
+        background: var(--select-text-bg-color);
+        color: var(--select-text-font-color);
+    }
+
+    #write {
+        margin: 0px auto;
+        height: auto;
+        width: inherit;
+        word-break: normal;
+        overflow-wrap: break-word;
+        position: relative;
+        white-space: normal;
+        overflow-x: visible;
+        padding-top: 36px;
+    }
+
+    #write.first-line-indent p {
+        text-indent: 2em;
+    }
+
+    #write.first-line-indent li p, #write.first-line-indent p * {
+        text-indent: 0px;
+    }
+
+    #write.first-line-indent li {
+        margin-left: 2em;
+    }
+
+    .for-image #write {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    body.typora-export {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .typora-export .footnote-line, .typora-export li, .typora-export p {
+        white-space: pre-wrap;
+    }
+
+    .typora-export .task-list-item input {
+        pointer-events: none;
+    }
+
+    @media screen and (max-width: 500px) {
+        body.typora-export {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        #write {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .CodeMirror-sizer {
+            margin-left: 0px !important;
+        }
+
+        .CodeMirror-gutters {
+            display: none !important;
+        }
+    }
+
+    #write li > figure:last-child {
+        margin-bottom: 0.5rem;
+    }
+
+    #write ol, #write ul {
+        position: relative;
+    }
+
+    img {
+        max-width: 100%;
+        vertical-align: middle;
+        image-orientation: from-image;
+    }
+
+    button, input, select, textarea {
+        color: inherit;
+        font-family: inherit;
+        font-size: inherit;
+        font-style: inherit;
+        font-variant-caps: inherit;
+        font-weight: inherit;
+        font-stretch: inherit;
+        line-height: inherit;
+    }
+
+    input[type="checkbox"], input[type="radio"] {
+        line-height: normal;
+        padding: 0px;
+    }
+
+    *, ::after, ::before {
+        box-sizing: border-box;
+    }
+
+    #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre {
+        width: inherit;
+    }
+
+    #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p {
+        position: relative;
+    }
+
+    p {
+        line-height: inherit;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        break-after: avoid-page;
+        break-inside: avoid;
+        orphans: 4;
+    }
+
+    p {
+        orphans: 4;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.6rem;
+    }
+
+    h4 {
+        font-size: 1.4rem;
+    }
+
+    h5 {
+        font-size: 1.2rem;
+    }
+
+    h6 {
+        font-size: 1rem;
+    }
+
+    .md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .md-blockmeta {
+        color: rgb(204, 204, 204);
+        font-weight: 700;
+        font-style: italic;
+    }
+
+    a {
+        cursor: pointer;
+    }
+
+    sup.md-footnote {
+        padding: 2px 4px;
+        background-color: rgba(238, 238, 238, 0.7);
+        color: rgb(85, 85, 85);
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    sup.md-footnote a, sup.md-footnote a:hover {
+        color: inherit;
+        text-transform: inherit;
+        text-decoration: inherit;
+    }
+
+    #write input[type="checkbox"] {
+        cursor: pointer;
+        width: inherit;
+        height: inherit;
+    }
+
+    figure {
+        overflow-x: auto;
+        margin: 1.2em 0px;
+        max-width: calc(100% + 16px);
+        padding: 0px;
+    }
+
+    figure > table {
+        margin: 0px;
+    }
+
+    tr {
+        break-inside: avoid;
+        break-after: auto;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0px;
+        width: 100%;
+        overflow: auto;
+        break-inside: auto;
+        text-align: left;
+    }
+
+    table.md-table td {
+        min-width: 32px;
+    }
+
+    .CodeMirror-gutters {
+        border-right-width: 0px;
+        background-color: inherit;
+    }
+
+    .CodeMirror-linenumber {
+    }
+
+    .CodeMirror {
+        text-align: left;
+    }
+
+    .CodeMirror-placeholder {
+        opacity: 0.3;
+    }
+
+    .CodeMirror pre {
+        padding: 0px 4px;
+    }
+
+    .CodeMirror-lines {
+        padding: 0px;
+    }
+
+    div.hr:focus {
+        cursor: none;
+    }
+
+    #write pre {
+        white-space: pre-wrap;
+    }
+
+    #write.fences-no-line-wrapping pre {
+        white-space: pre;
+    }
+
+    #write pre.ty-contain-cm {
+        white-space: normal;
+    }
+
+    .CodeMirror-gutters {
+        margin-right: 4px;
+    }
+
+    .md-fences {
+        font-size: 0.9rem;
+        display: block;
+        break-inside: avoid;
+        text-align: left;
+        overflow: visible;
+        white-space: pre;
+        background-image: inherit;
+        background-size: inherit;
+        background-attachment: inherit;
+        background-origin: inherit;
+        background-clip: inherit;
+        background-color: inherit;
+        position: relative !important;
+        background-position: inherit;
+        background-repeat: inherit;
+    }
+
+    .md-fences-adv-panel {
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+        padding-top: 0px;
+        padding-bottom: 8px;
+        overflow-x: auto;
+    }
+
+    #write .md-fences.mock-cm {
+        white-space: pre-wrap;
+    }
+
+    .md-fences.md-fences-with-lineno {
+        padding-left: 0px;
+    }
+
+    #write.fences-no-line-wrapping .md-fences.mock-cm {
+        white-space: pre;
+        overflow-x: auto;
+    }
+
+    .md-fences.mock-cm.md-fences-with-lineno {
+        padding-left: 8px;
+    }
+
+    .CodeMirror-line, twitterwidget {
+        break-inside: avoid;
+    }
+
+    .footnotes {
+        opacity: 0.8;
+        font-size: 0.9rem;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    .footnotes + .footnotes {
+        margin-top: 0px;
+    }
+
+    .md-reset {
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+        outline: 0px;
+        vertical-align: top;
+        text-decoration: none;
+        text-shadow: none;
+        float: none;
+        position: static;
+        width: auto;
+        height: auto;
+        white-space: nowrap;
+        cursor: inherit;
+        line-height: normal;
+        font-weight: 400;
+        text-align: left;
+        box-sizing: content-box;
+        direction: ltr;
+        background-position: 0px 0px;
+    }
+
+    li div {
+        padding-top: 0px;
+    }
+
+    blockquote {
+        margin: 1rem 0px;
+    }
+
+    li .mathjax-block, li p {
+        margin: 0.5rem 0px;
+    }
+
+    li blockquote {
+        margin: 1rem 0px;
+    }
+
+    li {
+        margin: 0px;
+        position: relative;
+    }
+
+    blockquote > :last-child {
+        margin-bottom: 0px;
+    }
+
+    blockquote > :first-child, li > :first-child {
+        margin-top: 0px;
+    }
+
+    .footnotes-area {
+        color: rgb(136, 136, 136);
+        margin-top: 0.714rem;
+        padding-bottom: 0.143rem;
+        white-space: normal;
+    }
+
+    #write .footnote-line {
+        white-space: pre-wrap;
+    }
+
+    @media print {
+        body, html {
+            border: 1px solid transparent;
+            height: 99%;
+            break-after: avoid;
+            break-before: avoid;
+            font-variant-ligatures: no-common-ligatures;
+        }
+
+        #write {
+            margin-top: 0px;
+            padding-top: 0px;
+            border-color: transparent !important;
+        }
+
+        .typora-export * {
+            print-color-adjust: exact;
+        }
+
+        .typora-export #write {
+            break-after: avoid;
+        }
+
+        .typora-export #write::after {
+            height: 0px;
+        }
+
+        .is-mac table {
+            break-inside: avoid;
+        }
+
+        .typora-export-show-outline .typora-export-sidebar {
+            display: none;
+        }
+    }
+
+    .footnote-line {
+        margin-top: 0.714em;
+        font-size: 0.7em;
+    }
+
+    a img, img a {
+        cursor: pointer;
+    }
+
+    pre.md-meta-block {
+        font-size: 0.8rem;
+        min-height: 0.8rem;
+        white-space: pre-wrap;
+        background-color: rgb(204, 204, 204);
+        display: block;
+        overflow-x: hidden;
+    }
+
+    p > .md-image:only-child:not(.md-img-error) img, p > img:only-child {
+        display: block;
+        margin: auto;
+    }
+
+    #write.first-line-indent p > .md-image:only-child:not(.md-img-error) img {
+        left: -2em;
+        position: relative;
+    }
+
+    p > .md-image:only-child {
+        display: inline-block;
+        width: 100%;
+    }
+
+    #write .MathJax_Display {
+        margin: 0.8em 0px 0px;
+    }
+
+    .md-math-block {
+        width: 100%;
+    }
+
+    .md-math-block:not(:empty)::after {
+        display: none;
+    }
+
+    .MathJax_ref {
+        fill: currentcolor;
+    }
+
+    [contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus {
+        outline: 0px;
+        box-shadow: none;
+    }
+
+    .md-task-list-item {
+        position: relative;
+        list-style-type: none;
+    }
+
+    .task-list-item.md-task-list-item {
+        padding-left: 0px;
+    }
+
+    .md-task-list-item > input {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        margin-left: -1.2em;
+        margin-top: calc(1em - 10px);
+        border: none;
+    }
+
+    .math {
+        font-size: 1rem;
+    }
+
+    .md-toc {
+        min-height: 3.58rem;
+        position: relative;
+        font-size: 0.9rem;
+        border-radius: 10px;
+    }
+
+    .md-toc-content {
+        position: relative;
+        margin-left: 0px;
+    }
+
+    .md-toc-content::after, .md-toc::after {
+        display: none;
+    }
+
+    .md-toc-item {
+        display: block;
+        color: rgb(65, 131, 196);
+    }
+
+    .md-toc-item a {
+        text-decoration: none;
+    }
+
+    .md-toc-inner:hover {
+        text-decoration: underline;
+    }
+
+    .md-toc-inner {
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .md-toc-h1 .md-toc-inner {
+        margin-left: 0px;
+        font-weight: 700;
+    }
+
+    .md-toc-h2 .md-toc-inner {
+        margin-left: 2em;
+    }
+
+    .md-toc-h3 .md-toc-inner {
+        margin-left: 4em;
+    }
+
+    .md-toc-h4 .md-toc-inner {
+        margin-left: 6em;
+    }
+
+    .md-toc-h5 .md-toc-inner {
+        margin-left: 8em;
+    }
+
+    .md-toc-h6 .md-toc-inner {
+        margin-left: 10em;
+    }
+
+    @media screen and (max-width: 48em) {
+        .md-toc-h3 .md-toc-inner {
+            margin-left: 3.5em;
+        }
+
+        .md-toc-h4 .md-toc-inner {
+            margin-left: 5em;
+        }
+
+        .md-toc-h5 .md-toc-inner {
+            margin-left: 6.5em;
+        }
+
+        .md-toc-h6 .md-toc-inner {
+            margin-left: 8em;
+        }
+    }
+
+    a.md-toc-inner {
+        font-size: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+    }
+
+    .footnote-line a:not(.reversefootnote) {
+        color: inherit;
+    }
+
+    .md-attr {
+        display: none;
+    }
+
+    .md-fn-count::after {
+        content: ".";
+    }
+
+    code, pre, samp, tt {
+        font-family: var(--monospace);
+    }
+
+    kbd {
+        margin: 0px 0.1em;
+        padding: 0.1em 0.6em;
+        font-size: 0.8em;
+        color: rgb(36, 39, 41);
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(173, 179, 185);
+        border-radius: 3px;
+        box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset;
+        white-space: nowrap;
+        vertical-align: middle;
+    }
+
+    .md-comment {
+        color: rgb(162, 127, 3);
+        opacity: 0.6;
+        font-family: var(--monospace);
+    }
+
+    code {
+        text-align: left;
+    }
+
+    a.md-print-anchor {
+        white-space: pre !important;
+        border: none !important;
+        display: inline-block !important;
+        position: absolute !important;
+        width: 1px !important;
+        right: 0px !important;
+        outline: 0px !important;
+        text-shadow: initial !important;
+        background-position: 0px 0px !important;
+    }
+
+    .os-windows.monocolor-emoji .md-emoji {
+        font-family: "Segoe UI Symbol", sans-serif;
+    }
+
+    .md-diagram-panel > svg {
+        max-width: 100%;
+    }
+
+    [lang="flow"] svg, [lang="mermaid"] svg {
+        max-width: 100%;
+        height: auto;
+    }
+
+    [lang="mermaid"] .node text {
+        font-size: 1rem;
+    }
+
+    table tr th {
+        border-bottom-width: 0px;
+    }
+
+    video {
+        max-width: 100%;
+        display: block;
+        margin: 0px auto;
+    }
+
+    iframe {
+        max-width: 100%;
+        width: 100%;
+        border: none;
+    }
+
+    .highlight td, .highlight tr {
+        border: 0px;
+    }
+
+    mark {
+        background-color: rgb(255, 255, 0);
+        color: rgb(0, 0, 0);
+    }
+
+    .md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong {
+        color: inherit;
+    }
+
+    .md-expand mark .md-meta {
+        opacity: 0.3 !important;
+    }
+
+    mark .md-meta {
+        color: rgb(0, 0, 0);
+    }
+
+    @media print {
+        .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 {
+            break-inside: avoid;
+        }
+    }
+
+    .md-diagram-panel .messageText {
+        stroke: none !important;
+    }
+
+    .md-diagram-panel .start-state {
+        fill: var(--node-fill);
+    }
+
+    .md-diagram-panel .edgeLabel rect {
+        opacity: 1 !important;
+    }
+
+    .md-fences.md-fences-math {
+        font-size: 1em;
+    }
+
+    .md-fences-advanced:not(.md-focus) {
+        padding: 0px;
+        white-space: nowrap;
+        border: 0px;
+    }
+
+    .md-fences-advanced:not(.md-focus) {
+        background-image: inherit;
+        background-size: inherit;
+        background-attachment: inherit;
+        background-origin: inherit;
+        background-clip: inherit;
+        background-color: inherit;
+        background-position: inherit;
+        background-repeat: inherit;
+    }
+
+    .typora-export-show-outline .typora-export-content {
+        max-width: 1440px;
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .typora-export-sidebar {
+        width: 300px;
+        font-size: 0.8rem;
+        margin-top: 80px;
+        margin-right: 18px;
+    }
+
+    .typora-export-show-outline #write {
+        --webkit-flex: 2;
+        flex: 2 1 0%;
+    }
+
+    .typora-export-sidebar .outline-content {
+        position: fixed;
+        top: 0px;
+        max-height: 100%;
+        overflow: hidden auto;
+        padding-bottom: 30px;
+        padding-top: 60px;
+        width: 300px;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .typora-export-sidebar, .typora-export-sidebar .outline-content {
+            width: 240px;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        .typora-export-sidebar {
+            display: none;
+        }
+    }
+
+    .outline-content li, .outline-content ul {
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        list-style: none;
+    }
+
+    .outline-content ul {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .outline-content strong {
+        font-weight: 400;
+    }
+
+    .outline-expander {
+        width: 1rem;
+        height: 1.428571rem;
+        position: relative;
+        display: table-cell;
+        vertical-align: middle;
+        cursor: pointer;
+        padding-left: 4px;
+    }
+
+    .outline-expander::before {
+        content: "";
+        position: relative;
+        font-family: Ionicons;
+        display: inline-block;
+        font-size: 8px;
+        vertical-align: middle;
+    }
+
+    .outline-item {
+        padding-top: 3px;
+        padding-bottom: 3px;
+        cursor: pointer;
+    }
+
+    .outline-expander:hover::before {
+        content: "";
+    }
+
+    .outline-h1 > .outline-item {
+        padding-left: 0px;
+    }
+
+    .outline-h2 > .outline-item {
+        padding-left: 1em;
+    }
+
+    .outline-h3 > .outline-item {
+        padding-left: 2em;
+    }
+
+    .outline-h4 > .outline-item {
+        padding-left: 3em;
+    }
+
+    .outline-h5 > .outline-item {
+        padding-left: 4em;
+    }
+
+    .outline-h6 > .outline-item {
+        padding-left: 5em;
+    }
+
+    .outline-label {
+        cursor: pointer;
+        display: table-cell;
+        vertical-align: middle;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .outline-label:hover {
+        text-decoration: underline;
+    }
+
+    .outline-item:hover {
+        border-color: rgb(245, 245, 245);
+        background-color: var(--item-hover-bg-color);
+    }
+
+    .outline-item:hover {
+        margin-left: -28px;
+        margin-right: -28px;
+        border-left-width: 28px;
+        border-left-style: solid;
+        border-left-color: transparent;
+        border-right-width: 28px;
+        border-right-style: solid;
+        border-right-color: transparent;
+    }
+
+    .outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before {
+        display: none;
+    }
+
+    .outline-item-open > .outline-item > .outline-expander::before {
+        content: "";
+    }
+
+    .outline-children {
+        display: none;
+    }
+
+    .info-panel-tab-wrapper {
+        display: none;
+    }
+
+    .outline-item-open > .outline-children {
+        display: block;
+    }
+
+    .typora-export .outline-item {
+        padding-top: 1px;
+        padding-bottom: 1px;
+    }
+
+    .typora-export .outline-item:hover {
+        margin-right: -8px;
+        border-right-width: 8px;
+        border-right-style: solid;
+        border-right-color: transparent;
+    }
+
+    .typora-export .outline-expander::before {
+        content: "+";
+        font-family: inherit;
+        top: -1px;
+    }
+
+    .typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before {
+        content: "−";
+    }
+
+    .typora-export-collapse-outline .outline-children {
+        display: none;
+    }
+
+    .typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children {
+        display: block;
+    }
+
+    .typora-export-no-collapse-outline .outline-expander::before {
+        content: "" !important;
+    }
+
+    .typora-export-show-outline .outline-item-active > .outline-item .outline-label {
+        font-weight: 700;
+    }
+
+    .md-inline-math-container mjx-container {
+        zoom: 0.95;
+    }
+
+
+    .CodeMirror {
+        height: auto;
+    }
+
+    .CodeMirror.cm-s-inner {
+        background-image: inherit;
+        background-size: inherit;
+        background-attachment: inherit;
+        background-origin: inherit;
+        background-clip: inherit;
+        background-color: inherit;
+        background-position: inherit;
+        background-repeat: inherit;
+    }
+
+    .CodeMirror-scroll {
+        overflow: auto hidden;
+        z-index: 3;
+    }
+
+    .CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler {
+        background-color: rgb(255, 255, 255);
+    }
+
+    .CodeMirror-gutters {
+        border-right-width: 1px;
+        border-right-style: solid;
+        border-right-color: rgb(221, 221, 221);
+        background-image: inherit;
+        background-size: inherit;
+        background-attachment: inherit;
+        background-origin: inherit;
+        background-clip: inherit;
+        background-color: inherit;
+        white-space: nowrap;
+        background-position: inherit;
+        background-repeat: inherit;
+    }
+
+    .CodeMirror-linenumber {
+        padding: 0px 3px 0px 5px;
+        text-align: right;
+        color: rgb(153, 153, 153);
+    }
+
+    .cm-s-inner .cm-keyword {
+        color: rgb(119, 0, 136);
+    }
+
+    .cm-s-inner .cm-atom, .cm-s-inner.cm-atom {
+        color: rgb(34, 17, 153);
+    }
+
+    .cm-s-inner .cm-number {
+        color: rgb(17, 102, 68);
+    }
+
+    .cm-s-inner .cm-def {
+        color: rgb(0, 0, 255);
+    }
+
+    .cm-s-inner .cm-variable {
+        color: rgb(0, 0, 0);
+    }
+
+    .cm-s-inner .cm-variable-2 {
+        color: rgb(0, 85, 170);
+    }
+
+    .cm-s-inner .cm-variable-3 {
+        color: rgb(0, 136, 85);
+    }
+
+    .cm-s-inner .cm-string {
+        color: rgb(170, 17, 17);
+    }
+
+    .cm-s-inner .cm-property {
+        color: rgb(0, 0, 0);
+    }
+
+    .cm-s-inner .cm-operator {
+        color: rgb(152, 26, 26);
+    }
+
+    .cm-s-inner .cm-comment, .cm-s-inner.cm-comment {
+        color: rgb(170, 85, 0);
+    }
+
+    .cm-s-inner .cm-string-2 {
+        color: rgb(255, 85, 0);
+    }
+
+    .cm-s-inner .cm-meta {
+        color: rgb(85, 85, 85);
+    }
+
+    .cm-s-inner .cm-qualifier {
+        color: rgb(85, 85, 85);
+    }
+
+    .cm-s-inner .cm-builtin {
+        color: rgb(51, 0, 170);
+    }
+
+    .cm-s-inner .cm-bracket {
+        color: rgb(153, 153, 119);
+    }
+
+    .cm-s-inner .cm-tag {
+        color: rgb(17, 119, 0);
+    }
+
+    .cm-s-inner .cm-attribute {
+        color: rgb(0, 0, 204);
+    }
+
+    .cm-s-inner .cm-header, .cm-s-inner.cm-header {
+        color: rgb(0, 0, 255);
+    }
+
+    .cm-s-inner .cm-quote, .cm-s-inner.cm-quote {
+        color: rgb(0, 153, 0);
+    }
+
+    .cm-s-inner .cm-hr, .cm-s-inner.cm-hr {
+        color: rgb(153, 153, 153);
+    }
+
+    .cm-s-inner .cm-link, .cm-s-inner.cm-link {
+        color: rgb(0, 0, 204);
+    }
+
+    .cm-negative {
+        color: rgb(221, 68, 68);
+    }
+
+    .cm-positive {
+        color: rgb(34, 153, 34);
+    }
+
+    .cm-header, .cm-strong {
+        font-weight: 700;
+    }
+
+    .cm-del {
+        text-decoration: line-through;
+    }
+
+    .cm-em {
+        font-style: italic;
+    }
+
+    .cm-link {
+        text-decoration: underline;
+    }
+
+    .cm-error {
+        color: red;
+    }
+
+    .cm-invalidchar {
+        color: red;
+    }
+
+    .cm-constant {
+        color: rgb(38, 139, 210);
+    }
+
+    .cm-defined {
+        color: rgb(181, 137, 0);
+    }
+
+    div.CodeMirror span.CodeMirror-matchingbracket {
+        color: rgb(0, 255, 0);
+    }
+
+    div.CodeMirror span.CodeMirror-nonmatchingbracket {
+        color: rgb(255, 34, 34);
+    }
+
+    .cm-s-inner .CodeMirror-activeline-background {
+        background-image: inherit;
+        background-size: inherit;
+        background-attachment: inherit;
+        background-origin: inherit;
+        background-clip: inherit;
+        background-color: inherit;
+        background-position: inherit;
+        background-repeat: inherit;
+    }
+
+    .CodeMirror {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .CodeMirror-scroll {
+        height: 100%;
+        outline: 0px;
+        position: relative;
+        box-sizing: content-box;
+        background-image: inherit;
+        background-size: inherit;
+        background-attachment: inherit;
+        background-origin: inherit;
+        background-clip: inherit;
+        background-color: inherit;
+        background-position: inherit;
+        background-repeat: inherit;
+    }
+
+    .CodeMirror-sizer {
+        position: relative;
+    }
+
+    .CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar {
+        position: absolute;
+        z-index: 6;
+        display: none;
+        outline: 0px;
+    }
+
+    .CodeMirror-vscrollbar {
+        right: 0px;
+        top: 0px;
+        overflow: hidden;
+    }
+
+    .CodeMirror-hscrollbar {
+        bottom: 0px;
+        left: 0px;
+        overflow: auto hidden;
+    }
+
+    .CodeMirror-scrollbar-filler {
+        right: 0px;
+        bottom: 0px;
+    }
+
+    .CodeMirror-gutter-filler {
+        left: 0px;
+        bottom: 0px;
+    }
+
+    .CodeMirror-gutters {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        padding-bottom: 10px;
+        z-index: 3;
+        overflow-y: hidden;
+    }
+
+    .CodeMirror-gutter {
+        white-space: normal;
+        height: 100%;
+        box-sizing: content-box;
+        padding-bottom: 30px;
+        margin-bottom: -32px;
+        display: inline-block;
+    }
+
+    .CodeMirror-gutter-wrapper {
+        position: absolute;
+        z-index: 4;
+        border: none !important;
+        background-position: 0px 0px !important;
+    }
+
+    .CodeMirror-gutter-background {
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        z-index: 4;
+    }
+
+    .CodeMirror-gutter-elt {
+        position: absolute;
+        cursor: default;
+        z-index: 4;
+    }
+
+    .CodeMirror-lines {
+        cursor: text;
+    }
+
+    .CodeMirror pre {
+        border-radius: 0px;
+        border-width: 0px;
+        font-family: inherit;
+        font-size: inherit;
+        margin: 0px;
+        white-space: pre;
+        overflow-wrap: normal;
+        color: inherit;
+        z-index: 2;
+        position: relative;
+        overflow: visible;
+        background-position: 0px 0px;
+    }
+
+    .CodeMirror-wrap pre {
+        overflow-wrap: break-word;
+        white-space: pre-wrap;
+        word-break: normal;
+    }
+
+    .CodeMirror-code pre {
+        border-right-width: 30px;
+        border-right-style: solid;
+        border-right-color: transparent;
+        width: fit-content;
+    }
+
+    .CodeMirror-wrap .CodeMirror-code pre {
+        border-right-style: none;
+        width: auto;
+    }
+
+    .CodeMirror-linebackground {
+        position: absolute;
+        inset: 0px;
+        z-index: 0;
+    }
+
+    .CodeMirror-linewidget {
+        position: relative;
+        z-index: 2;
+        overflow: auto;
+    }
+
+    .CodeMirror-wrap .CodeMirror-scroll {
+        overflow-x: hidden;
+    }
+
+    .CodeMirror-measure {
+        position: absolute;
+        width: 100%;
+        height: 0px;
+        overflow: hidden;
+        visibility: hidden;
+    }
+
+    .CodeMirror-measure pre {
+        position: static;
+    }
+
+    .CodeMirror div.CodeMirror-cursor {
+        position: absolute;
+        visibility: hidden;
+        border-right-style: none;
+        width: 0px;
+    }
+
+    .CodeMirror div.CodeMirror-cursor {
+        visibility: hidden;
+    }
+
+    .CodeMirror-focused div.CodeMirror-cursor {
+        visibility: inherit;
+    }
+
+    .cm-searching {
+        background-color: rgba(255, 255, 0, 0.4);
+    }
+
+    span.cm-underlined {
+        text-decoration: underline;
+    }
+
+    span.cm-strikethrough {
+        text-decoration: line-through;
+    }
+
+    .cm-tw-syntaxerror {
+        color: rgb(255, 255, 255);
+        background-color: rgb(153, 0, 0);
+    }
+
+    .cm-tw-deleted {
+        text-decoration: line-through;
+    }
+
+    .cm-tw-header5 {
+        font-weight: 700;
+    }
+
+    .cm-tw-listitem:first-child {
+        padding-left: 10px;
+    }
+
+    .cm-tw-box {
+        border-style: solid;
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+        border-color: inherit;
+        border-top-width: 0px !important;
+    }
+
+    .cm-tw-underline {
+        text-decoration: underline;
+    }
+
+    @media print {
+        .CodeMirror div.CodeMirror-cursor {
+            visibility: hidden;
+        }
+    }
+
+
+    @include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+    /* open-sans-regular - latin-ext_latin */
+
+    /* open-sans-italic - latin-ext_latin */
+
+    /* open-sans-700 - latin-ext_latin */
+
+    /* open-sans-700italic - latin-ext_latin */
+
+    :root {
+        --title-color: #8064a9;
+        --text-color: #444444;
+        --light-text-color: #666666;
+        --lighter-text-color: #888888;
+        --link-color: #2aa899;
+        --code-color: #745fb5;
+        --shadow-color: #eee;
+        --border-quote: rgba(116, 95, 181, 0.2);
+        --border-quote-grey: #c8c8c8;
+        --border: #e7e7e7;
+        --link-bottom: #bbb;
+        --shadow: 3px 3px 10px var(--shadow-color);
+        --inline-code-bg: #f4f2f9;
+        --header-weight: normal;
+        --side-bar-bg-color: #fafafa;
+        --control-text-color: var(var(--light-text-color));
+        --active-file-text-color: var(--title-color);
+        --active-file-bg-color: var(--shadow-color);
+        --item-hover-bg-color: var(--shadow-color);
+        --active-file-border-color: var(var(--title-color));
+        --base-font: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        --title-font: "EB Garamond", "Source Sans Pro", serif;
+        --monospace: Courier, Monospace !important;
+    }
+
+
+    /* 打印 */
+
+    @media print {
+        html {
+            font-size: 0.9rem;
+        }
+
+        table,
+        pre {
+            page-break-inside: avoid;
+        }
+
+        pre {
+            word-wrap: break-word;
+        }
+
+        #write {
+            max-width: 100%;
+        }
+
+        @page {
+            size: A3;
+            /* PDF output size */
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+
+    html {
+        font-size: 16px;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+        text-rendering: optimizelegibility;
+        -webkit-font-smoothing: initial;
+    }
+
+    body {
+        color: var(--text-color);
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.6;
+        letter-spacing: 0;
+        overflow-x: hidden;
+    }
+
+
+    /* 页边距 和 页面大小 */
+
+    #write {
+        font-family: var(--base-font);
+        /* max-width: 914px; */
+        margin: 0 auto;
+        padding: 1rem 4rem;
+        padding-bottom: 100px;
+    }
+
+    #write p {
+        line-height: 1.6rem;
+        word-spacing: 0.05rem;
+    }
+
+    body > *:first-child {
+        margin-top: 0 !important;
+    }
+
+    body > *:last-child {
+        margin-bottom: 0 !important;
+    }
+
+
+    /* Link 链接 */
+
+    a {
+        color: var(--link-color);
+        text-decoration: none;
+    }
+
+    #write a {
+        border-bottom: 1px solid var(--link-bottom);
+    }
+
+    .md-content {
+        color: var(--light-text-color);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        position: relative;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        font-weight: var(--header-weight);
+        line-height: 1.3;
+        cursor: text;
+        color: var(--title-color);
+        font-family: var(--title-font);
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 2rem;
+        line-height: 1.5;
+    }
+
+    h1:after {
+        content: "";
+        display: block;
+        margin: 0.2rem auto 0;
+        width: 6rem;
+        height: 2px;
+        border-bottom: 2px solid var(--title-color);
+    }
+
+    h2 {
+        padding-left: 0.4em;
+        border-left: 0.4em solid var(--title-color);
+        border-bottom: 1px solid var(--title-color);
+    }
+
+    h1 tt,
+    h1 code {
+        font-size: inherit;
+    }
+
+    h2 tt,
+    h2 code {
+        font-size: inherit;
+    }
+
+    h3 tt,
+    h3 code {
+        font-size: inherit;
+    }
+
+    h4 tt,
+    h4 code {
+        font-size: inherit;
+    }
+
+    h5 tt,
+    h5 code {
+        font-size: inherit;
+    }
+
+    h6 tt,
+    h6 code {
+        font-size: inherit;
+    }
+
+    p,
+    blockquote,
+    ul,
+    ol,
+    dl,
+    table {
+        margin: 0.8em 0;
+    }
+
+
+    /* horizontal rule */
+
+    hr {
+        margin: 1.5em auto;
+        border-top: 1px solid var(--border);
+    }
+
+
+    /* 列表 */
+
+    li > ol,
+    li > ul {
+        margin: 0 0;
+    }
+
+    li p.first {
+        display: inline-block;
+    }
+
+    ul,
+    ol {
+        padding-left: 2rem;
+    }
+
+    ul:first-child,
+    ol:first-child {
+        margin-top: 0;
+    }
+
+    ul:last-child,
+    ol:last-child {
+        margin-bottom: 0;
+    }
+
+    #write ol li,
+    ul li {
+        padding-left: 0.1rem;
+    }
+
+
+    /* 引用 */
+
+    blockquote {
+        border-left: 0.3rem solid var(--border-quote);
+        padding-left: 1em;
+        font-family: var(--base-font);
+    }
+
+
+    /* 表格 */
+
+    table {
+        margin-bottom: 1.25rem;
+    }
+
+    table th,
+    table td {
+        padding: 8px;
+        line-height: 1.25rem;
+        vertical-align: middle;
+        border: 1px solid #ddd;
+    }
+
+    table th {
+        font-weight: bold;
+    }
+
+    table thead th {
+        vertical-align: middle;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fcfcfc;
+    }
+
+
+    /* 粗体 */
+
+    #write strong {
+        padding: 0 2px;
+        font-weight: bold;
+    }
+
+
+    /* inline code */
+    code,
+    tt {
+        padding: 2px 4px;
+        border-radius: 0.3rem;
+        font-family: var(--monospace);
+        font-size: 0.9rem;
+        color: var(--code-color);
+        background-color: var(--inline-code-bg);
+        margin: 0 2px;
+    }
+
+    #write .md-footnote {
+        color: var(--code-color);
+        background-color: var(--inline-code-bg);
+    }
+
+
+    /* highlight. */
+
+    #write mark {
+        background: rgb(255, 255, 196);
+        color: var(--text-color);
+    }
+
+    #write del {
+        padding: 1px 2px;
+    }
+
+    .md-task-list-item > input {
+        margin-left: -1.3em;
+    }
+
+    #write pre.md-meta-block {
+        padding: 1rem;
+        font-size: 85%;
+        line-height: 1.45;
+        background-color: #f7f7f7;
+        border: 0;
+        border-radius: 3px;
+        color: #777777;
+        margin-top: 0 !important;
+    }
+
+    .mathjax-block > .code-tooltip {
+        bottom: 0.375rem;
+    }
+
+
+    /* 图片 */
+
+    .md-image > .md-meta {
+        border-radius: 3px;
+        font-family: var(--monospace);
+        padding: 2px 0 0 4px;
+        font-size: 0.9em;
+        color: inherit;
+    }
+
+
+    /* 图片靠左显示 */
+
+
+    /* p .md-image:only-child {
+      width: auto;
+      text-align: left;
+      margin-left: 2rem;
+    } */
+
+
+    /* 写![shadow-...]() 显示图片阴影 */
+
+    img[alt|="shadow"] {
+        box-shadow: var(--shadow);
+    }
+
+
+    /* TOC */
+
+    #write a.md-toc-inner {
+        line-height: 1.6;
+        white-space: pre-line;
+        border-bottom: none;
+        color: var(--light-text-color);
+        font-size: 0.9rem;
+    }
+
+    .md-toc-h1 .md-toc-inner {
+        margin-left: 0;
+        font-weight: normal;
+    }
+
+    header,
+    .context-menu,
+    .megamenu-content,
+    footer {
+        font-family: var(--base-font);
+    }
+
+    .file-node-content:hover .file-node-icon,
+    .file-node-content:hover .file-node-open-state {
+        visibility: visible;
+    }
+
+    .md-lang {
+        color: #b4654d;
+    }
+
+    .html-for-mac .context-menu {
+        --item-hover-bg-color: #e6f0fe;
+    }
+
+
+    /* Code fences */
+
+
+    /* border, bg, font */
+
+    .md-fences {
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        background: #fdfdfd !important;
+        font-size: 0.9rem;
+    }
+
+
+    /* 代码框阴影 */
+
+
+    /* #write pre.md-fences {
+      display: block;
+      -webkit-overflow-scrolling: touch;
+      box-shadow: var(--shadow);
+    } */
+
+    .cm-s-inner .cm-variable {
+        color: var(--text-color);
+    }
+
+    .cm-s-inner {
+        padding: 0.25rem;
+        border-radius: 0.25rem;
+    }
+
+    .cm-s-inner.CodeMirror,
+    .cm-s-inner .CodeMirror-gutters {
+        color: #3a3432 !important;
+        border: none;
+    }
+
+    .cm-s-inner .CodeMirror-gutters {
+        color: #6d8a88;
+    }
+
+    .cm-s-inner .CodeMirror-linenumber {
+        padding: 0 0.1rem 0 0.3rem;
+        color: #b8b5b4;
+    }
+
+    .cm-s-inner .CodeMirror-matchingbracket {
+        text-decoration: underline;
+        color: #a34e8f !important;
+    }
+
+    #fences-auto-suggest .active {
+        background: #ddd;
+    }
+
+    .cm-s-inner span.cm-comment {
+        color: #9daab6;
+    }
+
+    .cm-s-inner span.cm-builtin {
+        color: #0451a5;
+    }
+
+
+    /* language tip */
+
+    #write .code-tooltip {
+        border: 1px solid var(--border);
+    }
+
+    .auto-suggest-container {
+        border-color: #b4b4b4;
+    }
+
+    .auto-suggest-container .autoComplt-hint.active {
+        background: #b4b4b4;
+        color: inherit;
+    }
+
+
+    /* task list */
+
+    #write .md-task-list-item > input {
+        -webkit-appearance: initial;
+        display: block;
+        position: absolute;
+        border: 1px solid #b4b4b4;
+        border-radius: 0.2rem;
+        margin-top: 0.3rem;
+        height: 1rem;
+        width: 1rem;
+        transition: background 0.3s;
+    }
+
+    #write .md-task-list-item > input:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+    #write .md-task-list-item > input:hover {
+        background: #ddd;
+    }
+
+    #write .md-task-list-item > input[checked]::before {
+        content: "";
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        height: 60%;
+        width: 2px;
+        transform: rotate(40deg);
+        background: #333;
+    }
+
+    #write .md-task-list-item > input[checked]::after {
+        content: "";
+        position: absolute;
+        top: 46%;
+        left: 25%;
+        height: 30%;
+        width: 2px;
+        transform: rotate(-40deg);
+        background: #333;
+    }
+
+    #write .md-task-list-item > p {
+        transition: color 0.3s, opacity 0.3s;
+    }
+
+    #write .md-task-list-item.task-list-done > p {
+        color: #b4b4b4;
+        text-decoration: line-through;
+    }
+
+    #write .md-task-list-item.task-list-done > p > .md-emoji {
+        opacity: 0.5;
+    }
+
+    #write .md-task-list-item.task-list-done > p > .md-link > a {
+        opacity: 0.6;
+    }
+
+
+    /* sidebar */
+
+    #typora-sidebar,
+    .typora-node #typora-sidebar {
+        box-shadow: 3px 0px 10px var(--shadow-color);
+    }
+
+    .sidebar-content-content {
+        font-size: 0.9rem;
+    }
+
+    @import "";
+
+    :root {
+        --base-font: Consolas, "Ubuntu Mono", "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        --title-font: var(--base-font);
+        --monospace: "Ubuntu Mono", Courier, Monospace !important;
+    }
+
+    /* Cesno style start */
+
+    .cm-s-inner .cm-variable {
+        color: #f39800;
+    }
+
+    .cm-s-inner .cm-variable-3 {
+        color: #9ed44c;
+        font-weight: bold;
+    }
+
+    .cm-s-inner .cm-number {
+        color: #e95295;
+    }
+
+    .cm-s-inner .cm-keyword {
+        color: #bc64a4;
+        font-weight: bold;
+    }
+
+    .cm-s-inner .cm-def {
+        color: #0094c8;
+    }
+
+    .cm-s-inner .cm-operator {
+        color: #a59aca;
+        font-weight: bold;
+    }
+
+    /* .cm-s-inner .cm-atom          {color: #c5c56a; font-weight: bold;} */
+
+    /* Cesno style end */
+
+
+    mjx-container[jax="SVG"] {
+        direction: ltr;
+    }
+
+    mjx-container[jax="SVG"] > svg {
+        overflow: visible;
+        min-height: 1px;
+        min-width: 1px;
+    }
+
+    mjx-container[jax="SVG"] > svg a {
+        fill: blue;
+        stroke: blue;
+    }
+
+    mjx-assistive-mml {
+        position: absolute !important;
+        top: 0px;
+        left: 0px;
+        clip: rect(1px, 1px, 1px, 1px);
+        padding: 1px 0px 0px 0px !important;
+        border: 0px !important;
+        display: block !important;
+        width: auto !important;
+        overflow: hidden !important;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    mjx-assistive-mml[display="block"] {
+        width: 100% !important;
+    }
+
+    mjx-container[jax="SVG"][display="true"] {
+        display: block;
+        text-align: center;
+        margin: 1em 0;
+    }
+
+    mjx-container[jax="SVG"][display="true"][width="full"] {
+        display: flex;
+    }
+
+    mjx-container[jax="SVG"][justify="left"] {
+        text-align: left;
+    }
+
+    mjx-container[jax="SVG"][justify="right"] {
+        text-align: right;
+    }
+
+    g[data-mml-node="merror"] > g {
+        fill: red;
+        stroke: red;
+    }
+
+    g[data-mml-node="merror"] > rect[data-background] {
+        fill: yellow;
+        stroke: none;
+    }
+
+    g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+        stroke-width: 70px;
+        fill: none;
+    }
+
+    g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+        stroke-width: 70px;
+        fill: none;
+    }
+
+    g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+        stroke-dasharray: 140;
+    }
+
+    g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+        stroke-linecap: round;
+        stroke-dasharray: 0, 140;
+    }
+
+    g[data-mml-node="mtable"] > g > svg {
+        overflow: visible;
+    }
+
+    [jax="SVG"] mjx-tool {
+        display: inline-block;
+        position: relative;
+        width: 0;
+        height: 0;
+    }
+
+    [jax="SVG"] mjx-tool > mjx-tip {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    mjx-tool > mjx-tip {
+        display: inline-block;
+        padding: .2em;
+        border: 1px solid #888;
+        font-size: 70%;
+        background-color: #F8F8F8;
+        color: black;
+        box-shadow: 2px 2px 5px #AAAAAA;
+    }
+
+    g[data-mml-node="maction"][data-toggle] {
+        cursor: pointer;
+    }
+
+    mjx-status {
+        display: block;
+        position: fixed;
+        left: 1em;
+        bottom: 1em;
+        min-width: 25%;
+        padding: .2em .4em;
+        border: 1px solid #888;
+        font-size: 90%;
+        background-color: #F8F8F8;
+        color: black;
+    }
+
+    foreignObject[data-mjx-xml] {
+        font-family: initial;
+        line-height: normal;
+        overflow: visible;
+    }
+
+    mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+        stroke-width: 3;
+    }
+
+    g[data-mml-node="xypic"] path {
+        stroke-width: inherit;
+    }
+
+    .MathJax g[data-mml-node="xypic"] path {
+        stroke-width: inherit;
+    }
+
+    mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+        stroke-width: 0;
+    }
+
+    @media print {
+        @page {
+            margin: 0 0 0 0;
+        }
+
+        body.typora-export {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        #write {
+            padding: 0;
+        }
+    }
+    </style>
+    <title>3.3红黑树</title>
+</head>
+<body class='typora-export'>
+<div class='typora-export-content'>
+    <div class='' id='write'><h1 id='红黑树'><span>红黑树</span></h1>
+        <p><span>平衡二叉树一般用于以查为主的场景 红黑树一般用于插入删除较多的场景</span></p>
+        <p><span>一般只考察定义和插入操作</span></p>
+        <ul>
+            <li><span>一棵含有 </span>
+                <mjx-container class="MathJax" jax="SVG" style="position: relative;">
+                    <svg aria-hidden="true" focusable="false" height="1.025ex" role="img"
+                         style="vertical-align: -0.025ex;" viewBox="0 -442 600 453" width="1.357ex"
+                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <defs>
+                            <path d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"
+                                  id="MJX-33-TEX-I-1D45B"></path>
+                        </defs>
+                        <g fill="currentColor" stroke="currentColor" stroke-width="0" transform="scale(1,-1)">
+                            <g data-mml-node="math">
+                                <g data-mml-node="mi">
+                                    <use data-c="1D45B" xlink:href="#MJX-33-TEX-I-1D45B"></use>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                    <mjx-assistive-mml display="inline" unselectable="on">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>n</mi>
+                        </math>
+                    </mjx-assistive-mml>
+                </mjx-container>
+                <script type="math/tex">n</script>
+                <span> 个结点的红黑树的高度至多为 </span>
+                <mjx-container class="MathJax" jax="SVG" style="position: relative;">
+                    <svg aria-hidden="true" focusable="false" height="2.262ex" role="img"
+                         style="vertical-align: -0.566ex;" viewBox="0 -750 5297 1000" width="11.984ex"
+                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <defs>
+                            <path d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"
+                                  id="MJX-34-TEX-N-32"></path>
+                            <path d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"
+                                  id="MJX-34-TEX-I-1D459"></path>
+                            <path d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"
+                                  id="MJX-34-TEX-I-1D45C"></path>
+                            <path d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"
+                                  id="MJX-34-TEX-I-1D454"></path>
+                            <path d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"
+                                  id="MJX-34-TEX-N-28"></path>
+                            <path d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"
+                                  id="MJX-34-TEX-I-1D45B"></path>
+                            <path d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"
+                                  id="MJX-34-TEX-N-2B"></path>
+                            <path d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"
+                                  id="MJX-34-TEX-N-31"></path>
+                            <path d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"
+                                  id="MJX-34-TEX-N-29"></path>
+                        </defs>
+                        <g fill="currentColor" stroke="currentColor" stroke-width="0" transform="scale(1,-1)">
+                            <g data-mml-node="math">
+                                <g data-mml-node="mn">
+                                    <use data-c="32" xlink:href="#MJX-34-TEX-N-32"></use>
+                                </g>
+                                <g data-mml-node="mi" transform="translate(500,0)">
+                                    <use data-c="1D459" xlink:href="#MJX-34-TEX-I-1D459"></use>
+                                </g>
+                                <g data-mml-node="mi" transform="translate(798,0)">
+                                    <use data-c="1D45C" xlink:href="#MJX-34-TEX-I-1D45C"></use>
+                                </g>
+                                <g data-mml-node="msub" transform="translate(1283,0)">
+                                    <g data-mml-node="mi">
+                                        <use data-c="1D454" xlink:href="#MJX-34-TEX-I-1D454"></use>
+                                    </g>
+                                    <g data-mml-node="mn" transform="translate(510,-150) scale(0.707)">
+                                        <use data-c="32" xlink:href="#MJX-34-TEX-N-32"></use>
+                                    </g>
+                                </g>
+                                <g data-mml-node="mo" transform="translate(2196.6,0)">
+                                    <use data-c="28" xlink:href="#MJX-34-TEX-N-28"></use>
+                                </g>
+                                <g data-mml-node="mi" transform="translate(2585.6,0)">
+                                    <use data-c="1D45B" xlink:href="#MJX-34-TEX-I-1D45B"></use>
+                                </g>
+                                <g data-mml-node="mo" transform="translate(3407.8,0)">
+                                    <use data-c="2B" xlink:href="#MJX-34-TEX-N-2B"></use>
+                                </g>
+                                <g data-mml-node="mn" transform="translate(4408,0)">
+                                    <use data-c="31" xlink:href="#MJX-34-TEX-N-31"></use>
+                                </g>
+                                <g data-mml-node="mo" transform="translate(4908,0)">
+                                    <use data-c="29" xlink:href="#MJX-34-TEX-N-29"></use>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                    <mjx-assistive-mml display="inline" unselectable="on">
+                        <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mn>2</mn>
+                            <mi>l</mi>
+                            <mi>o</mi>
+                            <msub>
+                                <mi>g</mi>
+                                <mn>2</mn>
+                            </msub>
+                            <mo stretchy="false">(</mo>
+                            <mi>n</mi>
+                            <mo>+</mo>
+                            <mn>1</mn>
+                            <mo stretchy="false">)</mo>
+                        </math>
+                    </mjx-assistive-mml>
+                </mjx-container>
+                <script type="math/tex">2log_2(n+1)</script>
+            </li>
+            <li><span>红黑树是适度的平衡二叉树，查找效率低于平衡二叉树</span></li>
+            <li><span>红黑树增加/删除时可能会出现超过2次旋转的操作</span></li>
+            <li><span>如果红黑树的所有节点都是黑色的，那么他一定是满二叉树</span></li>
+        </ul>
+        <h2 id='定义'><span>定义</span></h2>
+        <ul>
+            <li><font color="orange"><span>左根右</span></font><span> 满足二叉排序树的性质</span></li>
+            <li><span>每个结点要么黑色要么红色</span></li>
+            <li><font color="orange"><span>根叶黑</span></font><span> 根结点是黑色</span></li>
+            <li><span>叶子结点（外部的结点、NULL结点、失败结点）均是黑色</span></li>
+            <li><font
+                    color="orange"><span>不红红</span></font><span> 不存在两个相邻的红结点（红结点的父子结点都是黑色）</span>
+            </li>
+            <li><font
+                    color="orange"><span>黑路同</span></font><span> 对于任意一个结点，从该结点到任一叶子结点的简单路径上，所含黑结点的数目相同</span>
+            </li>
+        </ul>
+        <pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm modeLoaded" lang="c++"
+             spellcheck="false"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="c++"><div
+                style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 13px; left: 32px;"><textarea
+                autocapitalize="off" autocorrect="off" spellcheck="false" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"
+                tabindex="0"></textarea></div><div
+                class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler"
+                                                                                     cm-not-content="true"></div><div
+                class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer"
+                                                             style="margin-left: 24px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div
+                style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div
+                role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre><div
+                class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>5</div></div></div><div
+                class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div
+                class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline"
+                                                                          style="position: relative;"><div
+                class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div
+                class="CodeMirror-gutter-background CodeMirror-activeline-gutter"
+                style="left: -24px; width: 24px;"></div><div
+                class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -24px;"><div
+                class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show"
+                style="left: 0px; width: 17px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span
+                role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">struct</span> <span
+                class="cm-def">RBNode</span>{</span></pre></div><div style="position: relative;"><div
+                class="CodeMirror-gutter-wrapper" style="left: -24px;"><div
+                class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 17px;">2</div></div><pre
+                class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span
+                class="cm-variable">ElemType</span> <span class="cm-variable">data</span>;</span></pre></div><div
+                style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -24px;"><div
+                class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 17px;">3</div></div><pre
+                class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span
+                class="cm-variable">RBNode</span><span class="cm-operator">*</span> <span
+                class="cm-variable">parent</span>, <span class="cm-variable">lchild</span>, <span class="cm-variable">rchild</span>; <span
+                class="cm-comment">// 同二叉排序树</span></span></pre></div><div style="position: relative;"><div
+                class="CodeMirror-gutter-wrapper" style="left: -24px;"><div
+                class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 17px;">4</div></div><pre
+                class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span
+                class="cm-variable-3">int</span> <span class="cm-variable">color</span>; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span
+                class="cm-comment">// 存放红黑状态，如1/0表示红/黑</span></span></pre></div><div
+                style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -24px;"><div
+                class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show"
+                style="left: 0px; width: 17px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span
+                role="presentation" style="padding-right: 0.1px;">};</span></pre></div></div></div></div></div></div><div
+                style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 132px;"></div><div
+                class="CodeMirror-gutters" style="height: 132px;"><div class="CodeMirror-gutter CodeMirror-linenumbers"
+                                                                       style="width: 24px;"></div></div></div></div></pre>
+        <h2 id='插入'><span>插入</span></h2>
+        <ol start=''>
+            <li><p><span>新结点是根————结点染为</span><font color="white"
+                                                            style="background: #000;"><span>黑色</span></font></p></li>
+            <li><p><span>新结点是非根————结点染为</span><font color="white" style="background: #f00;"><span>红色</span></font>
+            </p></li>
+            <li><p><span>若新插入结点后依然满足红黑树定义，插入结束</span></p></li>
+            <li><p><span>若新插入结点不满足红黑树定义，需要调整使其满足定义（看新结点的叔叔结点的颜色）</span></p>
+                <ul>
+                    <li><p><span>黑叔：旋转+染色</span></p>
+                        <ul>
+                            <li><span>LL: 右单旋转，父换爷+染色</span></li>
+                            <li><span>RR: 左单旋转，父换爷+染色</span></li>
+                            <li><span>LR: 左右双旋，儿换爷+染色</span></li>
+                            <li><span>RL: 右左双旋，儿换爷+染色</span></li>
+                        </ul>
+                    </li>
+                    <li><p><span>红叔：染色+变新</span></p>
+                        <ul>
+                            <li><span>叔父爷染色，爷变为新结点</span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+        <div class="md-diagram-panel md-fences-adv-panel">
+            <svg height="496.5" id="mermaidChart0" style="max-width: 1817.0765380859375px;"
+                 viewBox="-8 -8 1817.0765380859375 496.5" width="100%" xmlns="http://www.w3.org/2000/svg"
+                 xmlns:xlink="http://www.w3.org/1999/xlink">
+                <style>#mermaidChart0 {
+                    font-family: sans-serif;
+                    font-size: 16px;
+                    fill: #333;
+                }
+
+                #mermaidChart0 .error-icon {
+                    fill: #552222;
+                }
+
+                #mermaidChart0 .error-text {
+                    fill: #552222;
+                    stroke: #552222;
+                }
+
+                #mermaidChart0 .edge-thickness-normal {
+                    stroke-width: 2px;
+                }
+
+                #mermaidChart0 .edge-thickness-thick {
+                    stroke-width: 3.5px;
+                }
+
+                #mermaidChart0 .edge-pattern-solid {
+                    stroke-dasharray: 0;
+                }
+
+                #mermaidChart0 .edge-pattern-dashed {
+                    stroke-dasharray: 3;
+                }
+
+                #mermaidChart0 .edge-pattern-dotted {
+                    stroke-dasharray: 2;
+                }
+
+                #mermaidChart0 .marker {
+                    fill: #333333;
+                }
+
+                #mermaidChart0 .marker.cross {
+                    stroke: #333333;
+                }
+
+                #mermaidChart0 svg {
+                    font-family: sans-serif;
+                    font-size: 16px;
+                }
+
+                #mermaidChart0 .label {
+                    font-family: sans-serif;
+                    color: #333;
+                }
+
+                #mermaidChart0 .label text {
+                    fill: #333;
+                }
+
+                #mermaidChart0 .node rect, #mermaidChart0 .node circle, #mermaidChart0 .node ellipse, #mermaidChart0 .node polygon, #mermaidChart0 .node path {
+                    fill: #ECECFF;
+                    stroke: #9370DB;
+                    stroke-width: 1px;
+                }
+
+                #mermaidChart0 .node .label {
+                    text-align: center;
+                }
+
+                #mermaidChart0 .node.clickable {
+                    cursor: pointer;
+                }
+
+                #mermaidChart0 .arrowheadPath {
+                    fill: #333333;
+                }
+
+                #mermaidChart0 .edgePath .path {
+                    stroke: #333333;
+                    stroke-width: 1.5px;
+                }
+
+                #mermaidChart0 .flowchart-link {
+                    stroke: #333333;
+                    fill: none;
+                }
+
+                #mermaidChart0 .edgeLabel {
+                    background-color: #e8e8e8;
+                    text-align: center;
+                }
+
+                #mermaidChart0 .edgeLabel rect {
+                    opacity: 0.5;
+                    background-color: #e8e8e8;
+                    fill: #e8e8e8;
+                }
+
+                #mermaidChart0 .cluster rect {
+                    fill: #ffffde;
+                    stroke: #aaaa33;
+                    stroke-width: 1px;
+                }
+
+                #mermaidChart0 .cluster text {
+                    fill: #333;
+                }
+
+                #mermaidChart0 div.mermaidTooltip {
+                    position: absolute;
+                    text-align: center;
+                    max-width: 200px;
+                    padding: 2px;
+                    font-family: sans-serif;
+                    font-size: 12px;
+                    background: hsl(80, 100%, 96.2745098039%);
+                    border: 1px solid #aaaa33;
+                    border-radius: 2px;
+                    pointer-events: none;
+                    z-index: 100;
+                }
+
+                #mermaidChart0:root {
+                    --mermaid-font-family: sans-serif;
+                }
+
+                #mermaidChart0:root {
+                    --mermaid-alt-font-family: sans-serif;
+                }
+
+                #mermaidChart0 flowchart {
+                    fill: apa;
+                }</style>
+                <g>
+                    <g class="output">
+                        <g class="clusters"></g>
+                        <g class="edgePaths">
+                            <g class="edgePath LS-S LE-I" id="L-S-I" style="opacity: 1;">
+                                <path class="path" d="M60.640625,239.25L85.640625,239.25L110.640625,239.25"
+                                      marker-end="url(#arrowhead75)" style="fill:none"></path>
+                                <defs>
+                                    <marker id="arrowhead75" markerHeight="6" markerUnits="strokeWidth" markerWidth="8"
+                                            orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+                                        <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
+                                              style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path>
+                                    </marker>
+                                </defs>
+                            </g>
+                            <g class="edgePath LS-I LE-j1" id="L-I-j1" style="opacity: 1;">
+                                <path class="path"
+                                      d="M277.53125,239.25L302.53125,239.25L328.03125152587904,239.74999999999997"
+                                      marker-end="url(#arrowhead76)" style="fill:none"></path>
+                                <defs>
+                                    <marker id="arrowhead76" markerHeight="6" markerUnits="strokeWidth" markerWidth="8"
+                                            orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+                                        <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
+                                              style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path>
+                                    </marker>
+                                </defs>
+                            </g>
+                            <g class="edgePath LS-j1 LE-d1" id="L-j1-d1" style="opacity: 1;">
+                                <path class="path"
+                                      d="M466.7494205133492,217.14317203922798L530.1765594482422,191.75L571.4968719482422,191.75"
+                                      marker-end="url(#arrowhead77)" style="fill:none"></path>
+                                <defs>
+                                    <marker id="arrowhead77" markerHeight="6" markerUnits="strokeWidth" markerWidth="8"
+                                            orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+                                        <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
+                                              style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path>
+                                    </marker>
+                                </defs>
+                            </g>
+                            <g class="edgePath LS-j1 LE-d2" id="L-j1-d2" style="opacity: 1;">
+                                <path class="path"
+                                      d="M466.7494227098078,262.35682881607113L530.1765594482422,286.75L571.4968719482422,286.75"
+                                      marker-end="url(#arrowhead78)" style="fill:none"></path>
+                                <defs>
+                                    <marker id="arrowhead78" markerHeight="6" markerUnits="strokeWidth" markerWidth="8"
+                                            orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+                                        <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
+                                              style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path>
+                                    </marker>
+                                </defs>
+                            </g>
+                            <g class="edgePath LS-d1 LE-j2" id="L-d1-j2" style="opacity: 1;">
+                                <path class="path"
+                                      d="M689.4187469482422,191.75L714.4187469482422,191.75L766.9020101238831,212.7667337726014"
+                                      marker-end="url(#arrowhead79)" style="fill:none"></path>
+                                <defs>
+                                    <marker id="arrowhead79" markerHeight="6" markerUnits="strokeWidth" markerWidth="8"
+                                            orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+                                        <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
+                                              style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path>
+                                    </marker>
+                                </defs>
+                            </g>
+                            <g class="edgePath LS-d2 LE-j2" id="L-d2-j2" style="opacity: 1;">
+                                <path class="path"
+                                      d="M689.4187469482422,286.75L714.4187469482422,286.75L766.902014500168,266.7332645001681"
+                                      marker-end="url(#arrowhead80)" style="fill:none"></path>
+                                <defs>
+                                    <marker id="arrowhead80" markerHeight="6" markerUnits="strokeWidth" markerWidth="8"
+                                            orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+                                        <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
+                                              style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path>
+                                    </marker>
+                                </defs>
+                            </g>
+                            <g class="edgePath LS-j2 LE-E" id="L-j2-E" style="opacity: 1;">
+                                <path class="path"
+                                      d="M873.2527801219077,182.38246762190747L979.6046905517578,20.5L1087.7156295776367,20.5L1187.6625061035156,20.5L1255.3031311035156,20.5L1322.9437561035156,20.5L1447.3890686035156,20.5L1555.5140686035156,20.5L1639.4750061035156,20.5L1723.4359436035156,20.5L1769.4609719979528,216.06328201293945"
+                                      marker-end="url(#arrowhead81)" style="fill:none"></path>
+                                <defs>
+                                    <marker id="arrowhead81" markerHeight="6" markerUnits="strokeWidth" markerWidth="8"
+                                            orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+                                        <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
+                                              style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path>
+                                    </marker>
+                                </defs>
+                            </g>
+                            <g class="edgePath LS-j2 LE-j3" id="L-j2-j3" style="opacity: 1;">
+                                <path class="path"
+                                      d="M897.7348036884714,272.63550270801295L979.6046905517578,315.5L1029.5890670776366,316"
+                                      marker-end="url(#arrowhead82)" style="fill:none"></path>
+                                <defs>
+                                    <marker id="arrowhead82" markerHeight="6" markerUnits="strokeWidth" markerWidth="8"
+                                            orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+                                        <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
+                                              style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path>
+                                    </marker>
+                                </defs>
+                            </g>
+                            <g class="edgePath LS-j3 LE-R" id="L-j3-R" style="opacity: 1;">
+                                <path class="path"
+                                      d="M1118.2727503058384,287.4305582282023L1187.6625061035156,220.5L1228.9828186035156,220.5"
+                                      marker-end="url(#arrowhead83)" style="fill:none"></path>
+                                <defs>
+                                    <marker id="arrowhead83" markerHeight="6" markerUnits="strokeWidth" markerWidth="8"
+                                            orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+                                        <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
+                                              style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path>
+                                    </marker>
+                                </defs>
+                            </g>
+                            <g class="edgePath LS-R LE-LL" id="L-R-LL" style="opacity: 1;">
+                                <path class="path"
+                                      d="M1265.9832297877263,198L1322.9437561035156,78L1367.2171936035156,78"
+                                      marker-end="url(#arrowhead84)" style="fill:none"></path>
+                                <defs>
+                                    <marker id="arrowhead84" markerHeight="6" markerUnits="strokeWidth" markerWidth="8"
+                                            orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+                                        <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
+                                              style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path>
+                                    </marker>
+                                </defs>
+                            </g>
+                            <g class="edgePath LS-R LE-RR" id="L-R-RR" style="opacity: 1;">
+                                <path class="path"
+                                      d="M1281.6234436035156,202.01680526680528L1322.9437561035156,173L1364.2640686035156,173"
+                                      marker-end="url(#arrowhead85)" style="fill:none"></path>
+                                <defs>
+                                    <marker id="arrowhead85" markerHeight="6" markerUnits="strokeWidth" markerWidth="8"
+                                            orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+                                        <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
+                                              style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path>
+                                    </marker>
+                                </defs>
+                            </g>
+                            <g class="edgePath LS-R LE-LR" id="L-R-LR" style="opacity: 1;">
+                                <path class="path"
+                                      d="M1281.6234436035156,238.98319473319472L1322.9437561035156,268L1365.5921936035156,268"
+                                      marker-end="url(#arrowhead86)" style="fill:none"></path>
+                                <defs>
+                                    <marker id="arrowhead86" markerHeight="6" markerUnits="strokeWidth" markerWidth="8"
+                                            orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+                                        <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
+                                              style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path>
+                                    </marker>
+                                </defs>
+                            </g>
+                            <g class="edgePath LS-R LE-RL" id="L-R-RL" style="opacity: 1;">
+                                <path class="path"
+                                      d="M1265.9832297877263,243L1322.9437561035156,363L1365.8890686035156,363"
+                                      marker-end="url(#arrowhead87)" style="fill:none"></path>
+                                <defs>
+                                    <marker id="arrowhead87" markerHeight="6" markerUnits="strokeWidth" markerWidth="8"
+                                            orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+                                        <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
+                                              style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path>
+                                    </marker>
+                                </defs>
+                            </g>
+                            <g class="edgePath LS-LL LE-d3" id="L-LL-d3" style="opacity: 1;">
+                                <path class="path"
+                                      d="M1527.5609436035156,78L1555.5140686035156,78L1627.7094201609104,216.06328201293945"
+                                      marker-end="url(#arrowhead88)" style="fill:none"></path>
+                                <defs>
+                                    <marker id="arrowhead88" markerHeight="6" markerUnits="strokeWidth" markerWidth="8"
+                                            orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+                                        <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
+                                              style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path>
+                                    </marker>
+                                </defs>
+                            </g>
+                            <g class="edgePath LS-RR LE-d3" id="L-RR-d3" style="opacity: 1;">
+                                <path class="path"
+                                      d="M1530.5140686035156,173L1555.5140686035156,173L1613.1546936035156,218.01031866488017"
+                                      marker-end="url(#arrowhead89)" style="fill:none"></path>
+                                <defs>
+                                    <marker id="arrowhead89" markerHeight="6" markerUnits="strokeWidth" markerWidth="8"
+                                            orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+                                        <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
+                                              style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path>
+                                    </marker>
+                                </defs>
+                            </g>
+                            <g class="edgePath LS-LR LE-d3" id="L-LR-d3" style="opacity: 1;">
+                                <path class="path"
+                                      d="M1529.1859436035156,268L1555.5140686035156,268L1613.1546936035156,247.79118774462336"
+                                      marker-end="url(#arrowhead90)" style="fill:none"></path>
+                                <defs>
+                                    <marker id="arrowhead90" markerHeight="6" markerUnits="strokeWidth" markerWidth="8"
+                                            orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+                                        <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
+                                              style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path>
+                                    </marker>
+                                </defs>
+                            </g>
+                            <g class="edgePath LS-RL LE-d3" id="L-RL-d3" style="opacity: 1;">
+                                <path class="path"
+                                      d="M1528.8890686035156,363L1555.5140686035156,363L1624.2936261675193,261.06328201293945"
+                                      marker-end="url(#arrowhead91)" style="fill:none"></path>
+                                <defs>
+                                    <marker id="arrowhead91" markerHeight="6" markerUnits="strokeWidth" markerWidth="8"
+                                            orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+                                        <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
+                                              style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path>
+                                    </marker>
+                                </defs>
+                            </g>
+                            <g class="edgePath LS-d3 LE-E" id="L-d3-E" style="opacity: 1;">
+                                <path class="path"
+                                      d="M1665.7953186035156,238.56328201293945L1723.4359436035156,238.56328201293945L1748.4359436035156,238.56328201293945"
+                                      marker-end="url(#arrowhead92)" style="fill:none"></path>
+                                <defs>
+                                    <marker id="arrowhead92" markerHeight="6" markerUnits="strokeWidth" markerWidth="8"
+                                            orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+                                        <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
+                                              style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path>
+                                    </marker>
+                                </defs>
+                            </g>
+                            <g class="edgePath LS-j3 LE-d4" id="L-j3-d4" style="opacity: 1;">
+                                <path class="path"
+                                      d="M1112.3839817637916,350.4582072620881L1187.6625061035156,458L1255.3031311035156,458L1322.9437561035156,458L1396.5843811035156,458"
+                                      marker-end="url(#arrowhead93)" style="fill:none"></path>
+                                <defs>
+                                    <marker id="arrowhead93" markerHeight="6" markerUnits="strokeWidth" markerWidth="8"
+                                            orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+                                        <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
+                                              style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path>
+                                    </marker>
+                                </defs>
+                            </g>
+                            <g class="edgePath LS-d4 LE-c1" id="L-d4-c1" style="opacity: 1;">
+                                <path class="path"
+                                      d="M1498.1937561035156,458L1555.5140686035156,458L1580.5140686035156,458"
+                                      marker-end="url(#arrowhead94)" style="fill:none"></path>
+                                <defs>
+                                    <marker id="arrowhead94" markerHeight="6" markerUnits="strokeWidth" markerWidth="8"
+                                            orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+                                        <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
+                                              style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path>
+                                    </marker>
+                                </defs>
+                            </g>
+                            <g class="edgePath LS-c1 LE-E" id="L-c1-E" style="opacity: 1;">
+                                <path class="path"
+                                      d="M1698.4359436035156,458L1723.4359436035156,458L1769.4941147360983,261.06328201293945"
+                                      marker-end="url(#arrowhead95)" style="fill:none"></path>
+                                <defs>
+                                    <marker id="arrowhead95" markerHeight="6" markerUnits="strokeWidth" markerWidth="8"
+                                            orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+                                        <path class="arrowheadPath" d="M 0 0 L 10 5 L 0 10 z"
+                                              style="stroke-width: 1px; stroke-dasharray: 1px, 0px;"></path>
+                                    </marker>
+                                </defs>
+                            </g>
+                        </g>
+                        <g class="edgeLabels">
+                            <g class="edgeLabel" style="opacity: 1;" transform="">
+                                <g class="label" transform="translate(0,0)">
+                                    <rect height="0" rx="0" ry="0" width="0"></rect>
+                                    <foreignObject height="0" width="0">
+                                        <div style="display: inline-block; white-space: nowrap;"
+                                             xmlns="http://www.w3.org/1999/xhtml"><span></span></div>
+                                    </foreignObject>
+                                </g>
+                            </g>
+                            <g class="edgeLabel" style="opacity: 1;" transform="">
+                                <g class="label" transform="translate(0,0)">
+                                    <rect height="0" rx="0" ry="0" width="0"></rect>
+                                    <foreignObject height="0" width="0">
+                                        <div style="display: inline-block; white-space: nowrap;"
+                                             xmlns="http://www.w3.org/1999/xhtml"><span></span></div>
+                                    </foreignObject>
+                                </g>
+                            </g>
+                            <g class="edgeLabel" style="opacity: 1;" transform="translate(530.1765594482422,191.75)">
+                                <g class="label" transform="translate(-8.1640625,-12.5)">
+                                    <rect height="25" rx="0" ry="0" width="16.328125"></rect>
+                                    <foreignObject height="25" width="16.328125">
+                                        <div style="display: inline-block; white-space: nowrap;"
+                                             xmlns="http://www.w3.org/1999/xhtml"><span>是</span></div>
+                                    </foreignObject>
+                                </g>
+                            </g>
+                            <g class="edgeLabel" style="opacity: 1;" transform="translate(530.1765594482422,286.75)">
+                                <g class="label" transform="translate(-16.3203125,-12.5)">
+                                    <rect height="25" rx="0" ry="0" width="32.640625"></rect>
+                                    <foreignObject height="25" width="32.640625">
+                                        <div style="display: inline-block; white-space: nowrap;"
+                                             xmlns="http://www.w3.org/1999/xhtml"><span>不是</span></div>
+                                    </foreignObject>
+                                </g>
+                            </g>
+                            <g class="edgeLabel" style="opacity: 1;" transform="">
+                                <g class="label" transform="translate(0,0)">
+                                    <rect height="0" rx="0" ry="0" width="0"></rect>
+                                    <foreignObject height="0" width="0">
+                                        <div style="display: inline-block; white-space: nowrap;"
+                                             xmlns="http://www.w3.org/1999/xhtml"><span></span></div>
+                                    </foreignObject>
+                                </g>
+                            </g>
+                            <g class="edgeLabel" style="opacity: 1;" transform="">
+                                <g class="label" transform="translate(0,0)">
+                                    <rect height="0" rx="0" ry="0" width="0"></rect>
+                                    <foreignObject height="0" width="0">
+                                        <div style="display: inline-block; white-space: nowrap;"
+                                             xmlns="http://www.w3.org/1999/xhtml"><span></span></div>
+                                    </foreignObject>
+                                </g>
+                            </g>
+                            <g class="edgeLabel" style="opacity: 1;" transform="translate(1322.9437561035156,20.5)">
+                                <g class="label" transform="translate(-16.3203125,-12.5)">
+                                    <rect height="25" rx="0" ry="0" width="32.640625"></rect>
+                                    <foreignObject height="25" width="32.640625">
+                                        <div style="display: inline-block; white-space: nowrap;"
+                                             xmlns="http://www.w3.org/1999/xhtml"><span>满足</span></div>
+                                    </foreignObject>
+                                </g>
+                            </g>
+                            <g class="edgeLabel" style="opacity: 1;" transform="translate(979.6046905517578,315.5)">
+                                <g class="label" transform="translate(-24.484375,-12.5)">
+                                    <rect height="25" rx="0" ry="0" width="48.96875"></rect>
+                                    <foreignObject height="25" width="48.96875">
+                                        <div style="display: inline-block; white-space: nowrap;"
+                                             xmlns="http://www.w3.org/1999/xhtml"><span>不满足</span>
+                                        </div>
+                                    </foreignObject>
+                                </g>
+                            </g>
+                            <g class="edgeLabel" style="opacity: 1;" transform="translate(1187.6625061035156,220.5)">
+                                <g class="label" transform="translate(-16.3203125,-12.5)">
+                                    <rect height="25" rx="0" ry="0" width="32.640625"></rect>
+                                    <foreignObject height="25" width="32.640625">
+                                        <div style="display: inline-block; white-space: nowrap;"
+                                             xmlns="http://www.w3.org/1999/xhtml"><span>黑树</span></div>
+                                    </foreignObject>
+                                </g>
+                            </g>
+                            <g class="edgeLabel" style="opacity: 1;" transform="">
+                                <g class="label" transform="translate(0,0)">
+                                    <rect height="0" rx="0" ry="0" width="0"></rect>
+                                    <foreignObject height="0" width="0">
+                                        <div style="display: inline-block; white-space: nowrap;"
+                                             xmlns="http://www.w3.org/1999/xhtml"><span></span></div>
+                                    </foreignObject>
+                                </g>
+                            </g>
+                            <g class="edgeLabel" style="opacity: 1;" transform="">
+                                <g class="label" transform="translate(0,0)">
+                                    <rect height="0" rx="0" ry="0" width="0"></rect>
+                                    <foreignObject height="0" width="0">
+                                        <div style="display: inline-block; white-space: nowrap;"
+                                             xmlns="http://www.w3.org/1999/xhtml"><span></span></div>
+                                    </foreignObject>
+                                </g>
+                            </g>
+                            <g class="edgeLabel" style="opacity: 1;" transform="">
+                                <g class="label" transform="translate(0,0)">
+                                    <rect height="0" rx="0" ry="0" width="0"></rect>
+                                    <foreignObject height="0" width="0">
+                                        <div style="display: inline-block; white-space: nowrap;"
+                                             xmlns="http://www.w3.org/1999/xhtml"><span></span></div>
+                                    </foreignObject>
+                                </g>
+                            </g>
+                            <g class="edgeLabel" style="opacity: 1;" transform="">
+                                <g class="label" transform="translate(0,0)">
+                                    <rect height="0" rx="0" ry="0" width="0"></rect>
+                                    <foreignObject height="0" width="0">
+                                        <div style="display: inline-block; white-space: nowrap;"
+                                             xmlns="http://www.w3.org/1999/xhtml"><span></span></div>
+                                    </foreignObject>
+                                </g>
+                            </g>
+                            <g class="edgeLabel" style="opacity: 1;" transform="">
+                                <g class="label" transform="translate(0,0)">
+                                    <rect height="0" rx="0" ry="0" width="0"></rect>
+                                    <foreignObject height="0" width="0">
+                                        <div style="display: inline-block; white-space: nowrap;"
+                                             xmlns="http://www.w3.org/1999/xhtml"><span></span></div>
+                                    </foreignObject>
+                                </g>
+                            </g>
+                            <g class="edgeLabel" style="opacity: 1;" transform="">
+                                <g class="label" transform="translate(0,0)">
+                                    <rect height="0" rx="0" ry="0" width="0"></rect>
+                                    <foreignObject height="0" width="0">
+                                        <div style="display: inline-block; white-space: nowrap;"
+                                             xmlns="http://www.w3.org/1999/xhtml"><span></span></div>
+                                    </foreignObject>
+                                </g>
+                            </g>
+                            <g class="edgeLabel" style="opacity: 1;" transform="">
+                                <g class="label" transform="translate(0,0)">
+                                    <rect height="0" rx="0" ry="0" width="0"></rect>
+                                    <foreignObject height="0" width="0">
+                                        <div style="display: inline-block; white-space: nowrap;"
+                                             xmlns="http://www.w3.org/1999/xhtml"><span></span></div>
+                                    </foreignObject>
+                                </g>
+                            </g>
+                            <g class="edgeLabel" style="opacity: 1;" transform="">
+                                <g class="label" transform="translate(0,0)">
+                                    <rect height="0" rx="0" ry="0" width="0"></rect>
+                                    <foreignObject height="0" width="0">
+                                        <div style="display: inline-block; white-space: nowrap;"
+                                             xmlns="http://www.w3.org/1999/xhtml"><span></span></div>
+                                    </foreignObject>
+                                </g>
+                            </g>
+                            <g class="edgeLabel" style="opacity: 1;" transform="">
+                                <g class="label" transform="translate(0,0)">
+                                    <rect height="0" rx="0" ry="0" width="0"></rect>
+                                    <foreignObject height="0" width="0">
+                                        <div style="display: inline-block; white-space: nowrap;"
+                                             xmlns="http://www.w3.org/1999/xhtml"><span></span></div>
+                                    </foreignObject>
+                                </g>
+                            </g>
+                            <g class="edgeLabel" style="opacity: 1;" transform="translate(1255.3031311035156,458)">
+                                <g class="label" transform="translate(-16.3203125,-12.5)">
+                                    <rect height="25" rx="0" ry="0" width="32.640625"></rect>
+                                    <foreignObject height="25" width="32.640625">
+                                        <div style="display: inline-block; white-space: nowrap;"
+                                             xmlns="http://www.w3.org/1999/xhtml"><span>红树</span></div>
+                                    </foreignObject>
+                                </g>
+                            </g>
+                            <g class="edgeLabel" style="opacity: 1;" transform="">
+                                <g class="label" transform="translate(0,0)">
+                                    <rect height="0" rx="0" ry="0" width="0"></rect>
+                                    <foreignObject height="0" width="0">
+                                        <div style="display: inline-block; white-space: nowrap;"
+                                             xmlns="http://www.w3.org/1999/xhtml"><span></span></div>
+                                    </foreignObject>
+                                </g>
+                            </g>
+                            <g class="edgeLabel" style="opacity: 1;" transform="">
+                                <g class="label" transform="translate(0,0)">
+                                    <rect height="0" rx="0" ry="0" width="0"></rect>
+                                    <foreignObject height="0" width="0">
+                                        <div style="display: inline-block; white-space: nowrap;"
+                                             xmlns="http://www.w3.org/1999/xhtml"><span></span></div>
+                                    </foreignObject>
+                                </g>
+                            </g>
+                        </g>
+                        <g class="nodes">
+                            <g class="node default" id="flowchart-S-41" style="opacity: 1;"
+                               transform="translate(34.3203125,239.25)">
+                                <rect class="label-container" height="45" rx="0" ry="0" width="52.640625" x="-26.3203125"
+                                      y="-22.5"></rect>
+                                <g class="label" transform="translate(0,0)">
+                                    <g transform="translate(-16.3203125,-12.5)">
+                                        <foreignObject height="25" width="32.640625">
+                                            <div style="display: inline-block; white-space: nowrap;"
+                                                 xmlns="http://www.w3.org/1999/xhtml">开始
+                                            </div>
+                                        </foreignObject>
+                                    </g>
+                                </g>
+                            </g>
+                            <g class="node default" id="flowchart-I-42" style="opacity: 1;"
+                               transform="translate(194.0859375,239.25)">
+                                <rect class="label-container" height="45" rx="0" ry="0" width="166.890625" x="-83.4453125"
+                                      y="-22.5"></rect>
+                                <g class="label" transform="translate(0,0)">
+                                    <g transform="translate(-73.4453125,-12.5)">
+                                        <foreignObject height="25" width="146.890625">
+                                            <div style="display: inline-block; white-space: nowrap;"
+                                                 xmlns="http://www.w3.org/1999/xhtml">二叉排序树插入操作
+                                            </div>
+                                        </foreignObject>
+                                    </g>
+                                </g>
+                            </g>
+                            <g class="node default" id="flowchart-j1-43" style="opacity: 1;"
+                               transform="translate(408.1937484741211,239.25)">
+                                <polygon
+                                        class="label-container"
+                                        points="80.66250000000001,0 161.32500000000002,-80.66250000000001 80.66250000000001,-161.32500000000002 0,-80.66250000000001"
+                                        transform="translate(-80.66250000000001,80.66250000000001)"></polygon>
+                                <g class="label" transform="translate(0,0)">
+                                    <g transform="translate(-57.125,-12.5)">
+                                        <foreignObject height="25" width="114.25">
+                                            <div style="display: inline-block; white-space: nowrap;"
+                                                 xmlns="http://www.w3.org/1999/xhtml">新插入结点是根
+                                            </div>
+                                        </foreignObject>
+                                    </g>
+                                </g>
+                            </g>
+                            <g class="node default" id="flowchart-d1-45" style="opacity: 1;"
+                               transform="translate(630.4578094482422,191.75)">
+                                <rect class="label-container" height="45" rx="0" ry="0" width="117.921875" x="-58.9609375"
+                                      y="-22.5"></rect>
+                                <g class="label" transform="translate(0,0)">
+                                    <g transform="translate(-48.9609375,-12.5)">
+                                        <foreignObject height="25" width="97.921875">
+                                            <div style="display: inline-block; white-space: nowrap;"
+                                                 xmlns="http://www.w3.org/1999/xhtml">结点染为黑色
+                                            </div>
+                                        </foreignObject>
+                                    </g>
+                                </g>
+                            </g>
+                            <g class="node default" id="flowchart-d2-47" style="opacity: 1;"
+                               transform="translate(630.4578094482422,286.75)">
+                                <rect class="label-container" height="45" rx="0" ry="0" width="117.921875" x="-58.9609375"
+                                      y="-22.5"></rect>
+                                <g class="label" transform="translate(0,0)">
+                                    <g transform="translate(-48.9609375,-12.5)">
+                                        <foreignObject height="25" width="97.921875">
+                                            <div style="display: inline-block; white-space: nowrap;"
+                                                 xmlns="http://www.w3.org/1999/xhtml">结点染为红色
+                                            </div>
+                                        </foreignObject>
+                                    </g>
+                                </g>
+                            </g>
+                            <g class="node default" id="flowchart-j2-49" style="opacity: 1;"
+                               transform="translate(834.76953125,239.25)">
+                                <polygon
+                                        class="label-container"
+                                        points="95.35078125,0 190.7015625,-95.35078125 95.35078125,-190.7015625 0,-95.35078125"
+                                        transform="translate(-95.35078125,95.35078125)"></polygon>
+                                <g class="label" transform="translate(0,0)">
+                                    <g transform="translate(-73.4453125,-12.5)">
+                                        <foreignObject height="25" width="146.890625">
+                                            <div style="display: inline-block; white-space: nowrap;"
+                                                 xmlns="http://www.w3.org/1999/xhtml">依然满足红黑树定义
+                                            </div>
+                                        </foreignObject>
+                                    </g>
+                                </g>
+                            </g>
+                            <g class="node default" id="flowchart-E-53"
+                               style="opacity: 1;" transform="translate(1774.7562561035156,238.56328201293945)">
+                                <rect class="label-container" height="45" rx="0" ry="0" width="52.640625" x="-26.3203125"
+                                      y="-22.5"></rect>
+                                <g class="label" transform="translate(0,0)">
+                                    <g transform="translate(-16.3203125,-12.5)">
+                                        <foreignObject height="25" width="32.640625">
+                                            <div style="display: inline-block; white-space: nowrap;"
+                                                 xmlns="http://www.w3.org/1999/xhtml">结束
+                                            </div>
+                                        </foreignObject>
+                                    </g>
+                                </g>
+                            </g>
+                            <g class="node default" id="flowchart-j3-55" style="opacity: 1;"
+                               transform="translate(1087.7156295776367,315.5)">
+                                <polygon
+                                        class="label-container"
+                                        points="58.6265625,0 117.253125,-58.6265625 58.6265625,-117.253125 0,-58.6265625" transform="translate(-58.6265625,58.6265625)"></polygon>
+                                <g class="label" transform="translate(0,0)">
+                                    <g transform="translate(-32.640625,-12.5)">
+                                        <foreignObject height="25" width="65.28125">
+                                            <div style="display: inline-block; white-space: nowrap;"
+                                                 xmlns="http://www.w3.org/1999/xhtml">重新调整
+                                            </div>
+                                        </foreignObject>
+                                    </g>
+                                </g>
+                            </g>
+                            <g class="node default" id="flowchart-R-57" style="opacity: 1;"
+                               transform="translate(1255.3031311035156,220.5)">
+                                <rect class="label-container" height="45" rx="0" ry="0" width="52.640625" x="-26.3203125"
+                                      y="-22.5"></rect>
+                                <g class="label" transform="translate(0,0)">
+                                    <g transform="translate(-16.3203125,-12.5)">
+                                        <foreignObject height="25" width="32.640625">
+                                            <div style="display: inline-block; white-space: nowrap;"
+                                                 xmlns="http://www.w3.org/1999/xhtml">旋转
+                                            </div>
+                                        </foreignObject>
+                                    </g>
+                                </g>
+                            </g>
+                            <g class="node default" id="flowchart-LL-59" style="opacity: 1;"
+                               transform="translate(1447.3890686035156,78)">
+                                <rect class="label-container" height="45" rx="0" ry="0" width="160.34375" x="-80.171875"
+                                      y="-22.5"></rect>
+                                <g class="label" transform="translate(0,0)">
+                                    <g transform="translate(-70.171875,-12.5)">
+                                        <foreignObject height="25" width="140.34375">
+                                            <div style="display: inline-block; white-space: nowrap;"
+                                                 xmlns="http://www.w3.org/1999/xhtml">LL 右单旋转 父换爷
+                                            </div>
+                                        </foreignObject>
+                                    </g>
+                                </g>
+                            </g>
+                            <g class="node default" id="flowchart-RR-61" style="opacity: 1;"
+                               transform="translate(1447.3890686035156,173)">
+                                <rect class="label-container" height="45" rx="0" ry="0" width="166.25" x="-83.125"
+                                      y="-22.5"></rect>
+                                <g class="label" transform="translate(0,0)">
+                                    <g transform="translate(-73.125,-12.5)">
+                                        <foreignObject height="25" width="146.25">
+                                            <div style="display: inline-block; white-space: nowrap;"
+                                                 xmlns="http://www.w3.org/1999/xhtml">RR 左单旋转 父换爷
+                                            </div>
+                                        </foreignObject>
+                                    </g>
+                                </g>
+                            </g>
+                            <g class="node default" id="flowchart-LR-63" style="opacity: 1;"
+                               transform="translate(1447.3890686035156,268)">
+                                <rect class="label-container" height="45" rx="0" ry="0" width="163.59375" x="-81.796875"
+                                      y="-22.5"></rect>
+                                <g class="label" transform="translate(0,0)">
+                                    <g transform="translate(-71.796875,-12.5)">
+                                        <foreignObject height="25" width="143.59375">
+                                            <div style="display: inline-block; white-space: nowrap;"
+                                                 xmlns="http://www.w3.org/1999/xhtml">LR 左右双旋 儿换爷
+                                            </div>
+                                        </foreignObject>
+                                    </g>
+                                </g>
+                            </g>
+                            <g class="node default" id="flowchart-RL-65" style="opacity: 1;"
+                               transform="translate(1447.3890686035156,363)">
+                                <rect class="label-container" height="45" rx="0" ry="0" width="163" x="-81.5"
+                                      y="-22.5"></rect>
+                                <g class="label" transform="translate(0,0)">
+                                    <g transform="translate(-71.5,-12.5)">
+                                        <foreignObject height="25" width="143">
+                                            <div style="display: inline-block; white-space: nowrap;"
+                                                 xmlns="http://www.w3.org/1999/xhtml">RL 右左旋转 儿换爷
+                                            </div>
+                                        </foreignObject>
+                                    </g>
+                                </g>
+                            </g>
+                            <g class="node default" id="flowchart-d3-67"
+                               style="opacity: 1;" transform="translate(1639.4750061035156,238.56328201293945)">
+                                <rect class="label-container" height="45" rx="0" ry="0" width="52.640625" x="-26.3203125"
+                                      y="-22.5"></rect>
+                                <g class="label" transform="translate(0,0)">
+                                    <g transform="translate(-16.3203125,-12.5)">
+                                        <foreignObject height="25" width="32.640625">
+                                            <div style="display: inline-block; white-space: nowrap;"
+                                                 xmlns="http://www.w3.org/1999/xhtml">染色
+                                            </div>
+                                        </foreignObject>
+                                    </g>
+                                </g>
+                            </g>
+                            <g class="node default" id="flowchart-d4-77" style="opacity: 1;"
+                               transform="translate(1447.3890686035156,458)">
+                                <rect class="label-container" height="45" rx="0" ry="0" width="101.609375" x="-50.8046875"
+                                      y="-22.5"></rect>
+                                <g class="label" transform="translate(0,0)">
+                                    <g transform="translate(-40.8046875,-12.5)">
+                                        <foreignObject height="25" width="81.609375">
+                                            <div style="display: inline-block; white-space: nowrap;"
+                                                 xmlns="http://www.w3.org/1999/xhtml">叔父爷染色
+                                            </div>
+                                        </foreignObject>
+                                    </g>
+                                </g>
+                            </g>
+                            <g class="node default" id="flowchart-c1-79" style="opacity: 1;"
+                               transform="translate(1639.4750061035156,458)">
+                                <rect class="label-container" height="45" rx="0" ry="0" width="117.921875" x="-58.9609375"
+                                      y="-22.5"></rect>
+                                <g class="label" transform="translate(0,0)">
+                                    <g transform="translate(-48.9609375,-12.5)">
+                                        <foreignObject height="25" width="97.921875">
+                                            <div style="display: inline-block; white-space: nowrap;"
+                                                 xmlns="http://www.w3.org/1999/xhtml">爷变为新结点
+                                            </div>
+                                        </foreignObject>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+        </div>
+    </div>
+</div>
+</body>
+</html>
