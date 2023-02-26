@@ -771,9 +771,9 @@ footer {
 </head>
 <body class='typora-export'><div class='typora-export-content'>
 <div id='write'  class=''><h1 id='平衡二叉树avl树'><span>平衡二叉树(AVL树)</span></h1><p><span>定义左右子树的高度为该结点的平衡因子，平衡二叉树的平衡因子只能是-1,0,1</span></p><ul><li><p><span>平衡二叉树任意结点的左右子树高度差不超过1</span></p></li><li><p><span>平衡二叉树节点递推公式</span></p><ul><li><span>n</span><sub><span>0</span></sub><span>=1,n</span><sub><span>1</span></sub><span>=1,n</span><sub><span>2</span></sub><span>=2,n</span><sub><span>h</span></sub><span>=n</span><sub><span>h-2</span></sub><span>+n</span><sub><span>h-1</span></sub><span>+1....(</span>
-<span>斐波那契数，n</span><sub><span>1</span></sub><span>是第一层，即根结点 )</span></li></ul></li><li><p><span>ALV是高度平衡的二叉树，</span><strong><span>查找效率最高</span></strong><span>，O(log</span><sub><span>2</span></sub><span>n)</span></p></li><li><p><span>ALV和红黑树的查找，删除，插入的平均时间复杂度都相同</span></p></li></ul><h2 id='调整'><span>调整</span></h2><p><span>每次执行插入操作都需要进行调整使其再次成为平衡二叉树</span></p><p><span>每次调整的对象都是最小不平衡子树</span></p><ul><li><p><span>LL（左结点的左子树）</span></p><ul><li><span>右单旋转</span></li><li><img src="../images/zRNXuw.png" referrerpolicy="no-referrer" alt="zRNXuw"><span>新插入的结点在BL上</span></li><li><img src="../images/e2758bf7891d4fdf8a74c1271c7776ad.gif" referrerpolicy="no-referrer" alt="e2758bf7891d4fdf8a74c1271c7776ad"></li></ul></li><li><p><span>RR（右结点的右子树）</span></p><ul><li><span>左单旋转</span></li><li><img src="../images/xLHwfc.png" referrerpolicy="no-referrer" alt="xLHwfc"><span>新插入的结点在BR上</span></li><li><img src="../images/d2fcf38083444a4caba65d1dd969b33b.gif" referrerpolicy="no-referrer" alt="d2fcf38083444a4caba65d1dd969b33b"></li></ul></li><li><p><span>LR（左结点的右子树）</span></p><ul><li><span>先左后右双旋转</span></li><li><img src="../images/L5jopI.png" referrerpolicy="no-referrer" alt="L5jopI"><span>新插入的结点在CL上</span></li><li><img src="../images/ccd3070b0cff4051aa607face0535fb6.gif" referrerpolicy="no-referrer" alt="ccd3070b0cff4051aa607face0535fb6"></li></ul></li><li><p><span>RL（右结点的左子树）</span></p><ul><li><span>先右后左双旋转</span></li><li><img src="../images/DnYKRR.png" referrerpolicy="no-referrer" alt="DnYKRR"><span>新插入的结点在CL上</span></li><li><img src="../images/50ce9d8ff66546cd977e86580a7e47b5.gif" referrerpolicy="no-referrer" alt="50ce9d8ff66546cd977e86580a7e47b5">
+<span>斐波那契数，n</span><sub><span>1</span></sub><span>是第一层，即根结点 )</span></li></ul></li><li><p><span>ALV是高度平衡的二叉树，</span><strong><span>查找效率最高</span></strong><span>，O(log</span><sub><span>2</span></sub><span>n)</span></p></li><li><p><span>ALV和红黑树的查找，删除，插入的平均时间复杂度都相同</span></p></li></ul><h2 id='调整'><span>调整</span></h2><p><span>每次执行插入操作都需要进行调整使其再次成为平衡二叉树</span></p><p><span>每次调整的对象都是最小不平衡子树</span></p><ul><li><p><span>LL（左结点的左子树）</span></p><ul><li><span>右单旋转</span></li><li><img src="../../assets/images/zRNXuw.png" referrerpolicy="no-referrer" alt="zRNXuw"><span>新插入的结点在BL上</span></li><li><img src="../../assets/images/e2758bf7891d4fdf8a74c1271c7776ad.gif" referrerpolicy="no-referrer" alt="e2758bf7891d4fdf8a74c1271c7776ad"></li></ul></li><li><p><span>RR（右结点的右子树）</span></p><ul><li><span>左单旋转</span></li><li><img src="../../assets/images/xLHwfc.png" referrerpolicy="no-referrer" alt="xLHwfc"><span>新插入的结点在BR上</span></li><li><img src="../../assets/images/d2fcf38083444a4caba65d1dd969b33b.gif" referrerpolicy="no-referrer" alt="d2fcf38083444a4caba65d1dd969b33b"></li></ul></li><li><p><span>LR（左结点的右子树）</span></p><ul><li><span>先左后右双旋转</span></li><li><img src="../../assets/images/L5jopI.png" referrerpolicy="no-referrer" alt="L5jopI"><span>新插入的结点在CL上</span></li><li><img src="../../assets/images/ccd3070b0cff4051aa607face0535fb6.gif" referrerpolicy="no-referrer" alt="ccd3070b0cff4051aa607face0535fb6"></li></ul></li><li><p><span>RL（右结点的左子树）</span></p><ul><li><span>先右后左双旋转</span></li><li><img src="../../assets/images/DnYKRR.png" referrerpolicy="no-referrer" alt="DnYKRR"><span>新插入的结点在CL上</span></li><li><img src="../../assets/images/50ce9d8ff66546cd977e86580a7e47b5.gif" referrerpolicy="no-referrer" alt="50ce9d8ff66546cd977e86580a7e47b5">
 <span>例：插入</span><code>[15,3,7,10,9,8]</code>
-<img src="../images/tJDwXf.png" referrerpolicy="no-referrer" alt="平衡二叉树的生成过程"></li></ul></li></ul><h2 id='查找'><span>查找</span></h2><p><span>n</span><sub><span>h</span></sub><span>表示树高为h的AVL树含有的最少结点数</span></p><p><span>n</span><sub><span>1</span></sub><span>=1,n</span><sub><span>2</span></sub><span>=2,n</span><sub><span>3</span></sub><span>=4,...,n</span><sub><span>h</span></sub><span>=n</span><sub><span>h-1</span></sub><span>+n</span><sub><span>h-2</span></sub><span>+1</span></p><p><span>含有n个结点的平衡二叉树的</span><strong><span>最大高度</span></strong><span>为O(log</span><sub><span>2</span></sub><span>n) </span><strong><span>平均查找长度</span></strong><span>为O(log</span><sub><span>2</span></sub><span>n)</span></p><h2 id='删除'><span>删除</span></h2><p><img src="../images/yLbsF0.png" referrerpolicy="no-referrer" alt="平衡二叉树的删除"></p><p><span>删除的时间复杂度：O(log</span><sub><span>2</span></sub><span>n)</span></p><h1 id='错题集'><span>错题集</span></h1><ol start='' ><li><p><img src="../images/zIVgq9.png" referrerpolicy="no-referrer" alt="zIVgq9"></p><details>
+<img src="../../assets/images/tJDwXf.png" referrerpolicy="no-referrer" alt="平衡二叉树的生成过程"></li></ul></li></ul><h2 id='查找'><span>查找</span></h2><p><span>n</span><sub><span>h</span></sub><span>表示树高为h的AVL树含有的最少结点数</span></p><p><span>n</span><sub><span>1</span></sub><span>=1,n</span><sub><span>2</span></sub><span>=2,n</span><sub><span>3</span></sub><span>=4,...,n</span><sub><span>h</span></sub><span>=n</span><sub><span>h-1</span></sub><span>+n</span><sub><span>h-2</span></sub><span>+1</span></p><p><span>含有n个结点的平衡二叉树的</span><strong><span>最大高度</span></strong><span>为O(log</span><sub><span>2</span></sub><span>n) </span><strong><span>平均查找长度</span></strong><span>为O(log</span><sub><span>2</span></sub><span>n)</span></p><h2 id='删除'><span>删除</span></h2><p><img src="../../assets/images/yLbsF0.png" referrerpolicy="no-referrer" alt="平衡二叉树的删除"></p><p><span>删除的时间复杂度：O(log</span><sub><span>2</span></sub><span>n)</span></p><h1 id='错题集'><span>错题集</span></h1><ol start='' ><li><p><img src="../../assets/images/zIVgq9.png" referrerpolicy="no-referrer" alt="zIVgq9"></p><details>
    <summary>答案与解析：</summary>
    <br>
    答案： C
@@ -787,20 +787,20 @@ footer {
 	n<sub>4</sub>=1+4+2=7<br>
 	n<sub>5</sub>=1+7+4=12<br>
 	n<sub>6</sub>=1+12+7=20<br>
-</details></li><li><p><img src="../images/WWHxR3.png" referrerpolicy="no-referrer" alt="WWHxR3"></p><details>
+</details></li><li><p><img src="../../assets/images/WWHxR3.png" referrerpolicy="no-referrer" alt="WWHxR3"></p><details>
    <summary>答案与解析：</summary>
    <br>
    答案： B
    <br>
    解析：<br>
-	<img src="../images/XrteNy.png" alt="XrteNy">
-  		<img src="../images/yxadaf.png" alt="yxadaf">
-</details></li><li><p><img src="../images/hK9wBc.png" referrerpolicy="no-referrer" alt="hK9wBc"></p><details>
+	<img src="../../assets/images/XrteNy.png" alt="XrteNy">
+  		<img src="../../assets/images/yxadaf.png" alt="yxadaf">
+</details></li><li><p><img src="../../assets/images/hK9wBc.png" referrerpolicy="no-referrer" alt="hK9wBc"></p><details>
  <summary>答案与解析：</summary>
  	<br>
  	答案： A
  	<br>
  	解析：<br>
-			<img src="../images/up1eKH.png" alt="up1eKH" <="" details=""></details></li></ol></div></div>
+			<img src="../../assets/images/up1eKH.png" alt="up1eKH" <="" details=""></details></li></ol></div></div>
 </body>
 </html>
