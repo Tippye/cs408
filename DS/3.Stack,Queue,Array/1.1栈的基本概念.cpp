@@ -22,8 +22,7 @@ bool GetPop(SqStack S,ElemType e);
 bool DestroyStack(SqStack &S);
 /**定义模块**/
 
-int main() {
+void TestModule() {
     SqStack S;
     InitStack(S);
-    return 0;
 }

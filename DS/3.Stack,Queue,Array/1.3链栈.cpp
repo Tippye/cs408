@@ -90,7 +90,7 @@ void PrintStack(LinkStack LS) {
     printf("栈打印完毕\n");
 }
 
-void testLinkStack() {
+void TestModule() {
     printf("开始测试\n");
     LinkStack S;
     InitStack(S);
@@ -133,10 +133,4 @@ void testLinkStack() {
     }
 
     printf("测试完毕了！\n");
-}
-
-/**测试模块**/
-int main() {
-    testLinkStack();
-    return 0;
 }

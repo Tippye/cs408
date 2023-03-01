@@ -189,7 +189,7 @@ void print_tree(BTree tree) //打印以tree为根的子树
     }
 }
 
-int main() {
+void TestModule() {
     BTree root = NULL;
     srand(time(NULL)); //随机数生成
     printf("insert:");

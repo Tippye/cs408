@@ -262,7 +262,7 @@ void testBoolOperate(bool result, char *message, char *success, char *fail) {
     }
 }
 
-void testModule() {
+void TestModule() {
     printf("开始测试！\n");
 
     SString S, T;
@@ -338,11 +338,4 @@ void testModule() {
 
 
     printf("测试结束!\n");
-}
-
-/**测试模块**/
-
-int main() {
-    testModule();
-    return 0;
 }

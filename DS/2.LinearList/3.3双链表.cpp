@@ -97,9 +97,3 @@ void TestModule() {
     TestPrint(InsertNextElem(L, &temp1), "插入一个结点");
     TestPrint(DeleteNode(&temp1),"删除一个结点");
 }
-
-int main() {
-    TestModule();
-
-    return 0;
-}

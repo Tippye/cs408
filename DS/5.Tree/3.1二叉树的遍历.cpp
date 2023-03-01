@@ -86,9 +86,7 @@ void LevelOrder(BiTree T) {
 
 /**实现模块**/
 
-int main() {
+void TestModule() {
     BiTree root;
     InitTree(root);
-
-    return 0;
 }

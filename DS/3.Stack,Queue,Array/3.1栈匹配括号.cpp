@@ -79,7 +79,7 @@ void PrintStack(SqStack S) {
     printf("栈打印完毕\n");
 }
 
-void TestQueueApplication() {
+void TestModule() {
     printf("开始测试\n");
 
     /**基础操作测试**/
@@ -116,11 +116,4 @@ void TestQueueApplication() {
         printf("字符串括号匹配失败\n");
 
     printf("测试完毕了！\n");
-}
-
-/**测试模块**/
-
-int main() {
-    TestQueueApplication();
-    return 0;
 }

@@ -71,7 +71,7 @@ void PrintStack(SqStack S) {
     printf("栈打印完毕\n");
 }
 
-void testStack() {
+void TestModule() {
     printf("开始测试\n");
     SqStack S;
     printf("测试第一种初始化方式\n");
@@ -100,9 +100,4 @@ void testStack() {
     } else {
         printf("读取栈顶元素失败，再检查一下吧！\n");
     }
-}
-/**测试模块**/
-int main() {
-    testStack();
-    return 0;
 }

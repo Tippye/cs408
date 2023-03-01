@@ -4,6 +4,7 @@
 //
 // Created by 渠继旺 on 2022/11/27.
 //
+#include <cstdio>
 #include "2.1邻接矩阵.cpp"
 
 #define MAX_VERTEX_NUM 100

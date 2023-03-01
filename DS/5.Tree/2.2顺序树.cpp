@@ -22,8 +22,7 @@ void InitTree(SqTree &t) {
     }
 }
 
-int main() {
+void TestModule() {
     SqTree sqTree;
     InitTree(sqTree);
-    return 0;
 }

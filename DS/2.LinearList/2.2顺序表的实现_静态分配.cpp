@@ -149,7 +149,7 @@ void PrintSqList(SqList L) {
 }
 
 //测试函数
-void testModule() {
+void TestModule() {
     SqList L;
     InitList(L);
 
@@ -214,10 +214,4 @@ void testModule() {
 
     //打印输出
     PrintSqList(L);
-}
-/**测试模块**/
-//主函数
-int main() {
-    testModule();
-    return 0;
 }

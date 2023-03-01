@@ -62,7 +62,7 @@ bool QueueEmpty(SqQueue Q) {
 /**实现模块**/
 
 /**测试模块**/
-void testQueue() {
+void TestModule() {
     SqQueue Q;
     InitQueue(Q);
 }

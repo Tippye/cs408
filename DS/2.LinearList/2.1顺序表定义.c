@@ -25,17 +25,17 @@ typedef struct {
     int MAXSIZE, length;
 } SeqList;
 
-//// 初始化线性表
-//void InitList(SqList *L) {
-//    for (int i = 0; i < MaxSize; i++)
-//        L->data[i] = 0;
-//
-//    L->length = 0;
-//}
+// 初始化线性表
+void InitList(SqList *L) {
+    for (int i = 0; i < MaxSize; i++)
+        L->data[i] = 0;
 
-int main() {
+    L->length = 0;
+}
+
+int TestModule() {
     SqList L;
-//    InitList(&L);
+    InitList(&L);
 
     // 下一行打断点进行调试可以看到线性表的状态
     return 0;

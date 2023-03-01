@@ -162,7 +162,8 @@ void TestPrint(bool test, char message[]) {
         printf("%s失败啦！\n", message);
 }
 
-void testModule() {
+/**测试模块**/
+void TestModule() {
     SeqList L;
 
     TestPrint(InitList(L), "初始化");
@@ -203,11 +204,4 @@ void testModule() {
     DestroySqList(L);
     TestPrint(Empty(L), "删除");
     PrintSqList(L);
-}
-
-/**测试模块**/
-
-int main() {
-    testModule();
-    return 0;
 }

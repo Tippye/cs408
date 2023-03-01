@@ -38,8 +38,7 @@ bool InsertNode(BiTree T, ElemType val) {
     return true;
 }
 
-int main() {
+void TestModule() {
     BiTree root;
     InitTree(root);
-    return 0;
 }

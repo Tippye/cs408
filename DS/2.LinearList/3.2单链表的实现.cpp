@@ -140,11 +140,3 @@ void TestModule() {
     PrintList(L);
     printf("被删除的数据是：%d\n", e);
 }
-
-/**测试模块**/
-
-int main() {
-    TestModule();
-    return 0;
-
-}

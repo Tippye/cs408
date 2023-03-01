@@ -220,7 +220,7 @@ void PrintTree(AVLTree T) {
     PrintTree(T->rchild);
 }
 
-int main() {
+void TestModule() {
     int nums[] = {15, 3, 7, 10, 9, 8};
     int len = sizeof(nums) / sizeof(nums[0]);
     AVLTree root = NULL;
@@ -231,5 +231,4 @@ int main() {
     printf("AVL树的高度为：%d\n", h);
     PrintTree(root);
     printf("\n");
-    return 0;
 }

@@ -156,14 +156,8 @@ void RevInOrder(ThreadNode *T) {
 
 /**测试模块**/
 
-void testModule() {
+void TestModule() {
     printf("开始测试！\n");
 
     printf("结束测试！\n");
-}
-
-/**测试模块**/
-int main() {
-    testModule();
-    return 0;
 }
