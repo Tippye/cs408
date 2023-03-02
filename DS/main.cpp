@@ -3,3 +3,8 @@
  *
  * DataStructure后面只留下要运行的文件名就行
  */
+#include "8.Sort/堆排序.h"
+
+int main(){
+    TestModule();
+}
