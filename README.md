@@ -6,8 +6,8 @@
 # 资料
 
 > 【超级会员V4】我通过百度网盘分享的文件：01.【王道】领学班！
-> 链接：https://pan.baidu.com/s/17llogVZjXANcLYoogpUbag
-> 提取码：X88i
+> 链接：https://pan.baidu.com/s/1oUdons9STpwW0fGH7OKzDQ 
+> 提取码：GE9K 
 > 复制这段内容打开「百度网盘APP即可获取」
 
 # 目录
