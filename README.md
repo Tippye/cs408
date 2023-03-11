@@ -1,5 +1,8 @@
 此仓库用来保存学习王道408时的一些笔记和代码
 
+![GitHub last commit](https://img.shields.io/github/last-commit/Tippye/cs408)
+![GitHub repo size](https://img.shields.io/github/repo-size/Tippye/cs408)
+
 # 资料
 
 > 【超级会员V4】我通过百度网盘分享的文件：01.【王道】领学班！
