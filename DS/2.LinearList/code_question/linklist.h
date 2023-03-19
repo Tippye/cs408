@@ -1,0 +1,8 @@
+//
+// Created by 渠继旺 on 2023/3/18.
+//
+
+#ifndef DATASTRUCTURE_LINKLIST_H
+#define DATASTRUCTURE_LINKLIST_H
+
+#endif //DATASTRUCTURE_LINKLIST_H

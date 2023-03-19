@@ -23,6 +23,7 @@
     - [双链表](./DS/2.LinearList/3.3双链表.md)
     - [循环链表](./DS/2.LinearList/3.4循环链表.md)
     - [静态链表](./DS/2.LinearList/3.5静态链表.md)
+    - [代码题](./DS/2.LinearList/代码题.md)
 - [栈，队列和数组](./DS/3.Stack,Queue,Array)
     - [顺序栈](./DS/3.Stack,Queue,Array/1.2顺序栈.md)
     - [队列的基本定义](./DS/3.Stack,Queue,Array/2.1队列的基本概念.md)
