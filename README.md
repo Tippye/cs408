@@ -31,6 +31,7 @@
     - [链队列](./DS/3.Stack,Queue,Array/2.3链队列.md)
     - [双端队列](./DS/3.Stack,Queue,Array/2.4双端队列.md)
     - [栈的应用](./DS/3.Stack,Queue,Array/3栈的应用.md)
+    - [代码题](./DS/3.Stack,Queue,Array/代码题.md)
 - [串](./DS/4.String)
     - [串的定义](./DS/4.String/1.1串的定义.md)
     - [串的模式匹配](./DS/4.String/2.1串的模式匹配.cpp)
