@@ -57,8 +57,8 @@ bool ListInsert(SqList &L, int i, int e) {
         return false;
 
 //后面的元素后移
-    for (int j = L.length; j >= i; j--) {
-        L.data[j] = L.data[j - 1];
+    for (int j = L.length-1; j >= i-1; j--) {
+        L.data[j+1] = L.data[j];
     }
     L.data[i - 1] = e;
     L.length++;

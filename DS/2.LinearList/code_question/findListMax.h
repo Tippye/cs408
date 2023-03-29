@@ -15,9 +15,9 @@ public:
         int max = list->val;
         while (pa){
             max = max<pa->val?pa->val:max;
-            if (max<pa->val){
-                max = pa->val;
-            }
+//            if (max<pa->val) {
+//                max = pa->val;
+//            }
             pa = pa->next;
         }
         return max;
