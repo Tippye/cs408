@@ -915,74 +915,86 @@ g[data-mml-node="xypic"] path {
 mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
 							stroke-width: 0;
 						} @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
-</style><title>2.主存储器</title>
+</style><title>3.主存储器与CPU的连接</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='主存储器的基本组成'><span>主存储器的基本组成</span></h1><ul><li><span>存储器最小的存储结构为存储元，0和1存储在电容中，通过MOS管的通断点控制电容充放电(存0或1)</span></li></ul><div style="display: flex;justify-content: center;">
-	<img style="min-width:300px;max-width: 40vw;margin-right: 50px;" src="../../assets/images/IMG_1758.jpeg" alt="存储元">
-  <img style="min-width:300px;max-width: 40vw;" src="../../assets/images/IMG_1759.jpeg" alt="存储元">
-</div><ul><li><p><span>8个存储元(存储字长=8)排在一排就构成了一个存储单元，接在一根数据总线上(总线宽度=存储字长=8)，若干个存储单元放一块就成了存储体(硬盘上的一个黑块块)</span></p><ul><li><p><span>总容量 = 存储字数 * 存储字长</span></p></li><li><p><span>数据线的宽度 = MDR的宽度 = 存储字长</span></p></li><li><p><span>地址线的宽度 = MAR的宽度 = 存储字数 = 2</span><sup><span>存储单元行数</span></sup></p><ul><li><span>36位地址线的宽度为2</span><sup><span>36</span></sup>
-<img src="../../assets/images/IMG_1761.jpeg" referrerpolicy="no-referrer" alt="IMG_1761">
-<img src="../../assets/images/IMG_1762.jpeg" referrerpolicy="no-referrer" alt="IMG_1762">
-<img src="../../assets/images/IMG_1760.jpeg" referrerpolicy="no-referrer" alt="IMG_1760"></li></ul></li></ul></li><li><p><span>存储体+IO/读写电路+地址译码器+读写控制信号 = 主存储器</span>
-<img src="../../assets/images/IMG_1757.jpeg" referrerpolicy="no-referrer" alt="IMG_1757.jpeg"></p><ul><li><strong><span>读RD/写WR控制线</span></strong><span>：决定芯片是进行读还是写操作</span></li><li><strong><span>片选线CS</span></strong><span>：确定那个存储芯片被选中。可用于容量扩充</span></li><li><strong><span>引脚最低数目</span></strong><span> = 片选线(1条) + 控制线(RD+WR = 2条) + 数据线 + 地址线 </span></li></ul></li></ul><iframe src="https://player.bilibili.com/player.html?aid=570598432&amp;bvid=BV1rz4y1Y738&amp;cid=1114421215&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 80vw;height:45vw;margin: 0 calc((100% - 80vw) / 2);"></iframe><h2 id='寻址方式'><span>寻址方式</span></h2><ul><li><p><span>题目没有明确指定按字编址，默认就是按字节编址(一字节8位)</span></p><ul><li><span>64位计算机中，64位(bit) = 8字节(byte) = 1字(word)</span></li><li><span>32位计算机中，32位(bit) = 4字节(byte) = 1字(word)</span></li></ul></li><li><p><span>存放一个机器字的存储单元，通常称为字存储单元，相应的单元地址叫</span><strong><span>字地址</span></strong></p></li><li><p><span>存放一个字节的存储单元，称为字节存储单元，相应的地址称为</span><strong><span>字节地址</span></strong></p></li><li><p><span>如果计算机中可编程的最小单位是字存储单元，则该计算机称为</span><strong><span>按字寻址</span></strong><span>的计算机</span></p></li><li><p><span>如果计算机中可编程的最小单位是字节，则该计算机称为</span><strong><span>按字节寻址</span></strong><span>的计算机</span></p></li><li><p><span>一个</span><strong><span>机器字可以包含数个字节</span></strong><span>，所以</span><strong><span>一个存储单元也可以包含数个能够单独编制的字节地址</span></strong></p><ul><li><span>例：一个16位二进制的字存储单元可以存放两个字节，可以按字编址，也可以按字节编址。当用字节编址时，16位存储单元占用两个字节地址</span></li></ul></li></ul><h1 id='sram芯片和dram芯片'><span>SRAM芯片和DRAM芯片</span></h1><figure><table><thead><tr><th>&nbsp;</th><th><span>SRAM(Static Random Access Memory)</span></th><th><span>DRAM(Dynamic Random Access Memory)</span></th></tr></thead><tbody><tr><td><span>主要用途</span></td><td><span>Cache</span></td><td><span>主机内存</span></td></tr><tr><td><mark><span>存储信息</span></mark><span>(核心区别)</span></td><td><span>触发器，双稳态电路</span></td><td><span>栅极电容(前面的存储元)</span></td></tr><tr><td><span>破坏性读出(读出后需要重写)</span></td><td><span>❌</span></td><td><span>⭕️</span></td></tr><tr><td><span>需要刷新</span></td><td><span>❌</span></td><td><a href='#dram的刷新'><span>⭕️</span></a></td></tr><tr><td><span>送行列地址</span></td><td><span>同时</span></td><td><span>分两次送(</span><a href='#地址复用技术'><span>地址线复用技术</span></a><span>)</span></td></tr><tr><td><span>运行速度</span></td><td><span>快(读出后不用重写)</span></td><td><span>慢</span></td></tr><tr><td><mark><span>集成度</span></mark><span>(容易混)</span></td><td><span>低</span></td><td><span>高</span></td></tr><tr><td><span>存储成本(对比两种存储元结构就知道)</span></td><td><span>高</span></td><td><span>低</span></td></tr><tr><td><span>功耗(发热量)</span></td><td><span>高</span></td><td><span>低</span></td></tr><tr><td><span>易失/非易失性存储器</span></td><td><span>易失(断电后信息消失,电脑一关机就没了)</span></td><td><span>易失(断电后信息消失,电脑一关机就没了)</span></td></tr></tbody></table></figure><blockquote><p><span>双稳态电路：</span><img src="../../assets/images/image-20230510143041502.png" referrerpolicy="no-referrer" alt="image-20230510143041502"></p></blockquote><blockquote><p><span>破坏性读出：前面的存储元结构，读出数据时，如果是1，电容中的电荷会流失，导致原有的信息被破坏，读出后需要有重写操作（再生）</span></p></blockquote><h2 id='dram的刷新'><span>DRAM的刷新</span></h2><p><span> DRAM电容的电荷维持时间短，即使电源不断电信息(电荷)也会自动消失。因此每隔一段时间必须刷新，</span><mark><span>一般取2ms(刷新周期/再生周期)</span></mark></p><ul><li><p><span>DRAM的刷新是以行为为单位</span></p></li><li><p><span>一次完整的刷新过程只需要占用一个存储周期</span></p></li><li><p>&nbsp;</p></li><li><p><mark><span>刷新时间=存取周期</span></mark></p><ul><li><span>刷新其实还是往电容里充放电，与存取一样，所以时间相同</span></li><li><span>存取周期如果是0.5μs</span></li></ul></li><li><p><mark><span>存取周期&gt;真正用于存取的时间</span></mark></p><ul><li><span>存取周期内，存取操作结束后仍然需要一些时间来改变状态</span></li></ul></li><li><p><span>行列地址</span></p><ul><li><img src="../../assets/images/image-20230510164310148.png" referrerpolicy="no-referrer" alt="image-20230510164310148"></li><li><img src="../../assets/images/image-20230510164827068.png" referrerpolicy="no-referrer" alt="image-20230510164827068"></li></ul></li><li><p><span>DRAM刷新</span></p><ul><li><p><span>以行为单位，每次读出来一行然后重新写入，占用一个存取周期</span></p></li><li><p><span>假设DRAM内部结构排成128 * 128的形式，存取周期0.5μs，2ms共2ms/0.5μs=4000个周期</span></p></li><li><p><span>由存储器独立完成，不需要CPU控制</span></p></li><li><p><span>集中刷新</span></p><ul><li><span>2ms内集中安排时间全部刷新</span></li><li><span>系统的存取周期不变，还是0.5μs</span></li><li><span>在2ms中的最后一段时间内专门进行刷新，这段时间被称为“死区”</span></li><li><span>全部刷新需要128行*0.5μs/行 = 64μs，即死区占用64μs</span></li><li><img src="../../assets/images/image-20230510165334858.png" referrerpolicy="no-referrer" alt="image-20230510165334858"></li></ul></li><li><p><span>分散刷新</span></p><ul><li><span>每次读写完就刷新一行</span></li><li><span>系统的存取周期变为1μs，前0.5μs正常读写，后0.5μs用于刷新</span></li><li><img src="../../assets/images/image-20230510170617852.png" referrerpolicy="no-referrer" alt="image-20230510170617852"></li></ul></li><li><p><span>异步刷新</span></p><ul><li><span>一共需要128次刷新，均匀分布到2ms中</span></li><li><span>即每隔2ms/128=15.6μs刷新一次，每15.6μs内有0.5μs的“死时间”</span></li><li><img src="../../assets/images/image-20230510170812539.png" referrerpolicy="no-referrer" alt="image-20230510170812539"></li></ul></li></ul></li></ul><h2 id='地址复用技术'><span>地址复用技术</span></h2><ul><li><span>由于DRAN芯片容量大，地址位数多，为了减少地址引脚线，采用</span><strong><span>地址复用技术</span></strong></li><li><span>DRAM因为分两次发送，长度相同，因此地址线可以复用，线数减少了一半</span></li><li><span>引脚数 = 地址线减半 + 数据线不变 + 行通选(1条) + 列通选(1条) + 读写控制线(2条)</span></li><li><span>片选线用行通选线替代</span></li><li><strong><span>DRAM采用地址复用技术，SRAM不采用</span></strong></li></ul><h1 id='只读存储器'><span>只读存储器</span></h1><ul><li><p><span>特点</span></p><ul><li><span>结构简单，位密度比可读写存储器高</span></li><li><span>具有非易失性，可靠性高</span></li><li><span>随机存取</span></li></ul></li><li><p><span>类型</span></p><ul><li><p><span>掩模式只读存储器(MROM, Mask Read-Only Memory)</span></p><ul><li><span>内容在生产过程中写入</span></li><li><span>可靠性高，集成度高，价格便宜，灵活性差</span></li></ul></li><li><p><span>一次可编程只读存储器(PROM, Programmable Read-Only Memory)</span></p><ul><li><span>用于用户实现一次性编程</span></li></ul></li><li><p><span>可擦除可编程只读存储器(EPROM, Mask Read-Only Memory)</span></p><ul><li><span>用于用户实现多次性编程</span></li><li><span>可多次改写，但次数有限，写入时间过长</span></li></ul></li><li><p><span>Flash存储器</span></p><ul><li><span>既可在不加电的情况下长期保存信息，又能在线进行快速擦除和重写</span></li><li><span>价格便宜，集成度高，电可擦除重写且擦除重写速度快</span></li><li><mark><span>写的速度一般比读更慢</span></mark><span>，因为写入前需要先擦除</span></li></ul></li><li><p><span>固态硬盘 SSD</span></p><ul><li><strong><span>SSD即闪存</span></strong><span>，是一种非易失性存储器，采用随机访问方式</span></li><li><span>可长期保存信息，快速擦除和重写，相比传统硬盘也有读写快、低功耗的特性，但价格较高</span></li></ul></li></ul></li></ul><p>&nbsp;</p><h1 id='双端口ram'><span>双端口RAM</span></h1><p><span>存储器左右都有独立的端口，分别具有两组独立的地址线、数据线和读写控制线</span></p><p><img src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513121303037.png" referrerpolicy="no-referrer" alt="image-20230513121303037"></p><ul><li><span>作用：优化多核CPU访问同一根内存条的速度</span></li></ul><ul><li><p><span>两个端口对同一主存操作的4种情况</span></p><ul><li><p><span>两个端口不同时对同一地址单元存取数据</span></p></li><li><p><span>两个端口同时对同一地址单元读出数据</span></p></li><li><p><span>两个端口同时对同一地址单元写入数据</span></p><ul><li><strong><span>写入错误</span></strong></li></ul></li><li><p><span>两个端口同时对同一地址单元，一个写入数据，另一个读出数据</span></p><ul><li><strong><span>读出错误</span></strong></li></ul></li></ul></li><li><p><span>解决方法：置“忙”信号为0，由判断逻辑决定暂时关闭一个端口(即被延时)，未被关闭的端口正常访问，被关闭的端口延长一个很短的时间短后再访问</span></p></li></ul><h1 id='多模块存储器'><span>多模块存储器</span></h1><p><mark><span>多模块存储器是一种空间并行技术，利用多个结构完全相同的存储模块的并行工作来提高存储器的吞吐率</span></mark></p><h2 id='单体并行存储器'><span>单体并行存储器</span></h2><p><span>存储器中只有一个存储体，每个存储单元存储m个字，总线宽也为m个字，地址必须顺序排列并处于同一存储单元</span></p><ul><li><span>在一个存取周期内，从同一个地址取出m条指令，然后将指令送到CPU</span></li><li><span>缺点：指令和数据在主存内必须是连续存放的，一旦遇到转移指令，或操作数不能连续存放，这种方法的效果就不明显</span></li></ul><h2 id='多行并行存储器'><span>多行并行存储器</span></h2><p><span>由多体模块组成，每块都有相同容量和读取速度，各模块都有独立的读写控制电路、MAR和MDR，既能并行工作也能交叉工作</span></p><figure><table><thead><tr><th>&nbsp;</th><th><span>高位交叉编址(顺序方式)(竖)</span></th><th><span>低位交叉编址(交叉方式)(横)</span></th></tr></thead><tbody><tr><td><span>定义</span></td><td><span>【特点】先在一个模块内访问，等访问完再访问下一个</span><br><span>【编号】高位地址表示</span><strong><span>体号(模块号)</span></strong><span>，低位地址表示</span><strong><span>体内地址</span></strong><br><span>【优点】</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span>某个模块进行存取时，其他模块不工作</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span>某一模块出现故障时，其他模块可以正常工作</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span>通过增添模块来扩充存储器容量比较方便</span><br><span>【缺点】各模块串行工作，存储器的带宽受到了限制，并</span><mark><span>不能提高吞吐量</span></mark></td><td><span>【特点】</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span>连续地址分布在不同模块内，同一模块内的地址是不连续的</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span>低位交叉编址是交叉存放的，满足程序的</span><mark><span>局部性原理</span></mark><br><span>【编号】高位地址表示</span><strong><span>体内地址</span></strong><span>，低位地址表示</span><strong><span>体号(模块号)</span></strong><br><span>【优点】对连续字的成块传送可实现多模块并行存取，</span><mark><span>提高了存储器带宽</span></mark><br><span>【计算】</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span>1. 每个模块按&quot;模m&quot;交叉编址，</span><mark><span>模块号=单元地址 % m</span></mark><br>&nbsp;&nbsp;&nbsp;&nbsp;<span>2.设模块字长等于数据总线宽度，模块存取一个字的存取周期为T，总线传输周期为r，则</span><mark><span>存储器交叉模块的数目最小为m=T/r</span></mark><br>&nbsp;&nbsp;&nbsp;&nbsp;<span>3.每隔r时间延迟后启动下一模块，当数目不小于m时，就可以保证T时间之后再启动该模块，流水线就不会断</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span>4.</span><mark><span>取m个字的时间为T+(m-1)r，顺序方式时间为mT</span></mark><br>&nbsp;&nbsp;&nbsp;&nbsp;<span>5.</span><strong><span>判断发送访问冲突的规则</span></strong><span>：给定的访存地址在相邻的</span><mark><span>四次访问</span></mark><span>中出现在同一个存储模块中(m=4时)</span></td></tr><tr><td><span>示意图</span></td><td><img src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513102759335.png" referrerpolicy="no-referrer" alt="image-20230513102759335"></td><td><img src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513102615308.png" referrerpolicy="no-referrer" alt="image-20230513102615308"></td></tr><tr><td><span>计算带宽</span></td><td><img src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513102928524.png" referrerpolicy="no-referrer" alt="image-20230513102928524"></td><td><span>模块数=m，存储周期T，字长W，数据总线宽度W，总线传输周期r，连续存取n个字</span><br><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="30.172ex" height="3.447ex" role="img" focusable="false" viewBox="0 -1011.8 13336.2 1523.5" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -1.158ex;"><defs><path id="MJX-49-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-49-TEX-I-1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-49-TEX-N-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path><path id="MJX-49-TEX-I-1D44A" d="M436 683Q450 683 486 682T553 680Q604 680 638 681T677 682Q695 682 695 674Q695 670 692 659Q687 641 683 639T661 637Q636 636 621 632T600 624T597 615Q597 603 613 377T629 138L631 141Q633 144 637 151T649 170T666 200T690 241T720 295T759 362Q863 546 877 572T892 604Q892 619 873 628T831 637Q817 637 817 647Q817 650 819 660Q823 676 825 679T839 682Q842 682 856 682T895 682T949 681Q1015 681 1034 683Q1048 683 1048 672Q1048 666 1045 655T1038 640T1028 637Q1006 637 988 631T958 617T939 600T927 584L923 578L754 282Q586 -14 585 -15Q579 -22 561 -22Q546 -22 542 -17Q539 -14 523 229T506 480L494 462Q472 425 366 239Q222 -13 220 -15T215 -19Q210 -22 197 -22Q178 -22 176 -15Q176 -12 154 304T131 622Q129 631 121 633T82 637H58Q51 644 51 648Q52 671 64 683H76Q118 680 176 680Q301 680 313 683H323Q329 677 329 674T327 656Q322 641 318 637H297Q236 634 232 620Q262 160 266 136L501 550L499 587Q496 629 489 632Q483 636 447 637Q428 637 422 639T416 648Q416 650 418 660Q419 664 420 669T421 676T424 680T428 682T436 683Z"></path><path id="MJX-49-TEX-I-1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">带</text></g><g data-mml-node="mtext" transform="translate(909.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">宽</text></g><g data-mml-node="mo" transform="translate(2095.9,0)"><use data-c="3D" xlink:href="#MJX-49-TEX-N-3D"></use></g><g data-mml-node="mtext" transform="translate(3151.7,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">存</text></g><g data-mml-node="mtext" transform="translate(4060.8,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">储</text></g><g data-mml-node="mtext" transform="translate(4969.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">速</text></g><g data-mml-node="mtext" transform="translate(5878.9,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">率</text></g><g data-mml-node="mo" transform="translate(7065.8,0)"><use data-c="3D" xlink:href="#MJX-49-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(8121.6,0)"><g data-mml-node="mrow" transform="translate(220,481.4) scale(0.707)"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">总</text></g><g data-mml-node="mtext" transform="translate(909.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">量</text></g></g><g data-mml-node="mrow" transform="translate(220,-370.3) scale(0.707)"><g data-mml-node="mtext"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">时</text></g><g data-mml-node="mtext" transform="translate(909.1,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">间</text></g></g><rect width="1485.6" height="60" x="120" y="220"></rect></g><g data-mml-node="mo" transform="translate(10125,0)"><use data-c="3D" xlink:href="#MJX-49-TEX-N-3D"></use></g><g data-mml-node="mfrac" transform="translate(11180.8,0)"><g data-mml-node="mrow" transform="translate(220,394) scale(0.707)"><g data-mml-node="mi"><use data-c="1D45B" xlink:href="#MJX-49-TEX-I-1D45B"></use></g><g data-mml-node="mo" transform="translate(600,0)"><use data-c="D7" xlink:href="#MJX-49-TEX-N-D7"></use></g><g data-mml-node="mi" transform="translate(1378,0)"><use data-c="1D44A" xlink:href="#MJX-49-TEX-I-1D44A"></use></g></g><g data-mml-node="mi" transform="translate(950.1,-345) scale(0.707)"><use data-c="1D461" xlink:href="#MJX-49-TEX-I-1D461"></use></g><rect width="1915.4" height="60" x="120" y="220"></rect></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtext>带</mtext><mtext>宽</mtext><mo>=</mo><mtext>存</mtext><mtext>储</mtext><mtext>速</mtext><mtext>率</mtext><mo>=</mo><mfrac><mrow><mtext>总</mtext><mtext>量</mtext></mrow><mrow><mtext>时</mtext><mtext>间</mtext></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>n</mi><mo>×</mo><mi>W</mi></mrow><mi>t</mi></mfrac></math></mjx-assistive-mml></mjx-container><script type="math/tex">带宽 = 存储速率 = \frac{总量}{时间} = \frac{n \times W}t</script><br><span>顺序t = mT</span><br><span>交叉t = T + (m-1)r</span></td></tr><tr><td><span>流水线</span></td><td>&nbsp;</td><td><span>画图数数(参考错题集第3个)</span></td></tr></tbody></table></figure><p>&nbsp;</p><h1 id='错题集'><span>错题集</span></h1><ol><li><p><img src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513095152639.png" referrerpolicy="no-referrer" alt="image-20230513095152639"></p><details>
-  <summary>答案与解析：</summary>
-  <br>
-  答案： B
-  <br>
-  解析：<br>
-  分散刷新是把死时间分散到每个存取周期后边，相当于把存取周期变长了，也就没有了死时间
-</details></li><li><p><img src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513095440906.png" referrerpolicy="no-referrer" alt="image-20230513095440906"></p><details>
-  <summary>答案与解析：</summary>
-  <br>
-  答案： B
-  <br>
-  解析：<br>
-  低位交叉存储器采用流水线技术，可在一个存取周期内连续访问4个模块<br>
-  32位 * 4 = 128位
-</details></li><li><p><img src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513095453626.png" referrerpolicy="no-referrer" alt="image-20230513095453626"></p><details>
-  <summary>答案与解析：</summary>
-  <br>
-  答案： C
-  <br>
-  解析：<br>
-  <img src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513112129146.png" alt="image-20230513112129146"><br>
-  <img src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513103535233.png" alt="image-20230513103535233">
-</details></li><li><p><img src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513095507703.png" referrerpolicy="no-referrer" alt="image-20230513095507703"></p><details>
-  <summary>答案与解析：</summary>
-  <br>
-  答案： D
-  <br>
-  解析：<br>
-  用4个16Kx8的存储芯片可以组成64Kx8的存储器<br>
-  交叉编址低位存放片选地址，片选地址一共4个所以最后两位是片选地址<br>
-  最后两位是11，所以是3号存储芯片,即0003H
-</details></li><li><p><img src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513095523098.png" referrerpolicy="no-referrer" alt="image-20230513095523098"></p><details>
+<div id='write'  class=''><h1 id='连接原理'><span>连接原理</span></h1><ul><li><span>CPU读指令，通过地址线去访问存储器的MAR(地址寄存器)</span></li><li><span>MAR(地址寄存器)通过选通线去访问矩阵中的数据</span></li><li><span>矩阵需要通过数据线与MDR(数据寄存器)进行收发</span></li></ul><h1 id='主存容量的扩展'><span>主存容量的扩展</span></h1><h2 id='位扩展法'><span>位扩展法</span></h2><ul><li><span>8K * 8位的存储器 = 8片 8K * 1位的RAM组成</span></li><li><span>地址线并行，数据线一一接上</span></li></ul><p><img src="../../assets/images/image-20230511200501815.png" referrerpolicy="no-referrer" alt="image-20230511200501815"></p><h2 id='字扩展法线选法'><span>字扩展法(线选法)</span></h2><ul><li><p><span>16k * 8位的存储器 = 2片 8K * 8位的存储器</span></p></li><li><p><span>由片选信号来区分各芯片的地址范围</span></p></li><li><p><span>当A13为1时第一块存储器工作，此时A14必须为0，否则会造成数据冲突</span></p><ul><li><span>2位二进制时，只能用01或10(A13 A14)</span></li><li><span>n条线就有n个片选信号</span></li></ul></li><li><p><span>谁工作，数据线就接送谁的数据，即将CS设置为1</span></p></li></ul><p><img src="../../assets/images/image-20230511200928880.png" referrerpolicy="no-referrer" alt="image-20230511200928880"></p><h2 id='字扩展法译码片'><span>字扩展法(译码片)</span></h2><p><img src="../../assets/images/image-20230511202001081.png" referrerpolicy="no-referrer" alt="image-20230511202001081"></p><ul><li><p><span>译码片就是通过非门控制实现不同电路的选择(如上图A13传给1-2译码器0或者1，这样译码器就可以连通一条线路)，是一个二进制转十进制的物理元件</span></p></li><li><p><span>n条线路可以表示2</span><sup><span>n</span></sup><span>个选片信号(就像n位二进制数可以表示2</span><sup><span>n</span></sup><span>位十进制数)</span></p></li><li><p><span>常用译码器：</span></p><ul><li><span>1-2译码器：CPU输入1条线路，可以表示2个选片信号</span></li><li><span>2-4译码器：CPU输入2条线路，可以表示4个选片信号</span></li><li><span>3-8译码器：CPU输入3条线路，可以表示8个选片信号(如上图)</span></li></ul></li></ul><h2 id='字位同时扩展法'><span>字位同时扩展法</span></h2><ul><li><span>一块芯片只有4位，因此通过2片叠加先实现位扩展</span></li><li><span>等价于实现了一个8位存储芯片</span></li><li><span>再通过译码片选的方式实现字扩展</span></li><li><span>在不同的地址线中选择不同的芯片组合进行工作</span></li></ul><p><img src="../../assets/images/image-20230511203250950.png" referrerpolicy="no-referrer" alt="image-20230511203250950"></p><blockquote><p><img src="../../assets/images/image-20230511204612448.png" referrerpolicy="no-referrer" alt="image-20230511204612448"></p><p><span>注意这里的非门和低电平有效</span></p></blockquote><figure><table><thead><tr><th><span>线选法</span></th><th><span>译码片选法</span></th></tr></thead><tbody><tr><td><span>n条线-&gt;n个选片信号</span></td><td><span>n条线-&gt;2</span><sup><span>n</span></sup><span>个选片信号</span></td></tr><tr><td><span>电路简单</span></td><td><span>电路复杂</span></td></tr><tr><td><span>地址空间不连续</span></td><td><span>地址空间可连续，可以增加逻辑设计</span></td></tr></tbody></table></figure><h1 id='错题集'><span>错题集</span></h1><ol><li><p><img src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513141223664.png" referrerpolicy="no-referrer" alt="image-20230513141223664"></p><details>
   <summary>答案与解析：</summary>
   <br>
   答案： A
   <br>
   解析：<br>
-  8位 = 8根数据线，4M = 2<sup>22</sup> =&gt; 22根地址线<br>
-  DRAM采用地址复用，地址线减半(本题未考虑行列片选线)，所以引脚总数为8 + 22/2 = 19根
-</details></li><li><p><img src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513095534918.png" referrerpolicy="no-referrer" alt="image-20230513095534918"></p><details>
+  4B = 32bit = 32位<br>
+  用8位存储芯片构造成32位需要位扩展，变成8K * 32位 = 32KB<br>
+  所以不需要再进行字扩展
+</details></li><li><p><img src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513141449564.png" referrerpolicy="no-referrer" alt="image-20230513141449564"></p><details>
   <summary>答案与解析：</summary>
   <br>
-  答案： B
+  答案： A
   <br>
   解析：<br>
-  DRAM需要周期性刷新
-</details></li><li><p><img src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513095544716.png" referrerpolicy="no-referrer" alt="image-20230513095544716"></p><details>
+  4K * 4位扩展成16KB需要8块存储芯片<br>
+  如果16KB的存储器是32K * 4位，需要15根地址线，其中存储芯片用log<sub>2</sub>4K = 12根，所以需要3根地址线作为地址线输入，答案都给的两根所以存储器不是4位<br>
+  如果是16K * 8位，需要log<sup>2</sup>16K = 14根地址线，存储芯片用12根所以剩下2根作为地址线输入，四个选项都是2根所以16KB的存储器是16K * 8位<br>
+  这里的地址总线是从高位往低位排的，所以12根地址线是A<sup>4</sup> - A<sup>15</sup><br>
+  再往前两根就是译码器输入的地址线，即A<sup>3</sup>和A<sup>2</sup>
+  <img src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513144620702.png" alt="image-20230513144620702">
+</details></li><li><p><img src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513141513997.png" referrerpolicy="no-referrer" alt="image-20230513141513997"></p><details>
+  <summary>答案与解析：</summary>
+  <br>
+  答案： D
+  <br>
+  解析：<br>
+  CFFFF H - 90000 H + 1= 40000 H = 2<sup>18</sup> = 256K<br>
+  按字节编址，一个地址是8位所以总容量为 256K * 8位<br>
+  (256K * 8位) / (16K * 8位) = 16
+</details></li><li><p><img src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513141533085.png" referrerpolicy="no-referrer" alt="image-20230513141533085"></p><details>
+  <summary>答案与解析：</summary>
+  <br>
+  答案： D
+  <br>
+  解析：<br>
+  8个高位地址为片选译码所以把四个选项的前8位写出来就是<br>
+  A. 1<font color="green">01</font><font color="grey">0</font> 1<font color="grey">0</font>11		B.1<font color="green">01</font><font color="grey">1</font> 1<font color="grey">0</font>11<br>
+  C. 1<font color="green">11</font><font color="grey">0</font> 1<font color="grey">1</font>11		D.1<font color="green">11</font><font color="grey">1</font> 1<font color="grey">1</font>10<br>
+  灰色的是不生效线路，绿色部分有一个1即可输出1(题目中的A17和A18)<br>
+  低电平生效所以译码输出为0，前面有非门所以译码器应该输出1<br>
+  译码器中进行与运算，如果出现0就会导致输出0，即译码输出1，所接芯片不生效<br>
+  四个选项中只有D选项的A12位置为0导致最后译码输出为1
+</details></li><li><p><img src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513141547752.png" referrerpolicy="no-referrer" alt="image-20230513141547752"></p><details>
+  <summary>答案与解析：</summary>
+  <br>
+  答案： D
+  <br>
+  解析：<br>
+  <img src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513152214311.png" alt="image-20230513152214311">
+</details></li><li><p><img src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513141609419.png" referrerpolicy="no-referrer" alt="image-20230513141609419"></p><details>
+  <summary>答案与解析：</summary>
+  <br>
+  答案： D
+  <br>
+  解析：<br>
+  主存地址空间决定MAR位数，组成的32MB的主存储器只是没有把主存地址空间全部用完<br>
+  64MB = 2<sup>26</sup>B<br>
+  所以至少为26位
+</details></li><li><p><img src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513141643619.png" referrerpolicy="no-referrer" alt="image-20230513141643619"></p><details>
   <summary>答案与解析：</summary>
   <br>
   答案： C
   <br>
   解析：<br>
-  double数据占64位(8B)
-  一个芯片是8位，所以需要读64/8=8个芯片
-  <img src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513120023316.png" alt="image-20230513120023316">
-  <img src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513120209338.png" alt="image-20230513120209338">
-  <img alt="image-20230513115359644" src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513115359644.png">
-</details><p>&nbsp;</p></li></ol></div></div>
+  依题意，这是一个 r * c位的芯片，r*c=2K*1=2<sup>11</sup><br>
+  DRAM使用行列地址线复用技术，所以存储阵列越接近正方形越好，即r和c差值越小越好<br>
+  为了减少刷新，行越少越好(按行刷新)，所以选C
+</details></li><li><p><img src="/Users/tippy/Library/Mobile%20Documents/iCloud~md~obsidian/Documents/ds/assets/images/image-20230513141714198.png" referrerpolicy="no-referrer" alt="image-20230513141714198"></p><details>
+  <summary>答案与解析：</summary>
+  <br>
+  答案： D
+  <br>
+  解析：<br>
+  3F FFFFH - 00 0000H + 1 = 40 0000H = 2<sup>22</sup>个地址<br>
+  按字编址且字长为32位，所以存储芯片为 2<sup>22</sup> * 32bit = 2<sup>27</sup>bit<br>
+  2<sup>27</sup>bit / 2<sup>19</sup>*8bit = 2<sup>5</sup> = 32
+</details></li></ol><p>&nbsp;</p></div></div>
 </body>
 </html>
