@@ -766,87 +766,158 @@ footer {
 
 /* Cesno style end */
 
- @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
-</style><title>3.主存储器与CPU的连接</title>
+
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+
+g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+
+.MathJax g[data-mml-node="xypic"] path {
+  stroke-width: inherit;
+}
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+							stroke-width: 0;
+						} @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title>4.外部存储器</title>
 </head>
 <body class='typora-export'><div class='typora-export-content'>
-<div id='write'  class=''><h1 id='连接原理'><span>连接原理</span></h1><ul><li><span>CPU读指令，通过地址线去访问存储器的MAR(地址寄存器)</span></li><li><span>MAR(地址寄存器)通过选通线去访问矩阵中的数据</span></li><li><span>矩阵需要通过数据线与MDR(数据寄存器)进行收发</span></li></ul><h1 id='主存容量的扩展'><span>主存容量的扩展</span></h1><h2 id='位扩展法'><span>位扩展法</span></h2><ul><li><span>8K * 8位的存储器 = 8片 8K * 1位的RAM组成</span></li><li><span>地址线并行，数据线一一接上</span></li></ul><p><img src="../../assets/images/image-20230511200501815.png" referrerpolicy="no-referrer" alt="image-20230511200501815"></p><h2 id='字扩展法线选法'><span>字扩展法(线选法)</span></h2><ul><li><p><span>16k * 8位的存储器 = 2片 8K * 8位的存储器</span></p></li><li><p><span>由片选信号来区分各芯片的地址范围</span></p></li><li><p><span>当A13为1时第一块存储器工作，此时A14必须为0，否则会造成数据冲突</span></p><ul><li><span>2位二进制时，只能用01或10(A13 A14)</span></li><li><span>n条线就有n个片选信号</span></li></ul></li><li><p><span>谁工作，数据线就接送谁的数据，即将CS设置为1</span></p></li></ul><p><img src="../../assets/images/image-20230511200928880.png" referrerpolicy="no-referrer" alt="image-20230511200928880"></p><h2 id='字扩展法译码片'><span>字扩展法(译码片)</span></h2><p><img src="../../assets/images/image-20230511202001081.png" referrerpolicy="no-referrer" alt="image-20230511202001081"></p><ul><li><p><span>译码片就是通过非门控制实现不同电路的选择(如上图A13传给1-2译码器0或者1，这样译码器就可以连通一条线路)，是一个二进制转十进制的物理元件</span></p></li><li><p><span>n条线路可以表示2</span><sup><span>n</span></sup><span>个选片信号(就像n位二进制数可以表示2</span><sup><span>n</span></sup><span>位十进制数)</span></p></li><li><p><span>常用译码器：</span></p><ul><li><span>1-2译码器：CPU输入1条线路，可以表示2个选片信号</span></li><li><span>2-4译码器：CPU输入2条线路，可以表示4个选片信号</span></li><li><span>3-8译码器：CPU输入3条线路，可以表示8个选片信号(如上图)</span></li></ul></li></ul><h2 id='字位同时扩展法'><span>字位同时扩展法</span></h2><ul><li><span>一块芯片只有4位，因此通过2片叠加先实现位扩展</span></li><li><span>等价于实现了一个8位存储芯片</span></li><li><span>再通过译码片选的方式实现字扩展</span></li><li><span>在不同的地址线中选择不同的芯片组合进行工作</span></li></ul><p><img src="../../assets/images/image-20230511203250950.png" referrerpolicy="no-referrer" alt="image-20230511203250950"></p><blockquote><p><img src="../../assets/images/image-20230511204612448.png" referrerpolicy="no-referrer" alt="image-20230511204612448"></p><p><span>注意这里的非门和低电平有效</span></p></blockquote><figure><table><thead><tr><th><span>线选法</span></th><th><span>译码片选法</span></th></tr></thead><tbody><tr><td><span>n条线-&gt;n个选片信号</span></td><td><span>n条线-&gt;2</span><sup><span>n</span></sup><span>个选片信号</span></td></tr><tr><td><span>电路简单</span></td><td><span>电路复杂</span></td></tr><tr><td><span>地址空间不连续</span></td><td><span>地址空间可连续，可以增加逻辑设计</span></td></tr></tbody></table></figure><h1 id='错题集'><span>错题集</span></h1><ol start='' ><li><p><img src="../../assets/images/image-20230513141223664.png" referrerpolicy="no-referrer" alt="image-20230513141223664"></p><details>
-  <summary>答案与解析：</summary>
-  <br>
-  答案： A
-  <br>
-  解析：<br>
-  4B = 32bit = 32位<br>
-  用8位存储芯片构造成32位需要位扩展，变成8K * 32位 = 32KB<br>
-  所以不需要再进行字扩展
-</details></li><li><p><img src="../../assets/images/image-20230513141449564.png" referrerpolicy="no-referrer" alt="image-20230513141449564"></p><details>
-  <summary>答案与解析：</summary>
-  <br>
-  答案： A
-  <br>
-  解析：<br>
-  4K * 4位扩展成16KB需要8块存储芯片<br>
-  如果16KB的存储器是32K * 4位，需要15根地址线，其中存储芯片用log<sub>2</sub>4K = 12根，所以需要3根地址线作为地址线输入，答案都给的两根所以存储器不是4位<br>
-  如果是16K * 8位，需要log<sup>2</sup>16K = 14根地址线，存储芯片用12根所以剩下2根作为地址线输入，四个选项都是2根所以16KB的存储器是16K * 8位<br>
-  这里的地址总线是从高位往低位排的，所以12根地址线是A<sup>4</sup> - A<sup>15</sup><br>
-  再往前两根就是译码器输入的地址线，即A<sup>3</sup>和A<sup>2</sup>
-  <img src="../../assets/images/image-20230513144620702.png" alt="image-20230513144620702">
-</details></li><li><p><img src="../../assets/images/image-20230513141513997.png" referrerpolicy="no-referrer" alt="image-20230513141513997"></p><details>
-  <summary>答案与解析：</summary>
-  <br>
-  答案： D
-  <br>
-  解析：<br>
-  CFFFF H - 90000 H + 1= 40000 H = 2<sup>18</sup> = 256K<br>
-  按字节编址，一个地址是8位所以总容量为 256K * 8位<br>
-  (256K * 8位) / (16K * 8位) = 16
-</details></li><li><p><img src="../../assets/images/image-20230513141533085.png" referrerpolicy="no-referrer" alt="image-20230513141533085"></p><details>
-  <summary>答案与解析：</summary>
-  <br>
-  答案： D
-  <br>
-  解析：<br>
-  8个高位地址为片选译码所以把四个选项的前8位写出来就是<br>
-  A. 1<font color="green">01</font><font color="grey">0</font> 1<font color="grey">0</font>11		B.1<font color="green">01</font><font color="grey">1</font> 1<font color="grey">0</font>11<br>
-  C. 1<font color="green">11</font><font color="grey">0</font> 1<font color="grey">1</font>11		D.1<font color="green">11</font><font color="grey">1</font> 1<font color="grey">1</font>10<br>
-  灰色的是不生效线路，绿色部分有一个1即可输出1(题目中的A17和A18)<br>
-  低电平生效所以译码输出为0，前面有非门所以译码器应该输出1<br>
-  译码器中进行与运算，如果出现0就会导致输出0，即译码输出1，所接芯片不生效<br>
-  四个选项中只有D选项的A12位置为0导致最后译码输出为1
-</details></li><li><p><img src="../../assets/images/image-20230513141547752.png" referrerpolicy="no-referrer" alt="image-20230513141547752"></p><details>
-  <summary>答案与解析：</summary>
-  <br>
-  答案： D
-  <br>
-  解析：<br>
-  <img src="../../assets/images/image-20230513152214311.png" alt="image-20230513152214311">
-</details></li><li><p><img src="../../assets/images/image-20230513141609419.png" referrerpolicy="no-referrer" alt="image-20230513141609419"></p><details>
-  <summary>答案与解析：</summary>
-  <br>
-  答案： D
-  <br>
-  解析：<br>
-  主存地址空间决定MAR位数，组成的32MB的主存储器只是没有把主存地址空间全部用完<br>
-  64MB = 2<sup>26</sup>B<br>
-  所以至少为26位
-</details></li><li><p><img src="../../assets/images/image-20230513141643619.png" referrerpolicy="no-referrer" alt="image-20230513141643619"></p><details>
-  <summary>答案与解析：</summary>
-  <br>
-  答案： C
-  <br>
-  解析：<br>
-  依题意，这是一个 r * c位的芯片，r*c=2K*1=2<sup>11</sup><br>
-  DRAM使用行列地址线复用技术，所以存储阵列越接近正方形越好，即r和c差值越小越好<br>
-  为了减少刷新，行越少越好(按行刷新)，所以选C
-</details></li><li><p><img src="../../assets/images/image-20230513141714198.png" referrerpolicy="no-referrer" alt="image-20230513141714198"></p><details>
-  <summary>答案与解析：</summary>
-  <br>
-  答案： D
-  <br>
-  解析：<br>
-  3F FFFFH - 00 0000H + 1 = 40 0000H = 2<sup>22</sup>个地址<br>
-  按字编址且字长为32位，所以存储芯片为 2<sup>22</sup> * 32bit = 2<sup>27</sup>bit<br>
-  2<sup>27</sup>bit / 2<sup>19</sup>*8bit = 2<sup>5</sup> = 32
-</details></li></ol></div></div>
+<div id='write'  class=''><h1 id='磁盘存储器'><span>磁盘存储器</span></h1><p><span>外存又称辅助存储器，主要使用磁表面存储器</span></p><ul><li><p><span>优点</span></p><ul><li><span>存储容量大，位价格低</span></li><li><span>记录介质可以重复使用</span></li><li><span>记录信息可以长期保存不丢失，甚至可以脱机存档</span></li><li><span>非破坏性读出，读出时不需要再生</span></li></ul></li><li><p><span>缺点</span></p><ul><li><span>存取速度慢</span></li><li><span>机械结构复杂</span></li><li><span>对工作环境要求较高</span></li></ul></li></ul><p><img src="../../assets/images/1776217-20201206234958087-1320157314.png" referrerpolicy="no-referrer" alt="机械硬盘结构"></p><p><img src="../../assets/images/image-20230514112004862.png" referrerpolicy="no-referrer" alt="image-20230514112004862"></p><p><img src="../../assets/images/image-20230514112557274.png" referrerpolicy="no-referrer" alt="image-20230514112557274"></p><ul><li><p><span>一块硬盘含有若干个记录面，每个记录面划分若干条磁道，每条磁道划分为若干个扇区(块)，块是磁盘的最小单位(磁盘按块存取)</span></p></li><li><p><span>硬盘存储器由磁盘驱动器、磁盘控制器和盘片组成</span></p></li><li><p><span>每个扇区的数据量相同(如1KB)</span></p></li><li><p><span>簇：一组扇区</span></p></li><li><p><span>性能指标</span></p><ul><li><p><span>磁盘的容量：磁盘能存储的字节总数</span></p><ul><li><span>非格式化容量：磁记录表面可以利用的磁化单元总数</span></li><li><span>格式化容量：按照某种特定的记录格式所能存储信息的总量(有部分扇区会被划分为其他用处，比如顶替坏掉的扇区用，所以格式化容量一般小于非格式化容量)</span></li></ul></li><li><p><span>记录密度：盘片戴维面积上记录的二进制的信息量</span></p><ul><li><p><span>道密度：沿磁盘半径方向单位长度上的磁道数</span></p></li><li><p><span>位密度：磁道单位长度上能记录的二进制代码位数</span></p></li><li><p><span>面密度：位密度 * 道密度</span></p></li><li><p><mark><span>磁盘所有磁道记录的信息量一定相等，最大圈的磁道与最小圈的磁道记录信息量相同</span></mark></p><ul><li><span>磁道越靠内，位密度越大</span></li></ul></li></ul></li><li><p><span>平均存取时间 = 寻道时间(磁头移动到目的磁道) + 旋转延迟时间(磁头定位到所在扇区) + 传输时间(传输数据所花费的时间)</span></p></li><li><p><span>数据传输率：磁盘存储器在单位时间内向主机传送数据到字节数</span></p><ul><li><span>假设磁盘转速为r转/秒，每条磁道容量为N个字节，则数据传输率为</span><mjx-container class="MathJax" jax="SVG" style="position: relative;"><svg xmlns="http://www.w3.org/2000/svg" width="8.829ex" height="1.902ex" role="img" focusable="false" viewBox="0 -683 3902.5 840.8" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style="vertical-align: -0.357ex;"><defs><path id="MJX-4-TEX-I-1D437" d="M287 628Q287 635 230 637Q207 637 200 638T193 647Q193 655 197 667T204 682Q206 683 403 683Q570 682 590 682T630 676Q702 659 752 597T803 431Q803 275 696 151T444 3L430 1L236 0H125H72Q48 0 41 2T33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM703 469Q703 507 692 537T666 584T629 613T590 629T555 636Q553 636 541 636T512 636T479 637H436Q392 637 386 627Q384 623 313 339T242 52Q242 48 253 48T330 47Q335 47 349 47T373 46Q499 46 581 128Q617 164 640 212T683 339T703 469Z"></path><path id="MJX-4-TEX-I-1D45F" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-4-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-4-TEX-I-1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D437" xlink:href="#MJX-4-TEX-I-1D437"></use></g><g data-mml-node="mi" transform="translate(861,-150) scale(0.707)"><use data-c="1D45F" xlink:href="#MJX-4-TEX-I-1D45F"></use></g></g><g data-mml-node="mo" transform="translate(1507.7,0)"><use data-c="3D" xlink:href="#MJX-4-TEX-N-3D"></use></g><g data-mml-node="mi" transform="translate(2563.5,0)"><use data-c="1D45F" xlink:href="#MJX-4-TEX-I-1D45F"></use></g><g data-mml-node="mi" transform="translate(3014.5,0)"><use data-c="1D441" xlink:href="#MJX-4-TEX-I-1D441"></use></g></g></g></svg><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>D</mi><mi>r</mi></msub><mo>=</mo><mi>r</mi><mi>N</mi></math></mjx-assistive-mml></mjx-container><script type="math/tex">D_r=rN</script></li></ul></li></ul></li><li><p><span>使用</span><strong><span>驱动器号(C盘还是D盘)、柱面号、盘面号、扇区号</span></strong><span>来定位任意一个磁盘块</span></p><ul><li><img src="../../assets/images/image-20230514114342798.png" referrerpolicy="no-referrer" alt="image-20230514114342798"></li></ul></li><li><p><span>工作方式：</span></p><ol start='' ><li><span>将磁头移动到想要读/写的扇区所在的磁道</span></li><li><span>磁盘转动，让目标扇区从磁头下面划过才能完成对扇区的读/写操作</span></li></ol></li><li><p><span>机械式部件，读写是串行的，不能同时既读又写或者同时读(写)两组数据</span></p></li><li><p><span>磁盘阵列</span></p><ul><li><span>RAID0没有容错能力</span></li><li><span>RAID1容量少一半</span></li><li><img src="../../assets/images/image-20230514123511606.png" referrerpolicy="no-referrer" alt="image-20230514123511606"></li><li><img src="../../assets/images/image-20230514123535818.png" referrerpolicy="no-referrer" alt="image-20230514123535818"></li></ul></li></ul><h1 id='固态硬盘ssd'><span>固态硬盘SSD</span></h1><ul><li><p><span>是一种基于闪存技术的存储器</span></p></li><li><p><span>一个SSD由一个或多个闪存芯片(代替磁盘的机械驱动器)和闪存翻译层(代替磁盘控制器)组成</span></p></li><li><p><span>闪存翻译器可以将块地址修改</span></p><ul><li><span>比如块0磨损比较严重，可以将块0的地址指向另一个比较新的块</span></li></ul></li><li><p><span>优点</span></p><ul><li><span>由半导体部件组成，没有移动的部件</span></li><li><span>随机访问的时间比机械硬盘快很多(因为没有物理移动时间)</span></li><li><span>没有机械噪声和振动(机械硬盘转盘有声音)</span></li><li><span>能耗低(因为不用驱动转盘旋转)</span></li><li><span>抗震性好</span></li></ul></li><li><p><span>缺点</span></p><ul><li><p><span>容易磨损(所以当不了传家宝)</span></p><ul><li><span>一个块被擦除次数过多(重复写同一个块)可能会坏掉，机械硬盘的扇区不会</span></li></ul></li></ul></li><li><p><img src="../../assets/images/image-20230514125341782.png" referrerpolicy="no-referrer" alt="image-20230514125341782"></p></li><li><p><span>磨损的均衡技术</span></p><ul><li><span>思想：将擦除平均分布在各个块上，以提升使用寿命</span></li><li><span>动态磨损均衡：写入数据时有限选择累计擦除次数少的新闪存块</span></li><li><span>静态磨损均衡：SSD检测并自动进行数据分配、迁移，让老旧的闪存块承担以读为主的存储任务，较新的闪存块承担更多的写任务</span></li></ul></li></ul></div></div>
 </body>
 </html>
