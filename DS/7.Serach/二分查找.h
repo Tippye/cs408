@@ -1,7 +1,7 @@
 //
 // Created by 渠继旺 on 2022/12/20.
 //
-#include "../2.LinearList/2.1顺序表定义.c"
+#include "../2.LinearList/2.1顺序表定义.h"
 
 int BinarySearch(SeqList seqList, ElemType key) {
     int low = 0,                                // 左边界

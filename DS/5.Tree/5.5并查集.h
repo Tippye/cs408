@@ -5,32 +5,33 @@
 
 /**定义模块**/
 #define SIZE 100
+#define ElemType int
 
 //集合元素数组（双亲指针数组）
-int UFSets[SIZE];
+ElemType UFSets[SIZE];
 
-void Initial(int S[]);
+void Initial(ElemType S[]);
 
-void Union(int S[], int Root1, int Root2);
+void Union(ElemType S[], ElemType Root1, ElemType Root2);
 
-int Find(int S[], int x);
+int Find(ElemType S[], ElemType x);
 /**定义模块**/
 
 /**实现模块**/
-void Initial(int S[]) {
+void Initial(ElemType S[]) {
     for (int i = 0; i < SIZE; ++i) {
         S[i] = -1;
     }
 }
 
-void Union(int S[], int Root1, int Root2) {
+void Union(ElemType S[], ElemType Root1, ElemType Root2) {
     //要求Root1和Root2是不同的，而且表示子集合的名字
     if (Root1 == Root2) return;
     // 将根Root2连接到另一个根Root1下面
     S[Root2] = Root1;
 }
 
-void BetterUnion(int S[], int Root1, int Root2) {
+void BetterUnion(ElemType S[], ElemType Root1, ElemType Root2) {
     // 优化合并算法
 
     //要求Root1和Root2是不同的，而且表示子集合的名字
@@ -46,7 +47,7 @@ void BetterUnion(int S[], int Root1, int Root2) {
     }
 }
 
-int Find(int S[], int x) {
+int Find(ElemType S[], ElemType x) {
     // 根的值小于0
     while (S[x] >= 0)
         x = S[x];
