@@ -3,8 +3,9 @@
  *
  * DataStructure后面只留下要运行的文件名就行
  */
-#include "3.Stack,Queue,Array/2.2循环队列.h"
+#include "2.LinearList/code_question/findSuffix.h"
 
-int main(){
+int main() {
     TestModule();
+    return 1;
 }
