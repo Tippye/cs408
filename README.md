@@ -5,8 +5,10 @@
 
 # 资料
 
-> 链接: https://pan.baidu.com/s/1uiZdGAe-6HrG83fek8J-qw?pwd=v4wk 提取码: v4wk 
---来自百度网盘超级会员v4的分享
+> 【超级会员V5】我通过百度网盘分享的文件：05.2024【计算机】全程班
+链接：https://pan.baidu.com/s/1CYhF0sn8TlPPKflSpjk5Aw 
+提取码：382U 
+复制这段内容打开「百度网盘APP即可获取」
 
 # 目录
 
